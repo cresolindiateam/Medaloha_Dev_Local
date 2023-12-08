@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Search Specialist | MedAloha</title>
+	<link type="image/x-icon" href="%PUBLIC_URL%\assets\img\favicon.png" rel="icon"> 
+
+	<link rel="stylesheet" href="%PUBLIC_URL%\assets\css\bootstrap.min.css"> 
+
+
+	<link rel="stylesheet" href="%PUBLIC_URL%\assets\plugins\fontawesome\css\fontawesome.min.css">
+	<link rel="stylesheet" href="%PUBLIC_URL%\assets\plugins\fontawesome\css\all.min.css">
+	<link rel="stylesheet" href="%PUBLIC_URL%\assets\css\style.css">
+	<link rel="stylesheet" href="%PUBLIC_URL%\assets\css\boom.css">
+	<link rel="stylesheet" href="%PUBLIC_URL%\assets\css\index.css"> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css"> 
+	<!-- Fancybox CSS -->
+	<link rel="stylesheet" href="%PUBLIC_URL%\assets\plugins\fancybox\jquery.fancybox.min.css"> 
+	<!-- Datetimepicker CSS -->
+     <link rel="stylesheet" href="%PUBLIC_URL%\assets\css\bootstrap-datetimepicker.min.css">
+  <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+   
+  </head>
+  <body id="root" style="zoom: 1; position: relative; min-height: 100%; top: 0px;"> 
+  </body>
+  <script src="%PUBLIC_URL%\assets\js\jquery.min.js"></script> 
+	<script src="%PUBLIC_URL%\assets\js\popper.min.js"></script>
+	 <script src="%PUBLIC_URL%\assets\js\bootstrap.min.js"></script> 
+
+	
+
+	<script src="%PUBLIC_URL%\assets\js\slick.js"></script> 
+
+	<!-- Datetimepicker JS -->
+	<script src="%PUBLIC_URL%\assets\js\moment.min.js"></script>
+	<script src="%PUBLIC_URL%\assets\js\bootstrap-datetimepicker.min.js"></script>
+
+	<!-- Sticky Sidebar JS -->
+	<script src="%PUBLIC_URL%\assets\plugins\theia-sticky-sidebar\ResizeSensor.js"></script>
+	<script src="%PUBLIC_URL%\assets\plugins\theia-sticky-sidebar\theia-sticky-sidebar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <script> $('.modal').modal();</script> 
+	<!-- Fancybox JS -->
+	<script src="%PUBLIC_URL%\assets\plugins\fancybox\jquery.fancybox.min.js"></script>
+	<script src="%PUBLIC_URL%\assets\js\script.js"></script>
+	<script src="https://media.twiliocdn.com/sdk/js/chat/releases/4.0.0/twilio-chat.js"></script>
+	<script src="https://apis.google.com/js/api.js" type="text/javascript"></script>
+
+	<style>
+	 ._1ceqH ._1Yplu ._1Pz2d:hover {
+    background: #f1f3f4!important;
+    color: #202121!important;
+     border: 1px solid #202121;
+}
+._1ceqH ._1Yplu ._1Pz2d {
+    background: #f1f3f4!important;
+    color: #202121!important;
+    border: 1px solid #202121;
+}
+
+._1ceqH ._qxztz ._1bSom
+{
+	background:#f1f3f4!important;
+	 color: #202121!important;
+}
+._1ceqH ._qxztz ._3nQu5
+{
+background:#f1f3f4!important;
+ color: #202121!important;
+}
+	._1ceqH ._1dpop:hover ._3wi1g{fill: #fff!important;}
+
+
+._1ceqH ._1dpop{background: black!important;width: 50px!important;height: 50px!important}
+	._1ceqH ._1lB9c{display: none;}
+	._1ceqH ._dt3-T{min-height: unset!important; background: unset!important;}
+	._1ceqH ._f2DT8 *{color: unset!important;font-size: 20px!important;}
+
+@media only screen and (max-width: 767.98px){
+
+._1ceqH ._3bC73 ._1YOWG,._1ceqH ._qxztz,._1ceqH ._1Yplu
+{
+
+	left: 0!important;
+    right: 0!important;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    width: 100%!important;
+    transform: unset!important;
+}
+
+._1YOWG audio{max-width: 100%}
+}
+
+	._1ceqH ._3bC73 ._1YOWG{    left: 58%;
+    bottom: unset!important;
+    position: relative!important;
+    transform: translate(18%,-79%);
+    font-size: 1rem!important;}
+._1ceqH ._1YOWG ._eV_dK{display: none!important;}
+._1ceqH ._2fG9h{padding: 0px!important;}
+._1ceqH ._1Yplu{margin: 27px 9px}
+._1ceqH ._1Yplu ._2gd2_{margin-right: 15px!important;}
+._1ceqH ._qxztz {
+
+  position: relative;
+  
+   transform: translate(183%,-163%);
+ left: unset;
+ padding: 10px 0px!important;
+}
+
+
+._1ceqH ._3bC73 ._1dpop {
+   position: relative!important;
+    left: 100%!important;
+    transform: translate(-112%,-40%)!important;
+    bottom: 0px!important;
+
+}
+ </style>
+	<script>
+
+		
+		var ComboBox = function(container, customStyles) {
+			this.container = container;
+			this.container.className += ' cb--container';
+			this.input = container.getElementsByTagName('input')[0];
+			this.input.className += ' cb--input';
+			this.select = container.getElementsByTagName('select')[0];
+			this.select.className += ' cb--select';
+
+			this.value = this.input.value;
+
+			var optionZero = document.createElement('option');
+			optionZero.innerHTML = 'Select Tag';
+			optionZero.value = '';
+			this.select.insertBefore(optionZero, this.select.options[0]);
+
+			this.options = this.select.options;
+			for (var i = 0; i < this.options.length; i++) {
+				var element = this.options[i];
+				element.className += ' cb--option';
+			}
+
+			this.input.setAttribute('aria-label', 'Special inputfield with '+this.options.length+' prefilled options available, use the down/up arrow keys to chose one or write your own text.');
+			this.select.setAttribute('aria-hidden', 'true');
+
+			this.addEventListeners();
+			this.createVisualHint();
+
+			this.hideSelect();
+			if(!customStyles) this.setStyles();
+		};
+
+		ComboBox.prototype.addEventListeners = function() {
+			this.input.addEventListener('focus', this.showSelect.bind(this));
+			this.input.addEventListener('blur', this.hideSelect.bind(this));
+			this.input.addEventListener('keyup', this.handleInput.bind(this));
+
+			this.select.addEventListener('focus', this.showSelect.bind(this));
+			this.select.addEventListener('change', this.handleSelection.bind(this));
+			this.select.addEventListener('keydown', this.handleSelection.bind(this));
+			this.select.addEventListener('click', function(e) { this.handleSelection(e, 'click'); }.bind(this));
+
+ // this.input.addEventListener('dblclick', this.hideSelect.bind(this));
+ this.select.addEventListener('blur', function(e) {
+ 	this.hideSelect();
+
+ 	if(!this.preventTriggerSelection) {
+ 		this.triggerSelection();
+ 	} else {
+ 		this.preventTriggerSelection = false;
+ 	}
+
+ }.bind(this));
+
+ return this;
+};
+
+ComboBox.prototype.handleInput = function(e) {
+	var code = this.getKey(e);
+	if(code === 'ArrowDown') {
+		this.handleWriting(e.target.value);
+		this.select.focus();
+	} else if(code === 'Escape') {
+		this.hideSelect();
+	} else if(code === 'Enter' && !this.preventDoubleEnter) {
+		this.setValue(this.select.value, 'hideSelect');
+		this.triggerSelection('force');
+	} else {
+		this.preventDoubleEnter = false;
+		this.handleWriting(this.input.value);
+	}
+
+	return this;
+};
+
+ComboBox.prototype.handleWriting = function(text) {
+	this.value = text;
+	var option = this.isTextInOptions(text, this.options);
+	if(option && text != '') {
+		this.setOptionZero('');
+		this.select.value = option;
+
+    // if the text is absolutely equal to the option, trigger a selection
+    if(text.length === option.length) this.triggerSelection();
+} else {
+	this.select.value = this.setOptionZero('');
+}
+
+return this;
+};
+
+ComboBox.prototype.isTextInOptions = function(text, options) {
+	for(var i = 1, il = options.length; i < il; i++) {
+		if(text.toLowerCase() == options[i].value.substring(0, text.length).toLowerCase()) {
+			return options[i].innerHTML;
+		}
+	}
+	return false;
+};
+
+ComboBox.prototype.setOptionZero = function(text) {
+	var setText = (text != '') ? ' ' + text : '';
+	this.options[0].value('');
+	this.options[0].innerHTML = 'Please Select Tags';
+	return setText;
+};
+
+ComboBox.prototype.handleSelection = function(e, click) {
+	var code = this.getKey(e);
+	if(code === 'Escape') {
+		this.preventTriggerSelection = true;
+		this.setValue(this.options[0].value, 'hideSelect');
+    // the selection might have changed by user, so to reset
+    // the preselection we have to check the input text again
+    this.handleWriting(this.value);
+} else if(code === 'Enter') {
+	this.preventDoubleEnter = true;
+	this.setValue(e.target.value, 'hideSelect');
+} else {
+	this.setValue(e.target.value, false);
+}
+
+if(click) this.triggerSelection('force');
+
+return this;
+};
+
+ComboBox.prototype.setValue = function(value, hideSelect) {
+  if(!value || value == '') return this;  // do nothing if value is empty
+
+  if(value.substring(0, 3) != '---') {  // check if value is not the fallback option
+  	this.input.value = value;
+  } else {  // if it is, don’t add the '--- '
+  this.input.value = value.substring(4, value.length);
+}
+
+if(hideSelect) {
+	this.input.focus();
+	this.hideSelect();
+}
+
+this.value = this.input.value;
+
+return this;
+};
+
+ComboBox.prototype.getKey = function(e) {
+	if(!e) return false;
+
+	if(e.key === 'Enter' || e.code === 'Enter' || e.keyCode === 13) {
+		return 'Enter';
+	} else if(e.key === 'Escape' || e.code === 'Escape' || e.keyCode === 27) {
+		return 'Escape';
+	} else if(e.key === 'ArrowDown' || e.code === 'ArrowDown' || e.keyCode === 40) {
+		return 'ArrowDown';
+	}
+};
+
+ComboBox.prototype.hideSelect = function() {
+	this.select.setAttribute('aria-hidden', 'true');
+	this.select.style.left = '-10000px';
+	this.select.style.pointerEvents = 'none';
+	this.select.style.opacity = 0;
+
+	return this;
+};
+
+ComboBox.prototype.showSelect = function() {
+	this.select.setAttribute('aria-hidden', 'false');
+	this.select.style.left = '0';
+	this.select.style.pointerEvents = 'all';
+	this.select.style.opacity = 1;
+
+	return this;
+};
+
+
+
+ComboBox.prototype.createVisualHint = function() {
+	this.hint = document.createElement('span');
+	this.hint.setAttribute('aria-hidden', 'true');
+	this.hint.className = 'cb--hint down icon_down';
+	this.hint.innerHTML = '▼';
+	this.container.insertBefore(this.hint, this.input);
+};
+
+ComboBox.prototype.setStyles = function() {
+	this.container.style.display = 'inline-block';
+	this.container.style.verticalAlign = 'top';
+	this.container.style.position = 'relative';
+	this.input.style.boxSizing = 'border-box';
+	this.input.style.height = '100%';
+	this.input.style.width = '100%';
+	this.select.style.border = '1px solid lightgrey';
+	this.select.style.borderTop = '0';
+	this.select.style.position = 'absolute';
+	this.select.style.top = '68%';
+	this.select.style.width = '100%';
+	this.hint.style.fontSize = '8px';
+	this.hint.style.pointerEvents = 'none';
+	this.hint.style.position = 'absolute';
+	this.hint.style.right = '9%';
+	this.hint.style.top = '50%';
+	this.hint.style.lineHeight = '0.1';
+
+  // this makes the down arrow key the only way to select the dropdown via keyboard
+  //this.select.tabIndex = -1;
+  // this is inportant to get a list instead of a dropdown
+  this.select.size = 4;
+};
+
+// setup the onSelect handler passed by user
+ComboBox.prototype.onSelect = function(cb) {
+	this.cb = cb;
+	this.handleInput(this.value);
+  //return this;
+};
+
+ComboBox.prototype.triggerSelection = function(force) {
+	if(force || this.value !== this.previousValue) {
+		this.cb(this);
+		this.previousValue = this.value;
+	}
+
+	return this;
+};
+
+var element = document.getElementById('ComboBox');
+var cb = new ComboBox(element, false);
+
+</script>
+
+<!-- <script> 
+	$('#carouselExampleSlidesOnly').carousel({
+		interval: 1000 * 10,
+
+	});
+</script>  -->
+
+<script>
+	function hover() {
+		document.getElementsByClassName("how_icon")[0].setAttribute('src', 'assets/images/how-gray-dark.png');
+		document.getElementsByClassName("how_icon_size")[0].setAttribute('style', 'color:#484848!important');
+	}
+
+	function unhover() {
+		document.getElementsByClassName("how_icon")[0].setAttribute('src', 'assets/images/how-gray.png'
+
+			);
+		document.getElementsByClassName("how_icon_size")[0].setAttribute('style',
+			'color:#948b80!important');
+
+	}
+	function hover1() {
+		document.getElementsByClassName("about_icon")[0].setAttribute('src', 'assets/images/about-gray-dark.png');
+		document.getElementsByClassName("about_icon_size")[0].setAttribute('style', 'color:#484848!important');
+	}
+
+	function unhover1() {
+		document.getElementsByClassName("about_icon")[0].setAttribute('src', 'assets/images/about-gray.png');
+		document.getElementsByClassName("about_icon_size")[0].setAttribute('style', 'color:#948b80!important');
+	}
+	function translateLanguage() {
+		var lang = document.getElementById("lan_select").value;
+		alert(lang)
+		var $frame = $('.goog-te-menu-frame:first');
+		if (!$frame.size()) {
+			alert("Error: Could not find Google translate frame.");
+			return false;
+		}
+		$frame.contents().find('.goog-te-menu2-item span.text:contains(' + lang + ')').get(0).click();
+		return false;
+	}
+</script>
+
+<script>
+	(function($) {
+		$(function() {
+			 
+			var isoCountries = [
+		/*	{ id: 'AF', text: 'Afghanistan'},
+			{ id: 'AX', text: 'Aland Islands'},
+			{ id: 'AL', text: 'Albania'},
+			{ id: 'DZ', text: 'Algeria'},
+			{ id: 'AS', text: 'American Samoa'},
+			{ id: 'AD', text: 'Andorra'},
+			{ id: 'AO', text: 'Angola'},
+			{ id: 'AI', text: 'Anguilla'},
+			{ id: 'AQ', text: 'Antarctica'},
+			{ id: 'AG', text: 'Antigua And Barbuda'},
+			{ id: 'AR', text: 'Argentina'},
+			{ id: 'AM', text: 'Armenia'},
+			{ id: 'AW', text: 'Aruba'},
+			{ id: 'AU', text: 'Australia'},
+			{ id: 'AT', text: 'Austria'},
+			{ id: 'AZ', text: 'Azerbaijan'},
+			{ id: 'BS', text: 'Bahamas'},
+			{ id: 'BH', text: 'Bahrain'},
+			{ id: 'BD', text: 'Bangladesh'},
+			{ id: 'BB', text: 'Barbados'},
+			{ id: 'BY', text: 'Belarus'},
+			{ id: 'BE', text: 'Belgium'},
+			{ id: 'BZ', text: 'Belize'},
+			{ id: 'BJ', text: 'Benin'},
+			{ id: 'BM', text: 'Bermuda'},
+			{ id: 'BT', text: 'Bhutan'},
+			{ id: 'BO', text: 'Bolivia'},
+			{ id: 'BA', text: 'Bosnia And Herzegovina'},
+			{ id: 'BW', text: 'Botswana'},
+			{ id: 'BV', text: 'Bouvet Island'},
+			{ id: 'BR', text: 'Brazil'},
+			{ id: 'IO', text: 'British Indian Ocean Territory'},
+			{ id: 'BN', text: 'Brunei Darussalam'},
+			{ id: 'BG', text: 'Bulgaria'},
+			{ id: 'BF', text: 'Burkina Faso'},
+			{ id: 'BI', text: 'Burundi'},
+			{ id: 'KH', text: 'Cambodia'},
+			{ id: 'CM', text: 'Cameroon'},
+			{ id: 'CA', text: 'Canada'},
+			{ id: 'CV', text: 'Cape Verde'},
+			{ id: 'KY', text: 'Cayman Islands'},
+			{ id: 'CF', text: 'Central African Republic'},
+			{ id: 'TD', text: 'Chad'},
+			{ id: 'CL', text: 'Chile'},
+			{ id: 'CN', text: 'China'},
+			{ id: 'CX', text: 'Christmas Island'},
+			{ id: 'CC', text: 'Cocos (Keeling) Islands'},
+			{ id: 'CO', text: 'Colombia'},
+			{ id: 'KM', text: 'Comoros'},
+			{ id: 'CG', text: 'Congo'},
+			{ id: 'CD', text: 'Congo}, Democratic Republic'},
+			{ id: 'CK', text: 'Cook Islands'},
+			{ id: 'CR', text: 'Costa Rica'},
+			{ id: 'CI', text: 'Cote D\'Ivoire'},
+			{ id: 'HR', text: 'Croatia'},
+			{ id: 'CU', text: 'Cuba'},
+			{ id: 'CY', text: 'Cyprus'},
+			{ id: 'CZ', text: 'Czech Republic'},
+			{ id: 'DK', text: 'Denmark'},
+			{ id: 'DJ', text: 'Djibouti'},
+			{ id: 'DM', text: 'Dominica'},
+			{ id: 'DO', text: 'Dominican Republic'},
+			{ id: 'EC', text: 'Ecuador'},
+			{ id: 'EG', text: 'Egypt'},
+			{ id: 'SV', text: 'El Salvador'},
+			{ id: 'GQ', text: 'Equatorial Guinea'},
+			{ id: 'ER', text: 'Eritrea'},
+			{ id: 'EE', text: 'Estonia'},
+			{ id: 'ET', text: 'Ethiopia'},
+			{ id: 'FK', text: 'Falkland Islands (Malvinas)'},
+			{ id: 'FO', text: 'Faroe Islands'},
+			{ id: 'FJ', text: 'Fiji'},
+			{ id: 'FI', text: 'Finland'},*/
+			{ id: 'FR', text: '+33'},
+		/*   { id: 'GF', text: 'French Guiana'},
+			{ id: 'PF', text: 'French Polynesia'},
+			{ id: 'TF', text: 'French Southern Territories'},
+			{ id: 'GA', text: 'Gabon'},
+			{ id: 'GM', text: 'Gambia'},
+			{ id: 'GE', text: 'Georgia'},
+			{ id: 'DE', text: 'Germany'},
+			{ id: 'GH', text: 'Ghana'},
+			{ id: 'GI', text: 'Gibraltar'},
+			{ id: 'GR', text: 'Greece'},
+			{ id: 'GL', text: 'Greenland'},
+			{ id: 'GD', text: 'Grenada'},
+			{ id: 'GP', text: 'Guadeloupe'},
+			{ id: 'GU', text: 'Guam'},
+			{ id: 'GT', text: 'Guatemala'},
+			{ id: 'GG', text: 'Guernsey'},
+			{ id: 'GN', text: 'Guinea'},
+			{ id: 'GW', text: 'Guinea-Bissau'},
+			{ id: 'GY', text: 'Guyana'},
+			{ id: 'HT', text: 'Haiti'},
+			{ id: 'HM', text: 'Heard Island & Mcdonald Islands'},
+			{ id: 'VA', text: 'Holy See (Vatican City State)'},
+			{ id: 'HN', text: 'Honduras'},
+			{ id: 'HK', text: 'Hong Kong'},
+			{ id: 'HU', text: 'Hungary'},
+			{ id: 'IS', text: 'Iceland'},*/
+			{ id: 'IN', text: '+91'},
+		  /* { id: 'ID', text: 'Indonesia'},
+			{ id: 'IR', text: 'Iran}, Islamic Republic Of'},
+			{ id: 'IQ', text: 'Iraq'},
+			{ id: 'IE', text: 'Ireland'},
+			{ id: 'IM', text: 'Isle Of Man'},
+			{ id: 'IL', text: 'Israel'},
+			{ id: 'IT', text: 'Italy'},
+			{ id: 'JM', text: 'Jamaica'},
+			{ id: 'JP', text: 'Japan'},
+			{ id: 'JE', text: 'Jersey'},
+			{ id: 'JO', text: 'Jordan'},
+			{ id: 'KZ', text: 'Kazakhstan'},
+			{ id: 'KE', text: 'Kenya'},
+			{ id: 'KI', text: 'Kiribati'},
+			{ id: 'KR', text: 'Korea'},
+			{ id: 'KW', text: 'Kuwait'},
+			{ id: 'KG', text: 'Kyrgyzstan'},
+			{ id: 'LA', text: 'Lao People\'s Democratic Republic'},
+			{ id: 'LV', text: 'Latvia'},
+			{ id: 'LB', text: 'Lebanon'},
+			{ id: 'LS', text: 'Lesotho'},
+			{ id: 'LR', text: 'Liberia'},
+			{ id: 'LY', text: 'Libyan Arab Jamahiriya'},
+			{ id: 'LI', text: 'Liechtenstein'},
+			{ id: 'LT', text: 'Lithuania'},
+			{ id: 'LU', text: 'Luxembourg'},
+			{ id: 'MO', text: 'Macao'},
+			{ id: 'MK', text: 'Macedonia'},
+			{ id: 'MG', text: 'Madagascar'},
+			{ id: 'MW', text: 'Malawi'},
+			{ id: 'MY', text: 'Malaysia'},
+			{ id: 'MV', text: 'Maldives'},
+			{ id: 'ML', text: 'Mali'},
+			{ id: 'MT', text: 'Malta'},
+			{ id: 'MH', text: 'Marshall Islands'},
+			{ id: 'MQ', text: 'Martinique'},
+			{ id: 'MR', text: 'Mauritania'},
+			{ id: 'MU', text: 'Mauritius'},
+			{ id: 'YT', text: 'Mayotte'},
+			{ id: 'MX', text: 'Mexico'},
+			{ id: 'FM', text: 'Micronesia}, Federated States Of'},
+			{ id: 'MD', text: 'Moldova'},
+			{ id: 'MC', text: 'Monaco'},
+			{ id: 'MN', text: 'Mongolia'},
+			{ id: 'ME', text: 'Montenegro'},
+			{ id: 'MS', text: 'Montserrat'},
+			{ id: 'MA', text: 'Morocco'},
+			{ id: 'MZ', text: 'Mozambique'},
+			{ id: 'MM', text: 'Myanmar'},
+			{ id: 'NA', text: 'Namibia'},
+			{ id: 'NR', text: 'Nauru'},
+			{ id: 'NP', text: 'Nepal'},
+			{ id: 'NL', text: 'Netherlands'},
+			{ id: 'AN', text: 'Netherlands Antilles'},
+			{ id: 'NC', text: 'New Caledonia'},
+			{ id: 'NZ', text: 'New Zealand'},
+			{ id: 'NI', text: 'Nicaragua'},
+			{ id: 'NE', text: 'Niger'},
+			{ id: 'NG', text: 'Nigeria'},
+			{ id: 'NU', text: 'Niue'},
+			{ id: 'NF', text: 'Norfolk Island'},
+			{ id: 'MP', text: 'Northern Mariana Islands'},
+			{ id: 'NO', text: 'Norway'},
+			{ id: 'OM', text: 'Oman'},
+			{ id: 'PK', text: 'Pakistan'},
+			{ id: 'PW', text: 'Palau'},
+			{ id: 'PS', text: 'Palestinian Territory}, Occupied'},
+			{ id: 'PA', text: 'Panama'},
+			{ id: 'PG', text: 'Papua New Guinea'},
+			{ id: 'PY', text: 'Paraguay'},
+			{ id: 'PE', text: 'Peru'},
+			{ id: 'PH', text: 'Philippines'},
+			{ id: 'PN', text: 'Pitcairn'},
+			{ id: 'PL', text: 'Poland'},
+			{ id: 'PT', text: 'Portugal'},
+			{ id: 'PR', text: 'Puerto Rico'},
+			{ id: 'QA', text: 'Qatar'},
+			{ id: 'RE', text: 'Reunion'},
+			{ id: 'RO', text: 'Romania'},
+			{ id: 'RU', text: 'Russian Federation'},
+			{ id: 'RW', text: 'Rwanda'},
+			{ id: 'BL', text: 'Saint Barthelemy'},
+			{ id: 'SH', text: 'Saint Helena'},
+			{ id: 'KN', text: 'Saint Kitts And Nevis'},
+			{ id: 'LC', text: 'Saint Lucia'},
+			{ id: 'MF', text: 'Saint Martin'},
+			{ id: 'PM', text: 'Saint Pierre And Miquelon'},
+			{ id: 'VC', text: 'Saint Vincent And Grenadines'},
+			{ id: 'WS', text: 'Samoa'},
+			{ id: 'SM', text: 'San Marino'},
+			{ id: 'ST', text: 'Sao Tome And Principe'},
+			{ id: 'SA', text: 'Saudi Arabia'},
+			{ id: 'SN', text: 'Senegal'},
+			{ id: 'RS', text: 'Serbia'},
+			{ id: 'SC', text: 'Seychelles'},
+			{ id: 'SL', text: 'Sierra Leone'},
+			{ id: 'SG', text: 'Singapore'},
+			{ id: 'SK', text: 'Slovakia'},
+			{ id: 'SI', text: 'Slovenia'},
+			{ id: 'SB', text: 'Solomon Islands'},
+			{ id: 'SO', text: 'Somalia'},
+			{ id: 'ZA', text: 'South Africa'},
+			{ id: 'GS', text: 'South Georgia And Sandwich Isl.'},
+			{ id: 'ES', text: 'Spain'},
+			{ id: 'LK', text: 'Sri Lanka'},
+			{ id: 'SD', text: 'Sudan'},
+			{ id: 'SR', text: 'Suriname'},
+			{ id: 'SJ', text: 'Svalbard And Jan Mayen'},
+			{ id: 'SZ', text: 'Swaziland'},
+			{ id: 'SE', text: 'Sweden'},
+			{ id: 'CH', text: 'Switzerland'},
+			{ id: 'SY', text: 'Syrian Arab Republic'},
+			{ id: 'TW', text: 'Taiwan'},
+			{ id: 'TJ', text: 'Tajikistan'},
+			{ id: 'TZ', text: 'Tanzania'},
+			{ id: 'TH', text: 'Thailand'},
+			{ id: 'TL', text: 'Timor-Leste'},
+			{ id: 'TG', text: 'Togo'},
+			{ id: 'TK', text: 'Tokelau'},
+			{ id: 'TO', text: 'Tonga'},
+			{ id: 'TT', text: 'Trinidad And Tobago'},
+			{ id: 'TN', text: 'Tunisia'},
+			{ id: 'TR', text: 'Turkey'},
+			{ id: 'TM', text: 'Turkmenistan'},
+			{ id: 'TC', text: 'Turks And Caicos Islands'},
+			{ id: 'TV', text: 'Tuvalu'},
+			{ id: 'UG', text: 'Uganda'},
+			{ id: 'UA', text: 'Ukraine'},
+			{ id: 'AE', text: 'United Arab Emirates'},*/
+			{ id: 'GB', text: '+44'},
+			{ id: 'US', text: '+1'},
+			/*{ id: 'UM', text: 'United States Outlying Islands'},
+			{ id: 'UY', text: 'Uruguay'},
+			{ id: 'UZ', text: 'Uzbekistan'},
+			{ id: 'VU', text: 'Vanuatu'},
+			{ id: 'VE', text: 'Venezuela'},
+			{ id: 'VN', text: 'Viet Nam'},
+			{ id: 'VG', text: 'Virgin Islands}, British'},
+			{ id: 'VI', text: 'Virgin Islands}, U.S.'},
+			{ id: 'WF', text: 'Wallis And Futuna'},
+			{ id: 'EH', text: 'Western Sahara'},
+			{ id: 'YE', text: 'Yemen'},
+			{ id: 'ZM', text: 'Zambia'},
+			{ id: 'ZW', text: 'Zimbabwe'}
+			*/
+			];
+
+			function formatCountry (country) {
+				if (!country.id) { return country.text; }
+				var $country = $(
+					'<span class="flag-icon flag-icon-'+ country.id.toLowerCase() +' flag-icon-squared"></span>' +
+					'<span class="flag-text">'+ country.text+"</span>"
+					);
+				return $country;
+			};
+
+		//Assuming you have a select element with name country
+		// e.g. <select name="name"></select>
+		
+		$("#customer_country").select2({
+			placeholder: "Select a country",
+			templateResult: formatCountry,
+			data: isoCountries
+		});
+		
+		
+	});
+})(jQuery);     
+
+</script>       
+
+
+<script> 
+function activaTab(tab='#pro-setting'){
+alert(tab);
+$('.test1 a[href="' + tab + '"]').tab('show');
+
+$(".nav-link").removeClass('active');
+
+console.log('.nav-link[href="' + tab + '"]');
+
+$('.nav-link[href="'+tab+'"]').addClass('active');
+
+};
+
+
+		
+$(document).ready(function(){
+    /*$('input[type="checkbox"]').click(function(){
+        var inputValue = $(this).attr("value");
+        $("." + inputValue).attr("disabled", "true");
+    });*/
+
+
+
+//  $("input[name='message']").change(function () {
+//         var maxAllowed = 2;
+//         var cnt = $("input[name='message']:checked").length;
+// 		alert(cnt);
+//         if (cnt > maxAllowed) {
+//              $(this).prop("checked", false);
+// 			// $(this).prop("disabled", "true");
+//             alert('You can select maximum ' + maxAllowed + ' options for Message Category!');
+//             return false;        
+//         }
+//     });
+
+
+//   $("input[name='video']").change(function () {
+//         var maxAllowed = 2;
+//         var cnt2 = $("input[name='video']:checked").length;
+//         if (cnt2 > maxAllowed) {
+//           // $(this).prop("checked", "disalbed");
+//           // $(this).prop("disabled", "true");
+//             alert('You can select maximum ' + maxAllowed + ' options for Video Category!');
+// 			return false;
+//         }
+//     });
+
+
+//    $("input[name='inperson']").change(function () {
+//         var maxAllowed = 2;
+//         var cnt3 = $("input[name='inperson']:checked").length;
+//         if (cnt3 > maxAllowed) {
+//             $(this).prop("checked", "");
+//            // $(this).prop("disabled", "true");
+//             alert('You can select maximum ' + maxAllowed + ' options for In-person Category!');
+//           /*var a=  $("input[name='inperson']:checkbox").prop('checked',false);
+//           a.attr("disabled", "true");*/
+// 		  return false;
+//         }
+//     });
+	
+	
+	// $('#Time1').datetimepicker({
+    //     use24hours: true,
+    //     format: 'HH:mm'
+    // });
+
+ });
+
+ 
+</script>
+ 
+</html>
