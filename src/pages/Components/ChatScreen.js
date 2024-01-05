@@ -559,7 +559,7 @@ console.log(channel);
            <div>
              <div className="user-name">{channel['first_name']} {channel['last_name']}</div> 
              <div className="user-name">
- { localStorage.getItem('UserTimezone')!=null ? moment.utc(channel['session_date']).tz(localStorage.getItem('UserTimezone')).format('D MMM YYYY h:mm A') : moment(channel['session_date']).format('D MMM YYYY h:mm A') }
+ { localStorage.getItem('UserTimezone')!=null ? (channel['session_date']!='')?moment.utc(channel['session_date']).tz(localStorage.getItem('UserTimezone')).format('D MMM YYYY h:mm A'):'-' : moment(channel['session_date']).format('D MMM YYYY h:mm A') }
              </div> 
              <div className="user-last-chat">
                   {channel['last_message']} 
@@ -593,7 +593,8 @@ console.log(channel);
                           <div className="user-name">{channel['first_name'] +' '+channel['last_name']}
                           </div>
                                 <div className="user-name">
- { localStorage.getItem('UserTimezone')!=null ? moment.utc(channel['session_date']).tz(localStorage.getItem('UserTimezone')).format('D MMM YYYY h:mm A') : moment(channel['session_date']).format('D MMM YYYY h:mm A') }
+                                { localStorage.getItem('SpecialistTimezone')!=null ? (channel['session_date']!='')?moment.utc(channel['session_date']).tz(localStorage.getItem('SpecialistTimezone')).format('D MMM YYYY h:mm A'):'-' : moment(channel['session_date']).format('D MMM YYYY h:mm A') }
+ 
              </div>
                         </div>
                    

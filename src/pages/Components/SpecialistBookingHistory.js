@@ -314,7 +314,7 @@ var validation = axios.get(process.env.REACT_APP_BASE_URL+`/specilistAPI/IsSpeci
               timeCaption="time"
               dateFormat="MMMM d, yyyy h:mm aa"
 			   
-          />  :
+          />  :                   (booking.legendId==1 || booking.legendId==2|| booking.legendId==3) ?"-" :
 														 (booking.legendId==1 || booking.legendId==2|| booking.legendId==3) ? 
 														     // moment(booking.session_date).format('D MMM YYYY : HH:MM') 
 															  localStorage.getItem('SpecialistTimezone')!=null ? moment.utc(booking.session_date).tz(localStorage.getItem('SpecialistTimezone')).format('D MMM YYYY h:mm A') : moment(booking.session_date).format('D MMM YYYY h:mm A')

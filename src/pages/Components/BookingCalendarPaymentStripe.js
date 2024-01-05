@@ -103,6 +103,7 @@ export default function BookingCalendarPaymentStripe() {
                            }
       console.log(bookingData); 
       console.log('clientSecretPaymentIndentId');
+      console.log("rajachachu")
       console.log(clientSecretPaymentIndentId);
 
       axios.post(process.env.REACT_APP_BASE_URL+`/specilistAPI/SpecialistBooking`,bookingData)
