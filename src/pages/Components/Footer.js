@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { withTranslation } from 'react-i18next';
 import i18n from "i18next";
+import axios from 'axios';
  
 
 function settingLanguage(lang){ 
@@ -10,6 +11,40 @@ function settingLanguage(lang){
 
 
 class Footer extends React.Component {  
+
+ updateUserStatus(userId)
+ {
+  
+     axios.post(`${process.env.REACT_APP_BASE_URL}/authenticationAPI/updateuserStatus`, { userId });
+  }
+
+ updateSpecialistStatus(specialistId)
+ {
+  
+     axios.post(`${process.env.REACT_APP_BASE_URL}/authenticationAPI/updatespecialistStatus`, { specialistId });
+  }
+
+
+
+
+ componentDidMount() { 
+
+
+         const interval = setInterval(() => {
+         var userId =localStorage.getItem('customer_id');
+         if(userId){
+      this.updateUserStatus(userId); // Set isOnline to true
+}
+ 
+         var specialistId =localStorage.getItem('specialist_id');
+ if(specialistId){
+      this.updateSpecialistStatus(specialistId); // Set isOnline to true
+ }
+    }, 60000);
+
+         
+}
+
   render(){
     const { t } = this.props; 
       return ( 

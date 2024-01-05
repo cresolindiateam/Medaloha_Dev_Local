@@ -43,6 +43,12 @@ class ChatScreenForSpecialist extends React.Component {
     const { data } = response;
     return data.token;
   };
+  
+componentWillUnmount() {
+  if (this.state.channel) {
+    this.state.channel.removeListener("messageAdded", this.handleMessageAdded);
+  }
+}
 
   componentDidMount = async () => { 
 
@@ -61,53 +67,25 @@ class ChatScreenForSpecialist extends React.Component {
 
  
   joinChannel = async (channel) => {
-      if (channel.channelState.status !== "joined") {
-        await channel.join();
-      }  
-      console.log('first 6  step');   
+      // if (channel.channelState.status !== "joined") {
+      //   await channel.join();
+      // }  
       channel.on("messageAdded", this.handleMessageAdded);
-     // channel.unbind("messageAdded", this.handleMessageAdded);  
-     // console.log('first 7 step'); 
-     // channel.off('messageAdded', this.messageAdded); 
+    
   };
 
  
-  chatfunction = async(room, email) => {
-
-    // const { location } = this.props;
-    // const { state } = location || {};
-    // const { email, room } = state || {};
- 
+  chatfunction = async(room, email) => 
+  {
     let token = "";
-
     this.setState({emailOwner:email});
-    // console.log('this.state.emailOwner' + email);
-    // console.log(this.state.emailOwner);
-  
-
     this.setState({triggerMessage:false});
-
-    // if (!email || !room) {
-    //  // this.props.history.replace("/");
-    // }
-    // console.log('location'); console.log(location);
-    // console.log('state'); console.log(state);
-    // console.log('room'); console.log(room);
-
-    console.log('first 1 step'); 
-
     try {
       token = await this.getToken(email);
-      console.log('token new ');
-      console.log(token);
    } catch {
       throw new Error("unable to get token, please reload this page");
     } 
     const client = await Chat.Client.create(token);
-
-    console.log('client');
-    console.log(client);
-
     client.on("tokenAboutToExpire", async () => {
       const token = await this.getToken(email);
       client.updateToken(token);
@@ -118,57 +96,57 @@ class ChatScreenForSpecialist extends React.Component {
       client.updateToken(token);
     });
 
-console.log('messagesexist');  
      
 
     client.on("channelJoined", async (channel) => {
-     
-      // getting list of all messages since this is an existing channel
       const messages = await channel.getMessages();
-      console.log('messages222');  
-     
-
-      console.log(messages);
-      console.log('channel:');  
-      console.log(channel); 
-      console.log('messages233332');  
       this.setState({ messages: messages.items || [] });
       this.scrollToBottom();
     }); 
 
-    console.log('first 2 step'); 
+try {  
+    const channel = await client.getChannelByUniqueName(room);
+    console.log("Joining existing channel:", room);
+    
+    await this.joinChannel(channel);
+    this.setState({ channel, loading: true });
+  } catch (error) {
+    console.error("Error joining existing channel:", error);
+    
+    try {
+      const channel = await client.createChannel({
+        uniqueName: room,
+        friendlyName: room,
+      });
+      console.log("Created new channel:", room);
 
-    try {  
-      console.log('first 2 step'+room);  
-      const channel = await client.getChannelByUniqueName(room);
-      console.log('first 3 step'); 
-      console.log(channel); 
       await this.joinChannel(channel);
       this.setState({ channel, loading: false });
-    } catch {
-      try {
-        console.log('first try 4  step'); 
-        const channel = await client.createChannel({
-          uniqueName: room,
-          friendlyName: room,
-        });
-        console.log('first 4 step'); 
-        await this.joinChannel(channel);
-        this.setState({ channel, loading: false });
-      } catch {
-        throw new Error("unable to create channel, please reload this page");
-      }
+    } catch (createError) {
+      console.error("Error creating new channel:", createError);
+      throw new Error("Unable to create or join channel, please reload this page");
     }
   }
-
+    // try {  
+    //   const channel = await client.getChannelByUniqueName(room);
+    //   await this.joinChannel(channel);
+    //   this.setState({ channel, loading: true });
+    // } catch {
+    //   try {
+    //     const channel = await client.createChannel({
+    //       uniqueName: room,
+    //       friendlyName: room,
+    //     });
+    //     await this.joinChannel(channel);
+    //     this.setState({ channel, loading: false });
+    //   } catch {
+    //     throw new Error("unable to create channel, please reload this page");
+    //   }
+    // }
+  }
 
   handleMessageAdded = (message) => {
     const { messages } = this.state;
-     console.log('this.state222222-----');
-     console.log('message.items true or false :' );
-     console.log(this.state.triggerMessage); 
-
-  //   this.state.triggerMessage=true;
      if(this.state.triggerMessage) { 
       this.setState(
         {
@@ -176,57 +154,54 @@ console.log('messagesexist');
         },
         this.scrollToBottom
        ); 
-       console.log('this.state233332-----'); 
-
-       this.setState({triggerMessage:false}); 
      }
-    
-   
   };
 
+
+
+
   scrollToBottom = () => {
-    // const scrollHeight = this.scrollDiv.current.scrollHeight;
-    // const height = this.scrollDiv.current.clientHeight;
-    // const maxScrollTop = scrollHeight - height;
-    // this.scrollDiv.current.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
+     const messages = document.getElementById('asc');
+     let scrollHeight = messages.scrollHeight;
+     let height = messages.clientHeight;
+     let maxScrollTop = scrollHeight - height;
+     messages.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
   };
 
   sendMessage = () => {
-    this.setState({triggerMessage:true});
+    // this.setState({triggerMessage:true});
     const { text, channel } = this.state;
-    console.log("dfsdfsfdfsdff----");
+ 
+if (text && String(text).trim()) {
+    console.log("Sending message");
+    this.setState({ loading: true }, () => {
+        console.log("Loading state set to true");
+    });
+    channel && channel.sendMessage(text).then(() => {
+        console.log("ajay"+text);
+        this.setState({ text: "", loading: false }, () => {
+            console.log("Text reset and loading state set to false");
+        });
+        this.setState({triggerMessage:true});
+       }).catch(error => {
+        console.error("Error sending message:", error);
+    });
+}
 
-    console.log(String(text).trim());
-
-    if (text && String(text).trim()) {
-      this.setState({ loading: true });
-      channel && channel.sendMessage(text); 
-      this.setState({ text: "", loading: false });
-
-      //channel.on("messageAdded", this.handleMessageAdded);
-
-     // channel.leave();
-    } 
   };
 
   render() {
     const { loading, text, messages, channel } = this.state;
     const { location } = this.props;
     const { state } = location || {};
-   // const { email2, room } = state || {};
-    //const {email2}  =  this.state.emailOwner;
-
-    //  console.log('emailname'); 
-    //  console.log(this.state);
+   
 
     return (
       <React.Fragment>
       <div class="chat-cont-left test">
       <div class="chat-header">
-        <span>Chats</span>
-        <a href="javascript:void(0)" class="chat-compose">
-          <i class="material-icons">control_point</i>
-        </a>
+        <span>Chatsdhbhbdhbdbhdh</span>
+        
       </div>
       <form class="chat-search">
         <div class="input-group">
@@ -241,7 +216,7 @@ console.log('messagesexist');
         
          
       {this.state.booking_chat_channel.map( (channel)=> (	 
-             <a href="javascript:void(0);" class="media"  onClick={()=>this.chatfunction(channel['payment_stripe_id'],channel['twilio_chat_id2'])}>
+             <a href="javascript:void(0);" class="media"  onClick={()=>this.chatfunction(channel['payment_stripe_id'],channel['twilio_chat_id2']))}>
                       <div class="media-img-wrap">
                         <div class="avatar avatar-away">
                           <img src="assets/img/doctors/doctor-thumb-01.jpg" alt="User Image" class="avatar-img rounded-circle" />
@@ -253,8 +228,8 @@ console.log('messagesexist');
                           <div class="user-last-chat">Hey, How are you?</div>
                         </div>
                         <div>
-                          <div class="last-chat-time block">2 min</div>
-                          <div class="badge badge-success badge-pill">15</div>
+                          <div class="last-chat-time block"></div>
+                          <div class="badge badge-success badge-pill"></div>
                         </div>
                       </div>
               </a>
@@ -292,19 +267,15 @@ console.log('messagesexist');
 
                 <div className="chat-body">
                 <div class="chat-scroll">
-  
-  {console.log("hello")}
-  
-    {console.log(messages)}
+
    
       {messages &&
               messages.map((message) => (
-              
-
-                <ChatItem
+              <ChatItem
                   key={message.index}
                   message={message}
                   email={this.state.emailOwner}
+                  
                 />
               ))} 
 

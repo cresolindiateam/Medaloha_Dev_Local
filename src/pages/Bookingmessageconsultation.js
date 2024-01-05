@@ -205,21 +205,8 @@ class Bookingmessageconsultation extends React.Component {
 			<textarea id="review_desc" maxlength="100"     onChange={(e)=> this.setState({ message_description: e.target.value})}  class="form-control bg-light custom-height9"  placeholder="Write here your query to the specialist (max 5000 characters)"></textarea>
 		 </div>
 		 
-		<div class="form-group">
-			<div class="terms-accept">
-				<div class="custom-checkbox">
-				   <label for="terms_accept">In alternative, please leave a Voice 
-				   Recording (max 5 minutes): </label>
-				</div>
-			</div>
-		</div>
-		<div class="submit-section d-flex"> 
-			<div class="mb-4 col-md-6  padding-0" >
-				*You can record it as many times as you want, then click on “Confirm” 
-			</div>
-			
-			
-		</div>
+		
+	
 		
 
 				<div class="submit-section d-flex justify-content-end">

@@ -72,6 +72,7 @@ componentWillMount(){
 		this.setState({specialistData : res.data['Result']});
 	  	 console.log('specialist time');
 		 console.log(res.data['Result']);
+		 console.log(localStorage.getItem('i18nextLng'));
 	});  
 
 

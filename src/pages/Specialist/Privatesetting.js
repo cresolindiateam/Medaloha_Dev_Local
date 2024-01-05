@@ -370,10 +370,10 @@ class PrivateSetting extends React.Component {
 	  printReviewStar = (review) => {
 		const row = [];
 		for (var i = 0; i < review; i++) {
-		  row.push(<i class="fas fa-star filled"></i>);
+		  row.push(<i className="fas fa-star filled"/>);
 		}
 		  for (var i = 0; i < (5-review); i++) {
-		  row.push(<i class="fas fa-star "></i>);
+		  row.push(<i className="fas fa-star "/>);
 		}
 		return row;
 	  };
@@ -594,61 +594,61 @@ class PrivateSetting extends React.Component {
 		} 
 
         return ( 
-	          <div class="main-wrapper">  
+	          <div className="main-wrapper">  
                 <CustomerHeader/> 
-                <div class="breadcrumb-bar bg-cus">
-			    	<div class="container-fluid">
-					  <div class="row align-items-center">
-						  <div class="col-md-12 col-12">
-							<h2 class="breadcrumb-title">Profile</h2>
+                <div className="breadcrumb-bar bg-cus">
+			    	<div className="container-fluid">
+					  <div className="row align-items-center">
+						  <div className="col-md-12 col-12">
+							<h2 className="breadcrumb-title">Profile</h2>
 						 </div>
 					  </div>
 				  </div>
 			     </div>
 
 
-            <div class="content bg-theme">
-				<div class="container-fluid"> 
-					<div class="row"> 
-						<div class="col-md-12 col-lg-12 col-xl-12 dct-appoinment">
-							<div class="card">
-								<div class="card-body pt-0">
-									<div class="user-tabs">
-										<ul class="nav nav-tabs nav-tabs-bottom nav-justified flex-wrap"> 
-											<li class="nav-item">
-												<a class={"nav-link "+this.state.bookingactive}  href="#pat_appointments" data-toggle="tab" onClick={this.showcalendar}>
+            <div className="content bg-theme">
+				<div className="container-fluid"> 
+					<div className="row"> 
+						<div className="col-md-12 col-lg-12 col-xl-12 dct-appoinment">
+							<div className="card">
+								<div className="card-body pt-0">
+									<div className="user-tabs">
+										<ul className="nav nav-tabs nav-tabs-bottom nav-justified flex-wrap"> 
+											<li className="nav-item">
+												<a className={"nav-link "+this.state.bookingactive}  href="#pat_appointments" data-toggle="tab" onClick={this.showcalendar}>
 
 						
 
 
-																<div class="search-event-block-subtitle2">
-                                                                                     <i class="fas fa-calendar-check icon-basket search-event-icon-right-size"></i>
-                                                                                        <label class="search-event-block-padding">{t('SpecTabText1')}</label>
+																<div className="search-event-block-subtitle2">
+                                                                                     <i className="fas fa-calendar-check icon-basket search-event-icon-right-size"></i>
+                                                                                        <label className="search-event-block-padding">{t('SpecTabText1')}</label>
 
                                                                                     </div>
 
 												</a>
 											</li> 
-											<li class="nav-item">
-												<a class={"nav-link "+this.state.messageactive} href="#pres"  data-toggle="tab" onClick={this.showmessage} >
+											<li className="nav-item">
+												<a className={"nav-link "+this.state.messageactive} href="#pres"  data-toggle="tab" onClick={this.showmessage} >
 
-	<div class="search-event-block-subtitle">
-                                                                                     <i class="fas fa-comments icon-basket search-event-icon-right-size"></i>
-                                                                                        <label class="search-event-block-padding">{t('SpecTabText2')}</label>
+	<div className="search-event-block-subtitle">
+                                                                                     <i className="fas fa-comments icon-basket search-event-icon-right-size"></i>
+                                                                                        <label className="search-event-block-padding">{t('SpecTabText2')}</label>
 
                                                                                     </div>
 </a>
 
 											</li> 
 							 
-											<li class="nav-item">
-												<a class="nav-link" href="#billing" data-toggle="tab" onClick={this.showreview}>
+											<li className="nav-item">
+												<a className="nav-link" href="#billing" data-toggle="tab" onClick={this.showreview}>
 
 												
 
-<div class="search-event-block-subtitle1">
-                                                                                     <i class="fas fa-star icon-basket search-event-icon-right-size"></i>
-                                                                                        <label class="search-event-block-padding">{t('SpecTabText3')}</label>
+<div className="search-event-block-subtitle1">
+                                                                                     <i className="fas fa-star icon-basket search-event-icon-right-size"></i>
+                                                                                        <label className="search-event-block-padding">{t('SpecTabText3')}</label>
 
                                                                                     </div>
 												
@@ -656,80 +656,80 @@ class PrivateSetting extends React.Component {
 											
 											</li> 
 
-											<li class="nav-item">
-												<a class={"nav-link "+this.state.settingactive} href="#pro-setting" data-toggle="tab" onClick={this.showsetting}>
+											<li className="nav-item">
+												<a className={"nav-link "+this.state.settingactive} href="#pro-setting" data-toggle="tab" onClick={this.showsetting}>
 								
 
 
-<div class="search-event-block-subtitle3"><i class="fas fa-user-cog icon-basket search-event-icon-right-size"></i><label class="search-event-block-padding">{t('SpecTabText4')}</label></div>
+<div className="search-event-block-subtitle3"><i className="fas fa-user-cog icon-basket search-event-icon-right-size"></i><label className="search-event-block-padding">{t('SpecTabText4')}</label></div>
 												 </a>
 											</li>
 										</ul>
 									</div>
-									<div class="tab-content"> 
+									<div className="tab-content"> 
 					 {this.state.settingBox &&
-										<div id="pro-setting"  class={"tab-pane show  "+this.state.settingactive}  >
-											<div class="card">
-												<div class="card-body">
-													<h3 class="text-center">{t('SpecMainTitleSetting')}</h3> 
+										<div id="pro-setting"  className={"tab-pane show  "+this.state.settingactive}  >
+											<div className="card">
+												<div className="card-body">
+													<h3 className="text-center">{t('SpecMainTitleSetting')}</h3> 
 
 
-									 <div class="pdf_download">
-										<p class="text-center">{t('SpecSubTitleSetting')}{t('SpecSubTitleSettingMandatory')}
+									 <div className="pdf_download">
+										<p className="text-center">{t('SpecSubTitleSetting')}{t('SpecSubTitleSettingMandatory')}
 										</p>
-										<button id="pdf" class="button-container instruct-btn" >
-											<i class="fa fa-download"></i> {t('SpecInstructionSettingButton')}
+										<button id="pdf" className="button-container instruct-btn" >
+											<i className="fa fa-download"></i> {t('SpecInstructionSettingButton')}
 										</button></div>
 
-										<h4 class="text-center hidden-md hidden-lg font-weight-bold">{t('SpecText1')}</h4>
+										<h4 className="text-center hidden-md hidden-lg font-weight-bold">{t('SpecText1')}</h4>
                                         <GoToSection setName="private"/> 
 											 
 											<form>
-												<h2 class="text-center  border-bottom">PRIVATE</h2>
-												<p class="text-center mb-5">{t('SpecText2')}
+												<h2 className="text-center  border-bottom">PRIVATE</h2>
+												<p className="text-center mb-5">{t('SpecText2')}
 												</p>
-												<div class="row form-row">
+												<div className="row form-row">
 
-													<div class="col-12 col-md-6">
-														<div class="form-group">
+													<div className="col-12 col-md-6">
+														<div className="form-group">
 															<label>First Name *</label>
-															<input type="text" class="form-control"  value={this.state.name} onChange={(e)=> this.setState({ name: e.target.value})} readOnly/>
+															<input type="text" className="form-control"  value={this.state.name} onChange={(e)=> this.setState({ name: e.target.value})} readOnly/>
 														</div>
 													</div>
 
-													<div class="col-12 col-md-6">
-														<div class="form-group">
+													<div className="col-12 col-md-6">
+														<div className="form-group">
 															<label>Surname *</label>
-															<input type="text" class="form-control" value={this.state.surname} onChange={(e)=> this.setState({ surname: e.target.value})} readOnly/>
+															<input type="text" className="form-control" value={this.state.surname} onChange={(e)=> this.setState({ surname: e.target.value})} readOnly/>
 														</div>
 													</div>
-													<div class="col-12 col-md-6">
-														<div class="form-group">
+													<div className="col-12 col-md-6">
+														<div className="form-group">
 															<label>Email ID *</label>
-															<input type="email" class="form-control" value={this.state.email} onChange={(e)=> this.setState({ email: e.target.value})}  readOnly/>
+															<input type="email" className="form-control" value={this.state.email} onChange={(e)=> this.setState({ email: e.target.value})}  readOnly/>
 														</div>
 													</div>
-													<div class="col-12 col-md-6">
-														<div class="form-group">
+													<div className="col-12 col-md-6">
+														<div className="form-group">
 															<label>Mobile *</label>
-															<div class="input-group">
-																<div class="input-group-prepend">
+															<div className="input-group">
+																<div className="input-group-prepend">
 																	<select value={this.state.stdcode} onChange={(e)=> this.setState({stdcode:e.target.value})}>
 																		<option selected={this.state.stdcode=='+91'?'selected':null}>+91</option>
 																		<option selected={this.state.stdcode=='+01'?'selected':null}>+01</option>
 																		<option selected={this.state.stdcode=='+44'?'selected':null}>+44</option>
 																	</select>
 																</div>
-																<input type="number" class="form-control"  placeholder="Mobile Number" value={this.state.mobile} onChange={(e)=> this.setState({ mobile: e.target.value})} />
+																<input type="number" className="form-control"  placeholder="Mobile Number" value={this.state.mobile} onChange={(e)=> this.setState({ mobile: e.target.value})} />
 
 
 															</div>
 														</div> 
 										     </div>  
-											<div class="col-12 col-md-6">
-												<div class="form-group"> 
+											<div className="col-12 col-md-6">
+												<div className="form-group"> 
 													<label>Place of Residence *</label>
-													<select class="form-control" value={this.state.country}  onChange={(e)=> this.countrydropdown(e.target.value) }>
+													<select className="form-control" value={this.state.country}  onChange={(e)=> this.countrydropdown(e.target.value) }>
 														<option value="">Select Country</option>
 														{this.state.countryData.map( (country)=> (
 														   <option value={country.id}>{country.name}</option> 
@@ -737,10 +737,10 @@ class PrivateSetting extends React.Component {
 						                            </select>
 												</div>
 											</div>
-											<div class="col-12 col-md-6">
-												<div class="form-group">
+											<div className="col-12 col-md-6">
+												<div className="form-group">
 													<label>Place of Birth *</label>
-                                                    <select class="form-control" value={this.state.placeofbirth}  onChange={(e)=> this.placeofbirthdropdown(e.target.value) }>
+                                                    <select className="form-control" value={this.state.placeofbirth}  onChange={(e)=> this.placeofbirthdropdown(e.target.value) }>
 														<option value="">Select Country</option>
 														{this.state.countryData.map( (country)=> (
 														   <option value={country.id}>{country.name}</option> 
@@ -748,30 +748,30 @@ class PrivateSetting extends React.Component {
 						                            </select>
 												</div>
 											</div>
-											<div class="col-12 col-md-6">
-												<div class="form-group"> 
+											<div className="col-12 col-md-6">
+												<div className="form-group"> 
 													<label >ID Documents *</label>
-													 <div class="row">
-														<div class="col-md-6">
-															<div class="upload-img"> 
-																<div class="change-photo-btn">
-																	<span><i class="fa fa-upload"></i> Identity Document *</span>
-																	<input type="file" class="upload" onChange={this.fileChangedHandlerID1} />
+													 <div className="row">
+														<div className="col-md-6">
+															<div className="upload-img"> 
+																<div className="change-photo-btn">
+																	<span><i className="fa fa-upload"></i> Identity Document *</span>
+																	<input type="file" className="upload" onChange={this.fileChangedHandlerID1} />
 																</div>
-																<small class="form-text text-muted text-center"><b>  Front Side Image * </b> </small>
+																<small className="form-text text-muted text-center"><b>  Front Side Image * </b> </small>
 																   {this.state.fileidfront!=null ? <img src={this.state.fileidfront}  style={{"width" : "20%"}} />:
 																    <img src={this.state.idfront} style={{"width" : "20%"}}  />	  
 																   }
 																        
 															</div>
 														</div>
-														<div class="col-md-6">
-															<div class="upload-img"> 
-																<div class="change-photo-btn">
-																	<span><i class="fa fa-upload"></i> Identity Document *</span>
-																	<input type="file" class="upload" onChange={this.fileChangedHandlerID2} />
+														<div className="col-md-6">
+															<div className="upload-img"> 
+																<div className="change-photo-btn">
+																	<span><i className="fa fa-upload"></i> Identity Document *</span>
+																	<input type="file" className="upload" onChange={this.fileChangedHandlerID2} />
 																</div>
-																<small class="form-text text-muted text-center"><b> Back Side Image *</b></small>
+																<small className="form-text text-muted text-center"><b> Back Side Image *</b></small>
 															     
 
 {this.state.fileidback!=null ? <img src={this.state.fileidback}  style={{"width" : "20%"}} />:
@@ -779,27 +779,29 @@ class PrivateSetting extends React.Component {
 																   }
 															</div>
 														</div>
-														<div class="text-center" >
-															<small class="form-text text-muted">Allowed PDF, JPG, GIF or PNG. Max size of 2MB</small></div>
+														<div className="text-center" >
+															<small className="form-text text-muted">Allowed PDF, JPG, GIF or PNG. Max size of 2MB</small></div>
 
 
 														</div>
 													</div>
 
 												</div>
-												<div class="col-12 col-md-3">
-													<div class="form-group">
+												<div className="col-12 col-md-3">
+													<div className="form-group">
 														<label>Date of Birth *</label>
-														<div class="cal-icon">
-                                                          <DatePicker selected={this.state.dob!=""?this.state.dob:''} className="form-control dropdownwidth2"   onChange={(date)=> this.setState({dob:date})} />
+														<div className="cal-icon">
+                                                          <DatePicker selected={this.state.dob!=""?this.state.dob:''} className="form-control dropdownwidth2"  showMonthDropdown
+      showYearDropdown
+        onChange={(date)=> this.setState({dob:date})} />
 														</div>
 													</div>
 											    </div>	
 												
-												<div class="col-12 col-md-3">
-													<div class="form-group">
+												<div className="col-12 col-md-3">
+													<div className="form-group">
 														<label> Main Consulting language * </label> 
-                                                          <select class="form-control" value={this.state.language}  onChange={(e)=> this.setState({language:e.target.value}) }>
+                                                          <select className="form-control" value={this.state.language}  onChange={(e)=> this.setState({language:e.target.value}) }>
 															  <option value="">please choose</option>
 															  <option selected={this.state.language==1?'selected':null} value="1">English</option>
 															  <option selected={this.state.language==2?'selected':null} value="2" >Itanian</option>
@@ -813,69 +815,69 @@ class PrivateSetting extends React.Component {
 								
 										<div >
 										<label>Qualifications</label>
-										<small class="form-text text-muted">Our qualifications will be checked by the MedAloha staff. No document uploaded in this section will appear (just the relative icon). If you have already an Healthcare University Degree, the University Degree document is not needed to be uploaded anymore and the University Degree icon will not appear.</small></div>
+										<small className="form-text text-muted">Our qualifications will be checked by the MedAloha staff. No document uploaded in this section will appear (just the relative icon). If you have already an Healthcare University Degree, the University Degree document is not needed to be uploaded anymore and the University Degree icon will not appear.</small></div>
 
 
 										
 
-										<div class="row"><div class="col-md-6"> 
-											<div class="row">
-												<div class="col-md-6">
+										<div className="row"><div className="col-md-6"> 
+											<div className="row">
+												<div className="col-md-6">
 													<label>&nbsp;</label>
-													<div class="dont-have">
-														<input type="checkbox" class="healthcheck"  checked={this.state.healthcare} onChange={(e)=> this.setState({ healthcare: e.target.checked})}  />
+													<div className="dont-have">
+														<input type="checkbox" className="healthcheck"  checked={this.state.healthcare} onChange={(e)=> this.setState({ healthcare: e.target.checked})}  />
 														  I have an Healthcare University Degree
 														<br />	
-														<img src="assets/icon/medicine.png" class="width-30" />
-														<span class="dont-have">
+														<img src="assets/icon/medicine.png" className="width-30" />
+														<span className="dont-have">
 															Medicine icon will appear
 															publicly  
 														</span>  
 
 													</div>
 												</div>
-												<div class="col-md-6" >
-												<div class="upload-img">
-													<label class="hidden-xs">&nbsp;</label>
-													<div class="change-photo-btn">
-														<span><i class="fa fa-upload"></i> 	Medicine Degree</span>
-														<input type="file" class="upload" onChange={this.fileChangedHandlerID3}  />
+												<div className="col-md-6" >
+												<div className="upload-img">
+													<label className="hidden-xs">&nbsp;</label>
+													<div className="change-photo-btn">
+														<span><i className="fa fa-upload"></i> 	Medicine Degree</span>
+														<input type="file" className="upload" onChange={this.fileChangedHandlerID3}  />
 														{this.state.filemedicaldegree !=null ? 
 																		<img src={this.state.filemedicaldegree} style={{"width" : "20%"}}  />	
 																		:  <img src={this.state.medicaldegree} style={{"width" : "20%"}}  />  
 																		}
 													</div>
-													<small class="form-text text-muted"></small> 
-													<small class="form-text text-muted text-center" ><b>
+													<small className="form-text text-muted"></small> 
+													<small className="form-text text-muted text-center" ><b>
 													Upload  file with medical, pharmaceutical, biomedical degree, university exams, professional qualification and other relevant information.</b></small>
 
 												</div>
 											</div>
 
 										</div>
-									</div><div class="col-md-6"> 
-										<div class="row">
-											<div class="col-md-6">
+									</div><div className="col-md-6"> 
+										<div className="row">
+											<div className="col-md-6">
 												<label>&nbsp;</label>
-												<div class="dont-have">
-													<input type="checkbox" class="universitycheck" name="" checked={this.state.university} onChange={(e)=> this.setState({ university: e.target.checked})}  />
+												<div className="dont-have">
+													<input type="checkbox" className="universitycheck" name="" checked={this.state.university} onChange={(e)=> this.setState({ university: e.target.checked})}  />
 													I have a University Degree 
 
 													<br />	
-													<div class="margin-top-7">
-														<img src="assets/icon/University_degree.png" class="width-30" />
-														<span class="dont-have">Graduation icon will appear publicly
+													<div className="margin-top-7">
+														<img src="assets/icon/University_degree.png" className="width-30" />
+														<span className="dont-have">Graduation icon will appear publicly
 														</span>  
 													</div>
 
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="upload-img">
-													<label class="hidden-xs">&nbsp;</label>
-													<div class="change-photo-btn">
-														<span><i class="fa fa-upload"></i>University Degree</span>
-														<input type="file" class="upload"  onChange={this.fileChangedHandlerID4} />
+											<div className="col-md-6">
+												<div className="upload-img">
+													<label className="hidden-xs">&nbsp;</label>
+													<div className="change-photo-btn">
+														<span><i className="fa fa-upload"></i>University Degree</span>
+														<input type="file" className="upload"  onChange={this.fileChangedHandlerID4} />
 														{this.state.fileuniversitydegree !=null ? 
 																		<img src={this.state.fileuniversitydegree} style={{"width" : "20%"}}  />	
 																		:  <img src={this.state.universitydegree} style={{"width" : "20%"}}  />	  
@@ -883,7 +885,7 @@ class PrivateSetting extends React.Component {
 													</div>
 													
 
-													<small class="form-text text-muted text-center"><b>
+													<small className="form-text text-muted text-center"><b>
 													Upload file with university degree, exams, professional qualification and other relevant information.</b>
 													</small>
 												</div>
@@ -892,30 +894,28 @@ class PrivateSetting extends React.Component {
 										</div>
 									 </div></div>
 
-								 	 <div class="
-									 text-center
-									 "><small class="form-text text-muted">Allowed PDF, JPG, GIF or PNG. Max size of 5MB</small></div>
+								 	 <div className="text-center"><small className="form-text text-muted">Allowed PDF, JPG, GIF or PNG. Max size of 5MB</small></div>
 
 
 
 									
 
-										<div class="row margin-top-20"><div class="col-12 col-md-1 margin-top-10">
+										<div className="row margin-top-20"><div className="col-12 col-md-1 margin-top-10">
 											
 												<label>Other</label> 
 
-											</div><div class="col-12 col-md-5">
-												<div class="form-group"> 
-													<input type="text" class="form-control" placeholder="Additional information to your MedAloha application"  value={this.state.other}  onChange={(e)=> this.setState({ other: e.target.value})}/>
+											</div><div className="col-12 col-md-5">
+												<div className="form-group"> 
+													<input type="text" className="form-control" placeholder="Additional information to your MedAloha application"  value={this.state.other}  onChange={(e)=> this.setState({ other: e.target.value})}/>
 												</div>
 
 												
 
-												</div><div class="col-md-6 col-12 text-center">
-												<div class="upload-img text-center"> 
-													<div class="change-photo-btn">
-														<span><i class="fa fa-upload"></i>Additional info to upload</span>
-														<input type="file" class="upload" onChange={this.fileChangedHandlerID5}  />
+												</div><div className="col-md-6 col-12 text-center">
+												<div className="upload-img text-center"> 
+													<div className="change-photo-btn">
+														<span><i className="fa fa-upload"></i>Additional info to upload</span>
+														<input type="file" className="upload" onChange={this.fileChangedHandlerID5}  />
 														{this.state.fileadditionaldegree !=null ? 
 																		<img src={this.state.fileadditionaldegree} style={{"width" : "20%"}}  />	
 																		:  <img src={this.state.additionaldegree} style={{"width" : "20%"}}  />	  
@@ -923,95 +923,95 @@ class PrivateSetting extends React.Component {
 													</div>
 
 												</div>
-												<small class="form-text text-muted text-center">Allowed PDF, JPG, GIF or PNG. Max size of 5MB</small></div></div>
+												<small className="form-text text-muted text-center">Allowed PDF, JPG, GIF or PNG. Max size of 5MB</small></div></div>
 
-												<div class="row "> 
-													<div class="col-md-12 mb-4">
-														<div class="submit-section">
+												<div className="row "> 
+													<div className="col-md-12 mb-4">
+														<div className="submit-section">
 															<center>
-																<button type="submit" class="btn btn-primary submit-btn mt-3" onClick={this.privateProfileUpdate}>Save Changes</button>
+																<button type="submit" className="btn btn-primary submit-btn mt-3" onClick={this.privateProfileUpdate}>Save Changes</button>
 															</center>
 														</div>
 													</div>
 
-													<div class="col-md-6">
-														<div class="card border rounded p-2">
-															<div class="card-title border-bottom p-3">
+													<div className="col-md-6">
+														<div className="card border rounded p-2">
+															<div className="card-title border-bottom p-3">
 																Your Payment Account Information
 															</div>
-															<div class="card-body">
+															<div className="card-body">
 																<form>
-																	<div class="row mb-4">
-																		<div class="col-md-4" >
-																			<label class=" mt-2 font-weight-bold" >Holder Name</label>
+																	<div className="row mb-4">
+																		<div className="col-md-4" >
+																			<label className=" mt-2 font-weight-bold" >Holder Name</label>
 																		</div>
-																		<div class="col-md-8">
-																			<input type="text" placeholder="" class="form-control ml-3 w-100"  value={this.state.accountholder} onChange={(e)=> this.setState({ accountholder: e.target.value})} />
+																		<div className="col-md-8">
+																			<input type="text" placeholder="" className="form-control ml-3 w-100"  value={this.state.accountholder} onChange={(e)=> this.setState({ accountholder: e.target.value})} />
 																		</div>
 
 																	</div>
-																	<div class="row mb-4">
-																		<div class="col-md-4">
-																			<label class=" mt-2 font-weight-bold">IBAN</label>
+																	<div className="row mb-4">
+																		<div className="col-md-4">
+																			<label className=" mt-2 font-weight-bold">IBAN</label>
 																		</div>
-																		<div class="col-md-8">
-																			<input type="text" placeholder="" class="form-control ml-3 w-100"  value={this.state.iban} onChange={(e)=> this.setState({ iban : e.target.value})} />
+																		<div className="col-md-8">
+																			<input type="text" placeholder="" className="form-control ml-3 w-100"  value={this.state.iban} onChange={(e)=> this.setState({ iban : e.target.value})} />
 																		</div>  
 																	</div>
-																	<div class="row">
-																		<div class="col-md-4">
-																			<label class="mt-2 font-weight-bold">BIC</label>
+																	<div className="row">
+																		<div className="col-md-4">
+																			<label className="mt-2 font-weight-bold">BIC</label>
 																		</div>
-																		<div class="col-md-8">
-																			<input type="text" placeholder="" class="form-control ml-3 w-100" value={this.state.bic} onChange={(e)=> this.setState({ bic : e.target.value})} />
+																		<div className="col-md-8">
+																			<input type="text" placeholder="" className="form-control ml-3 w-100" value={this.state.bic} onChange={(e)=> this.setState({ bic : e.target.value})} />
 																		</div>
 
 																	</div>
 
-																	<div class="submit-section mt-3 col-md-12">
-																		<button type="submit" class=" offset-md-3 btn btn-primary submit-btn" onClick={this.paymentInformation} >Save Changes</button>
+																	<div className="submit-section mt-3 col-md-12">
+																		<button type="submit" className=" offset-md-3 btn btn-primary submit-btn" onClick={this.paymentInformation} >Save Changes</button>
 																	</div>
 																</form>
 															</div>
 														</div>
 													</div>
-													<div class="col-md-6">
-														<div class="card border rounded p-2">
-															<div class="card-title border-bottom p-3">
+													<div className="col-md-6">
+														<div className="card border rounded p-2">
+															<div className="card-title border-bottom p-3">
 																Change Password
 															</div>
-															<div class="card-body">
+															<div className="card-body">
 																<form>
-																	<div class="row mb-4">
-																		<div class="col-md-4">
-																			<label class=" mt-2 font-weight-bold">Current *</label>
+																	<div className="row mb-4">
+																		<div className="col-md-4">
+																			<label className=" mt-2 font-weight-bold">Current *</label>
 																		</div>
-																		<div class="col-md-8">
-																			<input type="password" placeholder="******" class="form-control ml-3 w-100" value={this.state.currentpassword}  onChange={(e)=>this.setState({currentpassword:e.target.value})}/>
-																		</div>
-
-																	</div>
-																	<div class="row mb-4">
-																		<div class="col-md-4">
-																			<label class=" mt-2 font-weight-bold">New</label>
-																		</div>
-																		<div class="col-md-8">
-																			<input type="password" placeholder="" class="form-control ml-3 w-100" value={this.state.newpassword}  onChange={(e)=>this.setState({newpassword:e.target.value})} />
+																		<div className="col-md-8">
+																			<input type="password" placeholder="******" className="form-control ml-3 w-100" value={this.state.currentpassword}  onChange={(e)=>this.setState({currentpassword:e.target.value})}/>
 																		</div>
 
 																	</div>
-																	<div class="row">
-																		<div class="col-md-4">
-																			<label class="mt-2 font-weight-bold">Re-Type New</label>
+																	<div className="row mb-4">
+																		<div className="col-md-4">
+																			<label className=" mt-2 font-weight-bold">New</label>
 																		</div>
-																		<div class="col-md-8">
-																			<input type="password" placeholder="" class="form-control ml-3 w-100" value={this.state.confirmpassword}  onChange={(e)=>this.setState({confirmpassword:e.target.value})} />
+																		<div className="col-md-8">
+																			<input type="password" placeholder="" className="form-control ml-3 w-100" value={this.state.newpassword}  onChange={(e)=>this.setState({newpassword:e.target.value})} />
+																		</div>
+
+																	</div>
+																	<div className="row">
+																		<div className="col-md-4">
+																			<label className="mt-2 font-weight-bold">Re-Type New</label>
+																		</div>
+																		<div className="col-md-8">
+																			<input type="password" placeholder="" className="form-control ml-3 w-100" value={this.state.confirmpassword}  onChange={(e)=>this.setState({confirmpassword:e.target.value})} />
 																		</div>
 
 																	</div>
 
-																	<div class="submit-section mt-3 col-md-12">
-																		<button type="submit" class=" offset-md-3 btn btn-primary submit-btn" onClick={this.changepassword}> Change Password</button>
+																	<div className="submit-section mt-3 col-md-12">
+																		<button type="submit" className=" offset-md-3 btn btn-primary submit-btn" onClick={this.changepassword}> Change Password</button>
 																	</div>
 																</form>
 															</div>
@@ -1027,32 +1027,32 @@ class PrivateSetting extends React.Component {
 								  }
 								  
 								{this.state.calendarBox &&
-								<div id="pat_appointments"  class={"tab-pane  search-box "+this.state.bookingactive} >
-								 	<div class="row">
+								<div id="pat_appointments"  className={"tab-pane  search-box "+this.state.bookingactive} >
+								 	<div className="row">
 
 
 
-<div class="col-12 text-sm-right hidden-md hidden-lg">
- 		<button type="button" class="mb-2 btn btn-info btn-sm" data-toggle="collapse" data-target="#lege" aria-expanded="true">Legend 
- 		   <i class="fas fa-chevron-down ml-2"></i>
+<div className="col-12 text-sm-right hidden-md hidden-lg">
+ 		<button type="button" className="mb-2 btn btn-info btn-sm" data-toggle="collapse" data-target="#lege" aria-expanded="true">Legend 
+ 		   <i className="fas fa-chevron-down ml-2"></i>
  							</button> 
-							  <div id="lege" class="collapse show"> 
-							     <div class="row">
-								 	<div class=" d-flex">
+							  <div id="lege" className="collapse show"> 
+							     <div className="row">
+								 	<div className=" d-flex">
 								 		<div style={{height:'30px',width: '30px',backgroundColor:'#ffffc6'}}>
  										</div>
- 										<span class="p-2 pb-0">Video</span>
+ 										<span className="p-2 pb-0">Video</span>
 								 	</div>
 								</div>
 					
 					
  									<hr style={{marginTop:'0.5rem!important', marginBottom:'0.5rem!important'}}/>
 
-								 <div class="row">
-								 	<div class=" d-flex">
+								 <div className="row">
+								 	<div className=" d-flex">
 								 		<div style={{height:'30px',width: '30px',backgroundColor:'#f4c15080'}}>
  										</div>
- 										<span class="p-2 pb-0">Video PART</span>
+ 										<span className="p-2 pb-0">Video PART</span>
 								 	</div>
 								</div>
 							
@@ -1061,11 +1061,11 @@ class PrivateSetting extends React.Component {
  									<hr style={{marginTop:'0.5rem!important', marginBottom:'0.5rem!important'}}/>
 
 
-									<div class="row d-flex">
-								 	 <div class=" d-flex">
+									<div className="row d-flex">
+								 	 <div className=" d-flex">
  											<div style={{height:'30px',width: '30px',backgroundColor:'orange'}}>
  											</div>
- 											<span class="p-2 pb-0">Video FULL </span>
+ 											<span className="p-2 pb-0">Video FULL </span>
  						     				</div>
  									</div>
  							
@@ -1073,32 +1073,32 @@ class PrivateSetting extends React.Component {
  									<hr style={{marginTop:'0.5rem!important', marginBottom:'0.5rem!important'}}/>
 
 
- 									 <div class="row d-flex">
-								 		<div class=" d-flex"> 
+ 									 <div className="row d-flex">
+								 		<div className=" d-flex"> 
  											<div style={{height:'30px',width: '30px',backgroundColor:'#e6f1fb'}}>
  											</div>
- 										<span class="p-2 pb-0">In-person</span>
+ 										<span className="p-2 pb-0">In-person</span>
  										</div>
  									</div>
 
  									<hr style={{marginTop:'0.5rem!important', marginBottom:'0.5rem!important'}}/>
  									 
 
- 									 <div class="row d-flex">
-								 		<div class=" d-flex"> 
+ 									 <div className="row d-flex">
+								 		<div className=" d-flex"> 
  											<div style={{height:'30px',width: '30px',backgroundColor:'#abd0f5'}}>
  											</div>
- 										<span class="p-2 pb-0">In-person PART</span>
+ 										<span className="p-2 pb-0">In-person PART</span>
  										</div>
  									</div>
 
  								
  									<hr style={{marginTop:'0.5rem!important', marginBottom:'0.5rem!important'}}/>
- 									 <div class="row d-flex">
-								 		<div class=" d-flex"> 
+ 									 <div className="row d-flex">
+								 		<div className=" d-flex"> 
  											<div style={{height:'30px',width: '30px',backgroundColor:'#a3a3f9'}}>
  											</div>
- 										<span class="p-2 pb-0" >In-person FULL</span>
+ 										<span className="p-2 pb-0" >In-person FULL</span>
  										</div>
  									</div>
  									
@@ -1124,53 +1124,53 @@ class PrivateSetting extends React.Component {
 
 
 
-										<div class="col-md-9 col-12">
-											   <h3 class="text-center text-dark mb-4">AGENDA SCHEDULING</h3> 
+										<div className="col-md-9 col-12">
+											   <h3 className="text-center text-dark mb-4">AGENDA SCHEDULING</h3> 
 										        <BookingCalendar/> 
 										</div> 
-										<div class="col-md-3"> 
-											<div class="hidden-xs hidden-sm">
-												<h4 class="mb-4">Legend:</h4>
+										<div className="col-md-3"> 
+											<div className="hidden-xs hidden-sm">
+												<h4 className="mb-4">Legend:</h4>
              {this.state.Consultation.map( (consult)=> (
                         <>
-						<div class="row">
-							<div class="d-flex">
-								<div class={this.state.consultColorArray[consult.id] + '-div'}>
+						<div className="row">
+							<div className="d-flex">
+								<div className={this.state.consultColorArray[consult.id] + '-div'}>
 								</div>
-								<span class={this.state.consultColorArray[consult.id] + ' p-2'}>{consult.legend_name}</span>
+								<span className={this.state.consultColorArray[consult.id] + ' p-2'}>{consult.legend_name}</span>
 							</div>
 						</div>
-						<hr class="custom-hr" />  
+						<hr className="custom-hr" />  
                         </>
               ))} 
 			 
 												 
 
  
-									 <div class="row">
-									 	   <div class=" mb-5">
-									 		<span class="p-2"> &nbsp;  </span>
+									 <div className="row">
+									 	   <div className=" mb-5">
+									 		<span className="p-2"> &nbsp;  </span>
 									 		</div>
 									 	</div>
 									 
 								 
-									<div id="modal1" class="modal">
-										<div class="modal-content">
-											<a href="#!" class=" text-right modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-											<h4 class="text-muted text-center">Add Slot</h4>
+									<div id="modal1" className="modal">
+										<div className="modal-content">
+											<a href="#!" className=" text-right modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+											<h4 className="text-muted text-center">Add Slot</h4>
 
 											<p>Slot*</p>
-											<form class="d-block">
+											<form className="d-block">
 
-												<div class="form-group form-focus focused">
-													<input  required type="date" class="w-100 form-control floating datepicker" />
-													<label class="focus-label">Date </label>
+												<div className="form-group form-focus focused">
+													<input  required type="date" className="w-100 form-control floating datepicker" />
+													<label className="focus-label">Date </label>
 												</div>
-												<div class="form-group form-focus focused">
-													<input class="w-100"required type="time" class="form-control floating timepicker" />
-													<label class="focus-label">Time </label>
+												<div className="form-group form-focus focused">
+													<input className="w-100"required type="time" className="form-control floating timepicker" />
+													<label className="focus-label">Time </label>
 												</div>
-												<button class="btn btn-primary btn-block " type="submit">Send</button>
+												<button className="btn btn-primary btn-block " type="submit">Send</button>
 											</form>
 
 										</div>
@@ -1183,11 +1183,11 @@ class PrivateSetting extends React.Component {
 					                      </div>
 			                         </div>
 
-									 <div class="row">
-									 <div class="col-md-12"> 
-											<div class=""> 
-								<div class="card card-table mb-0">
-									<div class="card-body ">  
+									 <div className="row">
+									 <div className="col-md-12"> 
+											<div className=""> 
+								<div className="card card-table mb-0">
+									<div className="card-body ">  
 
  {this.state.booking_history=='' &&
 <tr><td colSpan='9'><p style={{textAlign:'center',color:'red'}}>Data not found</p></td></tr>
@@ -1206,9 +1206,9 @@ class PrivateSetting extends React.Component {
 	                            }
 
 {this.state.messageBox &&
-<div   id="pres" class={"tab-pane  search-box "+this.state.messageactive}> 
-	<div class="col-xl-12">
-	<div class="chat-window"> 
+<div   id="pres" className={"tab-pane  search-box "+this.state.messageactive}> 
+	<div className="col-xl-12">
+	<div className="chat-window"> 
  {this.state.booking_history=='' &&
  <p style={{textAlign:'center',color:'red'}}>Data not found</p>
 }
@@ -1230,57 +1230,57 @@ class PrivateSetting extends React.Component {
  
  
 				{this.state.reviewBox &&
-				 <div class="tab-pane" id="billing"> 
-				 <div class="widget review-listing mt-3">
-					<h2 class="text-center">Reviews  :</h2>
-					<ul class="comments-list"> 
+				 <div className="tab-pane" id="billing"> 
+				 <div className="widget review-listing mt-3">
+					<h2 className="text-center">Reviews  :</h2>
+					<ul className="comments-list"> 
 					 
 {this.state.reviewData && this.state.reviewData.length!=0?
 this.state.reviewData.map( (review)=> ( 	   
 					     	<li>
-							<div class="comment">
-							<img class="avatar avatar-sm rounded-circle" alt="User Image" src={(review.u_image===null)?process.env.REACT_APP_URL+'/assets/img/doctors/doctor-thumb-02.jpg':`${process.env.REACT_APP_BASE_URL}/public/uploads/profile/${review.u_image}`}  />
-								<div class="comment-body">
-									<div class="meta-data">
-										<span class="comment-author">{review.u_first_name+' '+review.u_last_name}</span>
-										<span class="comment-date"> {this.convert(review.created_at)} , Message Consultation</span>
+							<div className="comment">
+							<img className="avatar avatar-sm rounded-circle" alt="User Image" src={(review.u_image===null)?process.env.REACT_APP_URL+'/assets/img/doctors/doctor-thumb-02.jpg':`${process.env.REACT_APP_BASE_URL}/public/uploads/profile/${review.u_image}`}  />
+								<div className="comment-body">
+									<div className="meta-data">
+										<span className="comment-author">{review.u_first_name+' '+review.u_last_name}</span>
+										<span className="comment-date"> {this.convert(review.created_at)} , Message Consultation</span>
 										
 
-										{(review.recommend_status==1)?<p class="recommended"><i class="far fa-thumbs-up font-size-20"></i> I recommend this Specialist</p>:<p class="comment-content">
-						<span class="text-danger"><i class="far fa-thumbs-down text-danger font-size-20"></i> I do not recommend this Specialist</span></p>}
-											<div class="review-count rating">
+										{(review.recommend_status==1)?<p className="recommended"><i className="far fa-thumbs-up font-size-20"></i> I recommend this Specialist</p>:<p className="comment-content">
+						<span className="text-danger"><i className="far fa-thumbs-down text-danger font-size-20"></i> I do not recommend this Specialist</span></p>}
+											<div className="review-count rating">
 													{
 												     this.printReviewStar(review.review_star)
 												    } 
 											</div>
 										</div>
-										<p class="comment-content">
+										<p className="comment-content">
 											{review.review_desc}
 										</p>
 
 									</div>
 								</div>
-								<div class="container">
-									<div class="row">
-										<div class="col-md-2">&nbsp;</div>
-										<div class="col-md-8">
-											<div class="comment">
-												<img class="avatar avatar-sm rounded-circle" alt="User Image" src={`${process.env.REACT_APP_BASE_URL}/public/uploads/docs/${review.profile_photo}`}  />
-								<div class="comment-body w-100">
-													<div class="meta-data">
-														<span class="comment-author">{review.first_name+' '+review.last_name} </span>
-														<span class="comment-date">Specialist</span>
+								<div className="container">
+									<div className="row">
+										<div className="col-md-2">&nbsp;</div>
+										<div className="col-md-8">
+											<div className="comment">
+												<img className="avatar avatar-sm rounded-circle" alt="User Image" src={`${process.env.REACT_APP_BASE_URL}/public/uploads/docs/${review.profile_photo}`}  />
+								<div className="comment-body w-100">
+													<div className="meta-data">
+														<span className="comment-author">{review.first_name+' '+review.last_name} </span>
+														<span className="comment-date">Specialist</span>
 													</div>
 													{this.state.getreplyData.map( (reply)=> (
-												    	<p class="comment-content">{reply.reply_desc}</p>
+												    	<p className="comment-content">{reply.reply_desc}</p>
 													 ))}
-											     	{(this.state.getreplyData.length>0)?'':<textarea class="form-control w-100"  onChange={this.handleInputChanged.bind(this)}></textarea>}
+											     	{(this.state.getreplyData.length>0)?'':<textarea className="form-control w-100"  onChange={this.handleInputChanged.bind(this)}></textarea>}
 												</div>
 											</div>
 										</div>
-										<div class="col-md-2">
+										<div className="col-md-2">
 											<h4>&nbsp;</h4>
-											{(this.state.getreplyData.length>0)?'':<button class="btn btn-info mt-5" onClick={() => this.handleButtonClicked(review.review_id,review.u_email)}>Reply</button>}
+											{(this.state.getreplyData.length>0)?'':<button className="btn btn-info mt-5" onClick={() => this.handleButtonClicked(review.review_id,review.u_email)}>Reply</button>}
 										</div>
 									</div>
 								</div> 

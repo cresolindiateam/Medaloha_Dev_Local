@@ -322,7 +322,18 @@ class Dashboard extends React.Component {
 		this.setState({searchvalue: event.target.value});
 	  }
       
+
+  
+
+
     componentDidMount() { 
+
+ 
+
+
+
+         
+
 
 		if(this.props.location.search=='?pat_message'){
 			this.setState({ messageBox:true });
@@ -667,8 +678,14 @@ class Dashboard extends React.Component {
 
 
 
+
+
 	  isvalideSessionDate(date, rebookdate){
-		console.log(date + rebookdate)
+
+
+
+	  
+		console.log(date + rebookdate);
 	   var startDate = '';
 	   if(rebookdate==null)
 	   {
@@ -679,8 +696,52 @@ class Dashboard extends React.Component {
    
 	   var now = new Date();
 	   var nowDate= moment(now).format('YYYY-MM-D') ;
-	   if(moment(startDate).isSameOrAfter(nowDate)){
-		   return true
+	   if(moment(startDate).isSameOrAfter(nowDate))
+	   {
+		  // return true
+          const dateParts = date.split(/[- :]/);
+          const dateTime = new Date(Date.UTC(parseInt(dateParts[0]), parseInt(dateParts[1]) - 1, parseInt(dateParts[2]), parseInt(dateParts[3]), parseInt(dateParts[4]), parseInt(dateParts[5])));
+          const utcDateTime = dateTime.toISOString();
+          const currentDateTime = new Date();
+          const currentUtcDateTime= currentDateTime.toISOString();
+          const currentDate = new Date(currentUtcDateTime);
+          const targetDate = new Date(utcDateTime);
+          const diffInMilliseconds = Math.abs(targetDate - currentDate);
+          const diffInMinutes = diffInMilliseconds / (1000 * 60);
+          console.log(diffInMinutes);
+
+const diffInMillisecondsbefore = Math.abs(currentDateTime - targetDate);
+const diffInMinutesbefore = diffInMillisecondsbefore / (1000 * 60);
+console.log(diffInMinutesbefore);
+
+          if(diffInMinutes <= 5  )
+          {
+	        console.log("current"+currentUtcDateTime);
+	        console.log("date"+utcDateTime);
+	        console.log("exist");
+	        return true;
+          }
+
+
+else if(diffInMinutesbefore <= 5 && diffInMinutesbefore >= 0 )
+          {
+	        console.log("current"+currentUtcDateTime);
+	        console.log("date"+utcDateTime);
+	        console.log("exist");
+	        return true;
+          }
+
+		else
+		{
+		console.log("current"+currentUtcDateTime);
+		console.log("date"+utcDateTime);
+		console.log("not exist");	
+			return false;
+		}
+
+
+
+
 	   } else {
 		   return false;
 	   }
@@ -911,7 +972,8 @@ class Dashboard extends React.Component {
 				<div class="form-group">
 					<label>Date of Birth</label>
 					<div class="cal-icon">
-					   <DatePicker selected={this.state.dob} className="form-control dropdownwidth"   onChange={(date)=> this.setState({dob:date})}customerconfirmation />
+					   <DatePicker selected={this.state.dob} className="form-control dropdownwidth"  showMonthDropdown
+      showYearDropdown onChange={(date)=> this.setState({dob:date})}customerconfirmation />
 				    </div>
 				</div>
 			</div>

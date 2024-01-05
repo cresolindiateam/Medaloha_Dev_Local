@@ -19,9 +19,13 @@ require('dotenv').config();
 
 class SpecialistBookingHistory extends React.Component {
   
+   
             constructor(props) {
                 super(props);
                  
+
+ 
+
                     this.state = {
                         weekendsVisible: true,
                         currentEvents: [],
@@ -241,7 +245,7 @@ var validation = axios.get(process.env.REACT_APP_BASE_URL+`/specilistAPI/IsSpeci
 			</div>
 		</div>
 	</div> 
-        <div class="table-responsive"> 
+        <div class="table-responsive" > 
 		 <table class="table table-hover table-striped table-center mb-0">
 												<thead>
 													<tr class="text-center">
@@ -259,13 +263,13 @@ var validation = axios.get(process.env.REACT_APP_BASE_URL+`/specilistAPI/IsSpeci
 													<th>Session Date</th>
 													<th>Link</th>
 													<th>Notes for client
-														<div class="bookingstatustooltip ml-1"><i class="fas fa-info-circle"  title=""></i>
+														<div class="bookingstatustooltip ml-1" style={{ zIndex: 1000 }}><i class="fas fa-info-circle"  title=""></i>
 															<span class="bookingstatustooltiptext toolnotes text-left width-275">Add here short communications, bonuses, etc. that your client should know about the consultation
 															</span>
 														</div>
 													</th>
 													<th>Private Records
-														<div class="bookingstatustooltip ml-1"><i class="fas fa-info-circle"  title=""></i>
+														<div class="bookingstatustooltip ml-1" style={{ zIndex: 1000 }}><i class="fas fa-info-circle"  title=""></i>
 															<span class="bookingstatustooltiptext toolnotes text-left width-275" >Keep here your records about the consultation. This file is only visible to you
 
 															</span>
