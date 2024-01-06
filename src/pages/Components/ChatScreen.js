@@ -65,7 +65,8 @@ class ChatScreen extends React.Component {
       userQueryImage:'assets/img/doctors/doctor-thumb-02.jpg',
       refreshPage:false,
       defaultImage:'assets/img/doctors/doctor-thumb-02.jpg',
-      specialist_login_time:'avatar avatar-away'
+      specialist_login_time:'avatar avatar-away',
+      selectchatmemberid:'',
       
      
     }; 
@@ -238,8 +239,15 @@ else
     
   };
 
+selectchatmember(room)
+{
+  this.setState({selectchatmemberid : room}); 
+}
+
 
   chatfunction = async(room,email,id,nextID) => {
+
+this.selectchatmember(room);
 
   
 var string=id;
@@ -504,11 +512,13 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistPrivateDeta
 
  {this.state.booking_chat_channel.filter( (channel)=> {  
     	
+
  //return (this.state.searchvalue===null||this.state.searchvalue===undefined ||this.state.searchvalue==='')?channel:channel.first_name.toLowerCase()===this.state.searchvalue.toLowerCase();
  return (this.state.searchvalue===null || this.state.searchvalue===undefined  ||this.state.searchvalue==='')?channel: (channel.first_name.toLowerCase().includes(this.state.searchvalue.toLowerCase()) || channel.last_name.toLowerCase().includes(this.state.searchvalue.toLowerCase()) ||  (channel.first_name+' '+channel.last_name).toLowerCase().includes(this.state.searchvalue.toLowerCase()));
    }).map( (channel)=> ( 
+
       
-<a href="javascript:void(0);" className="media"  onClick={()=>this.chatfunction(channel['payment_stripe_id'],channel['twilio_chat_id1'],'spec_'+channel['specialist_id'],channel['user_id'])}>
+<a href="javascript:void(0);"  className={channel['twilio_chat_id1'].includes(this.state.selectchatmemberid)?'media  selectedchatmember':'media  '}  onClick={()=>this.chatfunction(channel['payment_stripe_id'],channel['twilio_chat_id1'],'spec_'+channel['specialist_id'],channel['user_id'])}>
          <div className="media-img-wrap specilaist">
              
             <p className="demopart">{ setInterval(() => {this.getSpecialistStatus(channel['specialist_id'])}, 60000*1.2)}</p>
@@ -521,7 +531,10 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistPrivateDeta
          </div>
          <div className="media-body">
            <div>
-             <div className="user-name">{channel['first_name']} {channel['last_name']}</div> 
+             <div className="user-name">
+ 
+
+  {channel['first_name']} {channel['last_name']}</div> 
              <div className="user-name">
  { localStorage.getItem('UserTimezone')!=null ? (channel['session_date']!='')?moment.utc(channel['session_date']).tz(localStorage.getItem('UserTimezone')).format('D MMM YYYY h:mm A'):'-' : moment(channel['session_date']).format('D MMM YYYY h:mm A') }
              </div> 
@@ -543,7 +556,7 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistPrivateDeta
 {this.state.booking_chat_channel2.filter( (channel)=> {  
  return (this.state.searchvalue===null || this.state.searchvalue===undefined  ||this.state.searchvalue==='')?channel: (channel.first_name.toLowerCase().includes(this.state.searchvalue.toLowerCase()) || channel.last_name.toLowerCase().includes(this.state.searchvalue.toLowerCase()) ||  (channel.first_name+' '+channel.last_name).toLowerCase().includes(this.state.searchvalue.toLowerCase()));
    }).map( (channel)=> (	  
-             <a href="javascript:void(0);" className="media"  onClick={()=>this.chatfunction(channel['payment_stripe_id'],channel['twilio_chat_id2'],'user_'+channel['user_id'],channel['specialist_id'])}>
+             <a href="javascript:void(0);" className={channel['twilio_chat_id2'].includes(this.state.selectchatmemberid)?'media  selectedchatmember':'media  '}  onClick={()=>this.chatfunction(channel['payment_stripe_id'],channel['twilio_chat_id2'],'user_'+channel['user_id'],channel['specialist_id'])}>
                       <div className="media-img-wrap">
                          <div className="avatar avatar-away" id="specialist_part">
                            {channel['user_image'] && channel['user_image']!=null ?
