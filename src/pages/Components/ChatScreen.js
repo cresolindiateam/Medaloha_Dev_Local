@@ -82,16 +82,12 @@ class ChatScreen extends React.Component {
   };
 
   handleAudioStop(data) {
-    console.log(data)
+   
     this.setState({ audioDetails: data });
   }
 
 
 
-  handleOnChange(value, audioname ){
-    
-     console.log("ajaysoni");
-  }
 
    handleOnChange(value, audioname ){
     
@@ -99,18 +95,14 @@ class ChatScreen extends React.Component {
   }
 
  async handleAudioUpload(file) {
-    console.log('uploaded file on twilio')
-    console.log(file);
-
+   
     this.state.channel.sendMessage({
         contentType: 'audio/webm',
           media:file,
       }); 
-
-   await this.joinChannel(this.state.channel); 
-   
-    
-}
+return false;
+   //await this.joinChannel(this.state.channel); 
+   }
 
 handleReset() {
   const reset = {
@@ -126,20 +118,12 @@ handleReset() {
 
 this.setState({ audioDetails: reset });
 
-
-
-
-
 $(".chat-cont-right .chat-footer .input-group .form-control").show();
 $(".MuiIconButton-root").show();
 
 $("._1ceqH .1Yplu .1Pz2d").hide();
 $("._1ceqH .1Yplu .2gd2_").hide();
 $("._f2DT8").hide();
-
-
- 
-
 $("._1ceqH .3bC73 .1YOWG ._3bC73 ._1Yplu").hide();
  window.location.reload();
 
@@ -182,31 +166,8 @@ else
 
   componentDidMount = async () => {  
 
-  // const interval = setInterval(() => {
-  //        // var specialsitId =localStorage.getItem('specialsit_id');
-
-  //     this.getSpecialistStatus(69);  // Set isOnline to true
-  //   }, 10000);
 
      
-    $( document ).ready(function() {
-
-
-      $("._1ceqH ._1Yplu ._1Pz2d").hide();
-      $("._1ceqH ._1Yplu ._2gd2_").hide();
-      $("._1ceqH ._f2DT8").hide();
-      $("._1ceqH ._1Yplu ._1Pz2d").hide();
-       $("._1ceqH ._1Yplu ._2gd2_").hide();
-       $("._1ceqH ._f2DT8").hide();
-      });
-      
-      $("._1dpop").click(function(){
-       $(".chat-cont-right .chat-footer .input-group .form-control").hide();
-       $(".MuiIconButton-root").hide();
-       $("._1ceqH ._1Yplu ._1Pz2d").show();
-       $("._1ceqH ._1Yplu ._2gd2_").show();
-        $("._1ceqH ._f2DT8").show();
-      })
     
 
     this.setState({uname:this.props.name});
@@ -243,16 +204,30 @@ else
           }
        });   
     } 
+
+        $( document ).ready(function() {
+
+
+      $("._1ceqH ._1Yplu ._1Pz2d").hide();
+      $("._1ceqH ._1Yplu ._2gd2_").hide();
+      $("._1ceqH ._f2DT8").hide();
+      $("._1ceqH ._1Yplu ._1Pz2d").hide();
+       $("._1ceqH ._1Yplu ._2gd2_").hide();
+       $("._1ceqH ._f2DT8").hide();
+      });
+      
+      $("._1dpop").click(function(){
+       $(".chat-cont-right .chat-footer .input-group .form-control").hide();
+       $(".MuiIconButton-root").hide();
+       $("._1ceqH ._1Yplu ._1Pz2d").show();
+       $("._1ceqH ._1Yplu ._2gd2_").show();
+        $("._1ceqH ._f2DT8").show();
+      })
+
   };
 
 
-  
-
- componentWillUnmount() {
-  if (this.state.channel) {
-    this.state.channel.removeListener("messageAdded", this.handleMessageAdded);
-  }
-}
+ 
 
   joinChannel = async (channel) => {
       if (channel.channelState.status !== "joined") {
@@ -356,8 +331,7 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistPrivateDeta
       throw new Error("unable to get token, please reload this page");
     } 
     const client = await Chat.Client.create(token);
-console.log("client created");
-    console.log(client);
+
     client.on("tokenAboutToExpire", async () => {
       const token = await this.getToken(email);
       client.updateToken(token);
@@ -370,49 +344,33 @@ console.log("client created");
 
     client.on("channelJoined", async (channel) => { 
      
-       console.log("channel joined");
-      // getting list of all messages since this is an existing channel
       const messages = await channel.getMessages(); 
-      console.log(messages);
       this.setState({ messages: messages.items || [] });
       this.scrollToBottom();
     }); 
 
     try {  
       const channel = await client.getChannelByUniqueName(room);
-      console.log("existing channel");
-      console.log(room);
       await this.joinChannel(channel);
       this.setState({ channel, loading: false });
       this.setState({ classAcitve: 'chat-scroll' }); 
     } catch {
       try {
-    console.log("room ajay");
-    console.log(room);
-   // if(channel!==null)
 
-
-     
-
-console.log("channel");
         const channel = await client.createChannel({
           uniqueName: room,
           friendlyName: room,
         });
-console.log(channel);
         await this.joinChannel(channel);
         this.setState({ channel, loading: false });
         this.setState({ classAcitve: 'chat-scroll' }); 
       } catch(error) {
-         console.error("Error creating channel:", error);
-
-  // Log specific error properties for further investigation
-  if (error.code) {
-    console.error("Error Code:", error.code);
-  }
-  if (error.message) {
-    console.error("Error Message:", error.message);
-  }
+          if (error.code) {
+            console.error("Error Code:", error.code);
+          }
+          if (error.message) {
+            console.error("Error Message:", error.message);
+          }
         console.log("unable to create channel, please reload this page"+error);
       }
     }
@@ -421,8 +379,14 @@ console.log(channel);
 
   handleMessageAdded = (message) => { 
     const { messages } = this.state;
+     if(message.author!==this.state.emailOwner)
+
+         if(message.media!=null && message.media.state.contentType=='audio/webm')
+   {
+    
+   
+   }
      
-     if(message.author!==this.state.emailOwner) 
        if(this.state.triggerMessageSpecialist) {   
         this.setState(
           {
@@ -431,6 +395,8 @@ console.log(channel);
           this.scrollToBottom
          );  
          this.setState({triggerMessageSpecialist:false}); 
+         this.setState({triggerMessage:true}); 
+
      }
 
 
@@ -442,14 +408,14 @@ console.log(channel);
         this.scrollToBottom
        );  
       // message.body = ''; 
-       this.setState({triggerMessage:false}); 
-       this.setState({triggerMessageSpecialist:true});  
+       this.setState({triggerMessage:true}); 
+       this.setState({triggerMessageSpecialist:true}); 
+        
    }
     
 
-   if(message.media!=null && message.media.state.contentType=='audio/webm'){
-      window.location.reload();
-   }
+
+
    
   };
 
@@ -472,8 +438,8 @@ console.log(channel);
     this.setState({image_preview:null});
         const { text, channel,image } = this.state;  
 
-  if (text && String(text).trim()) {
-     console.log("Sending message");
+  if (text && String(text).trim()) 
+  {
     this.setState({ loading: true }, () => {
          console.log("Loading state set to true");
     });
@@ -490,12 +456,10 @@ console.log(channel);
     });
 }
 
-
           else  {
- 
-
-      const formData = new FormData();
+       const formData = new FormData();
       formData.append('file', document.getElementById('formInputFile')[0].files[0]);
+
       channel.sendMessage(formData);
 
     }
