@@ -158,7 +158,8 @@ class SpecialistDetails extends React.Component {
 			videoTitleBox6:'',
 			videoTitle6:'',
 			videoTitlePrice6:'',
-			videoLegend6:'' 
+			videoLegend6:'',
+			setCopySuccess:'' 
 
 		 
         };   
@@ -175,6 +176,30 @@ class SpecialistDetails extends React.Component {
         this.setState({ idback: event.target.files[0] })
       } 
       
+       ClipboardComponent = () => {
+ 
+  const textToCopy = window.location.href;
+
+
+    try {
+       navigator.clipboard.writeText(textToCopy);
+      
+      this.setState({ setCopySuccess: 'Copied to clipboard!' });
+       setTimeout(() => {
+     this.setState({ setCopySuccess: '' }); // Set uploading state to false after some time (simulating upload completion)
+    }, 2000);
+
+    } catch (err) {
+      
+        this.setState({ setCopySuccess: 'Failed to copy!' });
+         setTimeout(() => {
+     this.setState({ setCopySuccess: '' }); // Set uploading state to false after some time (simulating upload completion)
+    }, 2000);
+      console.error('Failed to copy!', err);
+    }
+  
+}
+
 	  handleChange(e,legendValue) {
         //alert(e.target.value);
 		localStorage.setItem('value',e.target.value);
@@ -339,6 +364,9 @@ console.log('str001');
       
     componentDidMount() { 
 
+ setTimeout(() => {
+     this.setState({ setCopySuccess: '' }); // Set uploading state to false after some time (simulating upload completion)
+    }, 2000);
 		 localStorage.setItem('Rebooking',false);
 		 localStorage.setItem('bookingID',0); 
          var specialist_id = this.props.match.params.id; 
@@ -642,9 +670,10 @@ console.log('str001');
 												<div class="clinic-details mt-3 spec-details-consult">
 													<ul class="clinic-gallery">
 														<li>
-															<a href="#"  class="btn btn-white text-muted msg-btn cus-padding cus-padding1">
+														{this.state.setCopySuccess && <p>{this.state.setCopySuccess}</p>}
+															<button  onClick={() => this.ClipboardComponent()} class="btn btn-white text-muted msg-btn cus-padding cus-padding1">
 																<i class="fa fa-share-alt sfz"></i>
-															</a>
+															</button>
 														</li>
 														<li>
 															<a href="javascript:void(0)" class="btn btn-white text-muted fav-btn cus-padding cus-padding1 "  onClick={e=>this.favSpecialist()} >
