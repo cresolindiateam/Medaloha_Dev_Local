@@ -43,7 +43,8 @@ class Login extends React.Component {
 		   specialistredirectBooking:false, 
 		   redirectBooking:false,
 		   reemail:'',
-		   repassword:''
+		   repassword:'',
+		   forgotemail:''
 
         }
     } 
@@ -56,6 +57,37 @@ class Login extends React.Component {
          });  
 	 } 
 
+
+ resetPassword =(e) => {
+    e.preventDefault();    
+     
+alert('hello');
+          if(this.state.forgotemail==""){
+            alert('Please enter email.');
+            return false;
+          }
+
+          let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+					if (reg.test(this.state.forgotemail) === false) {
+						alert('Please enter correct email.');
+					     return false;
+					}
+
+       const clientData = {email:this.state.forgotemail}
+          axios.post(process.env.REACT_APP_BASE_URL+`/authenticationAPI/forgot-password`,clientData)
+     .then(res => {
+       
+      if(res.data.Status)
+       {  
+        alert(res.data.Message);
+          }
+      else 
+      alert(res.data.Message);
+      
+      }).catch(function (error) {
+      console.log(error);
+      });  
+  }
 	 handleChange = (event) => {
 		const input = event.target;
 		const value = input.type === 'checkbox' ? input.checked : ''; 
@@ -382,10 +414,10 @@ class Login extends React.Component {
 													<p>Email*</p>
 													<form>
 														<div className="form-group form-focus focused">
-															<input required type="email" className="form-control floating" />
+															<input required type="email" className="form-control floating" onChange={(e) => this.setState({ forgotemail: e.target.value })}/>
 															<label className="focus-label">Email</label>
 														</div>
-														<button className="btn btn-primary btn-block " type="submit">Submit</button>
+														<button className="btn btn-primary btn-block " type="button" onClick={this.resetPassword}>Submit</button>
 													</form>
 
 												</div>

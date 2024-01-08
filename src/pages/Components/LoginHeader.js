@@ -23,7 +23,7 @@ class LoginHeader extends React.Component{
                     </span>
                 </a>
                 <a href="/" className="hidden-xs hidden-sm navbar-brand logo">
-                    <img src="assets\img\logo.png" className="img-fluid" alt="Logo"   />
+                    <img src="\assets\img\logo.png" className="img-fluid" alt="Logo"   />
                 </a>
             </div>
         </div>

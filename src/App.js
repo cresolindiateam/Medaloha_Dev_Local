@@ -30,6 +30,7 @@ import Privacypolicy from './pages/Privacypolicy';
 import Cookiepolicy from './pages/Cookiepolicy';
 import Terms from './pages/Terms';
 import ClientProfile from './pages/ClientProfile';
+import ResetPassword from './pages/ResetPassword';
  
 function App() { 
   return (
@@ -63,6 +64,7 @@ function App() {
        <Route exact path="/cookie-policy" component={Cookiepolicy} />
        <Route exact path="/term-condition" component={Terms} />
        <Route exact path="/clientProfile/:id" component={ClientProfile} />
+       <Route exact path="/reset-password/:id" component={ResetPassword} />
        </Switch>
   </React.Fragment> 
   );
