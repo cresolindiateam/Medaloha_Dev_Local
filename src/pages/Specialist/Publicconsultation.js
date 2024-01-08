@@ -1115,7 +1115,13 @@ countVideo(checkstatus,messagenumber){
 				</td>
 			
 				<td class="align-middle" colspan="3">
-					<input type="text" name="" placeholder="Select Price" class="form-control form-control1" value={this.state.message_price}   onChange={(e)=> this.selectprice1(e.target.value) } />
+					<input type="text" name="" placeholder="Select Price" class="form-control form-control1" value={this.state.message_price}   onChange={(e) => {
+            const inputValue1 = e.target.value;
+            if (!isNaN(inputValue1)) {
+              this.selectprice1(inputValue1);
+            }
+          }}
+/>
 
 				</td>
 				<td class="align-middle">
@@ -1129,7 +1135,16 @@ countVideo(checkstatus,messagenumber){
 				</td>
 			
 				<td class="align-middle" colspan="3">
-					<input type="text" name="" placeholder="Select Price" class="form-control form-control1"  value={this.state.message_part_price}   onChange={(e)=> this.selectprice2(e.target.value) } />
+					<input type="text" name="" placeholder="Select Price" class="form-control form-control1"  value={this.state.message_part_price}   
+
+onChange={(e) => {
+            const inputValue2 = e.target.value;
+            if (!isNaN(inputValue2)) {
+              this.selectprice2(inputValue2);
+            }
+          }}
+
+					 />
 
 				</td>
 				<td class="align-middle">
@@ -1146,7 +1161,15 @@ countVideo(checkstatus,messagenumber){
 				</td>
 			
 				<td class="align-middle" colspan="3">
-					<input type="text" name="" placeholder="Select Price" class="form-control form-control1" value={this.state.message_full_price}   onChange={(e)=> this.selectprice3(e.target.value) }  />
+					<input type="text" name="" placeholder="Select Price" class="form-control form-control1" value={this.state.message_full_price} 
+
+onChange={(e) => {
+            const inputValue3 = e.target.value;
+            if (!isNaN(inputValue3)) {
+              this.selectprice3(inputValue3);
+            }
+          }}
+					    />
 
 				</td>
 				<td class="align-middle">
@@ -1165,7 +1188,16 @@ countVideo(checkstatus,messagenumber){
 				<span class="color4">Audio Only</span>
 				</td> 
 				<td class="align-middle" colspan="3">
-				<input type="text" name="" placeholder="Select Price" class="form-control"  value={this.state.video_price}   onChange={(e)=> this.selectprice4(e.target.value) } />
+				<input type="text" name="" placeholder="Select Price" class="form-control"  value={this.state.video_price}  
+
+onChange={(e) => {
+            const inputValue4 = e.target.value;
+            if (!isNaN(inputValue4)) {
+              this.selectprice4(inputValue4);
+            }
+          }}
+
+				  />
 
 				</td>
 				<td class="align-middle">
@@ -1185,7 +1217,16 @@ countVideo(checkstatus,messagenumber){
 				<span class="color4" >Audio Only</span>
 				</td> 
 				<td class="align-middle" colspan="3">
-				<input type="text" name="" placeholder="Select Price" class="form-control" value={this.state.video_part_price}   onChange={(e)=> this.selectprice5(e.target.value) }  />
+				<input type="text" name="" placeholder="Select Price" class="form-control" value={this.state.video_part_price}  
+
+
+onChange={(e) => {
+            const inputValue5 = e.target.value;
+            if (!isNaN(inputValue5)) {
+              this.selectprice5(inputValue5);
+            }
+          }}
+				   />
 
 				</td>
 				<td class="align-middle">
@@ -1204,7 +1245,17 @@ countVideo(checkstatus,messagenumber){
 				<span  class="color4">Audio Only</span>
 				</td> 
 				<td class="align-middle" colspan="3">
-				<input type="text" name="" placeholder="Select Price" class="form-control"  value={this.state.video_full_price}   onChange={(e)=> this.selectprice6(e.target.value) }/>
+				<input type="text" name="" placeholder="Select Price" class="form-control"  value={this.state.video_full_price}  
+
+
+onChange={(e) => {
+            const inputValue6 = e.target.value;
+            if (!isNaN(inputValue6)) {
+              this.selectprice6(inputValue6);
+            }
+          }}
+
+				/>
 
 				</td>
 				<td class="align-middle">
@@ -1222,7 +1273,16 @@ countVideo(checkstatus,messagenumber){
 				</td>
 
 				<td class="align-middle" colspan="3">
-				<input type="text" name="" placeholder="Select Price" class="form-control"   value={this.state.inperson_price}   onChange={(e)=> this.selectprice7(e.target.value) }/>
+				<input type="text" name="" placeholder="Select Price" class="form-control"   value={this.state.inperson_price}   
+
+onChange={(e) => {
+            const inputValue7 = e.target.value;
+            if (!isNaN(inputValue7)) {
+              this.selectprice7(inputValue7);
+            }
+          }}
+
+				/>
 
 				</td>
 				<td class="align-middle">
@@ -1239,7 +1299,14 @@ countVideo(checkstatus,messagenumber){
 
 
 				<td class="align-middle" colspan="3">
-				<input type="text" name="" placeholder="Select Price" class="form-control"  value={this.state.inperson_part_price}   onChange={(e)=> this.selectprice8(e.target.value) }/>
+				<input type="text" name="" placeholder="Select Price" class="form-control"  value={this.state.inperson_part_price}   
+onChange={(e) => {
+            const inputValue8 = e.target.value;
+            if (!isNaN(inputValue8)) {
+              this.selectprice8(inputValue8);
+            }
+          }}
+				/>
 
 				</td>
 				<td class="align-middle">
@@ -1256,7 +1323,16 @@ countVideo(checkstatus,messagenumber){
 
 
 				<td class="align-middle" colspan="3">
-				<input type="text" name="" placeholder="Select Price" class="form-control" value={this.state.inperson_full_price}   onChange={(e)=> this.selectprice9(e.target.value) }/>
+				<input type="text" name="" placeholder="Select Price" class="form-control" value={this.state.inperson_full_price}  
+
+
+onChange={(e) => {
+            const inputValue9 = e.target.value;
+            if (!isNaN(inputValue9)) {
+              this.selectprice9(inputValue9);
+            }
+          }}
+				 />
 
 				</td>
 				<td class="align-middle">
