@@ -37,6 +37,7 @@ class ChatScreen extends React.Component {
         s: null,
         }
         },
+
       text: "",
       messages: [],
       loading: false,
@@ -67,9 +68,11 @@ class ChatScreen extends React.Component {
       defaultImage:'assets/img/doctors/doctor-thumb-02.jpg',
       specialist_login_time:'avatar avatar-away',
       selectchatmemberid:'',
+     setIsUploading:false, 
       
      
     }; 
+      
     this.scrollDiv = React.createRef();
   }
 
@@ -95,12 +98,50 @@ class ChatScreen extends React.Component {
      console.log("ajaysoni");
   }
 
+  customFunction()
+  {
+      
+  }
+
  async handleAudioUpload(file) {
    
+   //alert("hello2");
     this.state.channel.sendMessage({
         contentType: 'audio/webm',
           media:file,
       }); 
+this.setState({ setIsUploading: true });
+    
+    // Simulate audio upload process with setTimeout (replace with your actual upload mechanism)
+    setTimeout(() => {
+     this.setState({ setIsUploading: false }); // Set uploading state to false after some time (simulating upload completion)
+    }, 3000);
+
+if(!this.state.setIsUploading)
+{
+  document.querySelector('.MuiFormControl-root').style.display = 'block';
+
+document.querySelector('.MuiIconButton-root').style.display = 'block';
+
+
+ document.querySelector('._1Pz2d').style.display = 'none';
+document.querySelector('._1ceqH ._1Yplu ._2gd2_').style.display = 'none';
+document.querySelector('._1YOWG').style.display = 'none';
+
+const elementsToRemove = document.querySelectorAll('._qxztz');
+elementsToRemove.forEach(element => {
+  element.remove();
+});
+
+}
+
+ // if (this.state.audioDetails.url.current) {
+ //      // Access the recorder component using the ref and reset or reinitialize it as needed
+ //      // For example, reset the recorder component state, stop any ongoing recordings, etc.
+ //      this.state.audioDetails.url.current.reset(); // Assuming the recorder component has a reset method
+ //    }
+    
+
 return false;
    //await this.joinChannel(this.state.channel); 
    }
@@ -118,14 +159,6 @@ handleReset() {
   };
 
 this.setState({ audioDetails: reset });
-
-$(".chat-cont-right .chat-footer .input-group .form-control").show();
-$(".MuiIconButton-root").show();
-
-$("._1ceqH .1Yplu .1Pz2d").hide();
-$("._1ceqH .1Yplu .2gd2_").hide();
-$("._f2DT8").hide();
-$("._1ceqH .3bC73 .1YOWG ._3bC73 ._1Yplu").hide();
  window.location.reload();
 
 }
@@ -168,8 +201,7 @@ else
   componentDidMount = async () => {  
 
 
-     
-    
+  
 
     this.setState({uname:this.props.name});
     this.setState({uimage:this.props.path}); 
@@ -209,22 +241,31 @@ else
         $( document ).ready(function() {
 
 
-      $("._1ceqH ._1Yplu ._1Pz2d").hide();
-      $("._1ceqH ._1Yplu ._2gd2_").hide();
-      $("._1ceqH ._f2DT8").hide();
-      $("._1ceqH ._1Yplu ._1Pz2d").hide();
-       $("._1ceqH ._1Yplu ._2gd2_").hide();
-       $("._1ceqH ._f2DT8").hide();
-      });
-      
-      $("._1dpop").click(function(){
-       $(".chat-cont-right .chat-footer .input-group .form-control").hide();
-       $(".MuiIconButton-root").hide();
-       $("._1ceqH ._1Yplu ._1Pz2d").show();
-       $("._1ceqH ._1Yplu ._2gd2_").show();
-        $("._1ceqH ._f2DT8").show();
-      })
 
+
+ document.querySelector('._1Pz2d').style.display = 'none';
+document.querySelector('._1ceqH ._1Yplu ._2gd2_').style.display = 'none';
+document.querySelector('._1YOWG').style.display = 'none';
+document.querySelector('._1ceqH ._f2DT8').style.display = 'none';
+
+     alert("hellow");
+      
+      $(document).on('click', '._1dpop', function() {
+      
+ alert("hello");
+
+document.querySelector('.MuiFormControl-root').style.display = 'none';
+
+document.querySelector('.MuiIconButton-root').style.display = 'none';
+
+
+ document.querySelector('._1Pz2d').style.display = 'block';
+document.querySelector('._1ceqH ._1Yplu ._2gd2_').style.display = 'block';
+document.querySelector('._1YOWG').style.display = 'block';
+document.querySelector('._1ceqH ._f2DT8').style.display = 'block';
+
+      })
+});
   };
 
 
@@ -633,6 +674,7 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistPrivateDeta
                 </div>
    
   <div className="chat-body">  
+
     <div className={this.state.classAcitve}  id="asc"> 
     {this.state.queryBox && this.state.queryBox!='null' ?
     <li className="MuiListItem-root tets MuiListItem-gutters"><div>
@@ -677,14 +719,22 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistPrivateDeta
               ))}  
               </div>
            </div> 
+
            <div className="chat-footer">
+           {this.state.setIsUploading && <div>Loading Audio...</div>}
            <div className="input-group d-flex "> 
+           {/* Display loader while uploading */
+
+
+           }
+     
+      
+ 
            <Recorder
             record={true}
             title={"New recording"}
             audioURL={this.state.audioDetails.url}
             showUIAudio={true}
-            
             handleAudioStop={data => this.handleAudioStop(data)}
             handleOnChange={(value) => this.customFunction()}
             handleAudioUpload={data => this.handleAudioUpload(data)}
