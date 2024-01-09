@@ -37,6 +37,8 @@ class BookingCalendar extends React.Component {
                         event: [],
                         slotMessage:false
                     } 
+                    // Binding method in the constructor
+    this.updateInputValue = this.updateInputValue.bind(this);
             }
 
            closeModal(){  
@@ -51,7 +53,14 @@ class BookingCalendar extends React.Component {
              
             }
 
-
+updateInputValue(event)
+{
+  if(event.target.value!='' && this.state.time!=undefined){
+   this.setState({
+                time: event.target.value
+              });
+  }
+}
             componentDidMount() {
                 axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetCalendarEvents?specialist_id='+localStorage.getItem('specialist_id'))
                   .then(response => { 
@@ -216,7 +225,7 @@ class BookingCalendar extends React.Component {
                 > */}
            <button class="close" onClick={(e)=>this.closeModal()}><span>×</span></button>
            <h5 class="modalTitle" id="exampleModalLabel">Add Consultation</h5>
-            <input type="time"   id="Time1"  class="form-control" value={this.state.time}  onChange={(e)=> this.updateInputValue(e.target.value) }/  >
+            <input type="time"   id="Time1"  class="form-control" value={this.state.time}  onChange={this.updateInputValue }/  >
             <input type="hidden" id="cs" value={this.state.startDate} />
             <input type="hidden" id="cs1" value={this.state.endDate} /> 
             <input type="hidden" id="cs2" value={this.state.year} /> 

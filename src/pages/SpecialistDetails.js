@@ -44,6 +44,19 @@ class SpecialistDetails extends React.Component {
            SpecialistActivityImg4:"",
            message:"",
            messagePart:"",
+           messageFull:"",
+           vivo:"",
+           vivoPart:"",
+           vivoFull:"",
+           audio:"",
+           audioPart:"",
+           audioFull:"",
+
+            video:"",
+           videoPart:"",
+           videoFull:"",
+
+
            aboutme:"",
            specialistHolesticExp:"",
            specialistEducation:"",
@@ -367,6 +380,7 @@ console.log('str001');
  setTimeout(() => {
      this.setState({ setCopySuccess: '' }); // Set uploading state to false after some time (simulating upload completion)
     }, 2000);
+
 		 localStorage.setItem('Rebooking',false);
 		 localStorage.setItem('bookingID',0); 
          var specialist_id = this.props.match.params.id; 
@@ -395,9 +409,13 @@ console.log('str001');
 		 });  
 
 		 console.log('res.start -->');
+		 	console.log("GetFeaturedSpecialistFullDetails");
          axios.get(process.env.REACT_APP_BASE_URL+`/specilistAPI/GetFeaturedSpecialistFullDetails?specialist_id=`+specialist_id+'&language_id='+localStorage.getItem('i18nextLng'))
          .then(res => {
-            console.log('res.data22200000'); 
+         	//alert("hello");
+            console.log('GetFeaturedSpecialistFullDetails');
+            console.log(res.data);
+            console.log("GetFeaturedSpecialistFullDetails"); 
 			console.log(res.data);
 			var image = null;
 			if(res.data['Result'][0].SpecialistPic)
@@ -422,6 +440,20 @@ console.log('str001');
 
                 this.setState({message :res.data['Result'][0].SpecialistMessage});
                 this.setState({messagePart :res.data['Result'][0].SpecialistMessagePart});
+                this.setState({messageFull :res.data['Result'][0].SpecialistMessageFull});
+
+                 this.setState({vivo :res.data['Result'][0].SpecialistVivo});
+                this.setState({vivoPart :res.data['Result'][0].SpecialistVivoPart});
+                this.setState({vivoFull :res.data['Result'][0].SpecialistVivoFull});
+
+                this.setState({audio :res.data['Result'][0].SpecialistAudio});
+                this.setState({audioPart :res.data['Result'][0].SpecialistAudioPart});
+                this.setState({audioFull :res.data['Result'][0].SpecialistAudioFull});
+
+                 this.setState({video :res.data['Result'][0].SpecialistVideo});
+                this.setState({videoPart :res.data['Result'][0].SpecialistVideoPart});
+                this.setState({videoFull :res.data['Result'][0].SpecialistVideoFull});
+
                 this.setState({aboutme :res.data['Result'][0].SpecialistAbout});
                 this.setState({specialistHolesticExp :res.data['Result'][0].SpecialistHolesticExp});
                 this.setState({specialistEducation :res.data['Result'][0].SpecialistEducation});
@@ -1138,7 +1170,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 								</div>
 								<div class="experience-box">
 									<p>
-										&nbsp;{this.state.message}
+										&nbsp;{(this.state.message!='undefined')?this.state.message:'-'}
 									</p>
 								</div>
 							</div>
@@ -1148,11 +1180,129 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 									<div class="font-weight-bold cus-font-size1 color-cus3">Chat PART: </div>
 								</div>
 								<div class="experience-box">
-									<p class="mb-0">
+									<p class="">
 										&nbsp;{this.state.messagePart}
 									</p>
 								</div>
 							</div>
+
+							<div class="d-flex">
+								<div class="experience-box">
+									<div class="font-weight-bold cus-font-size1 color-cus3">Chat FULL: </div>
+								</div>
+								<div class="experience-box">
+									<p class="">
+										&nbsp;{this.state.messageFull}
+									</p>
+								</div>
+							</div>
+
+
+								<div class="d-flex">
+								<div class="experience-box">
+									<div class="font-weight-bold cus-font-size1 color-cus3">Vivo: </div>
+								</div>
+								<div class="experience-box">
+									<p class="">
+										&nbsp;{(this.state.vivo!='undefined')?this.state.vivo:'-'}
+									</p>
+								</div>
+							</div>
+
+								<div class="d-flex">
+								<div class="experience-box">
+									<div class="font-weight-bold cus-font-size1 color-cus3">Vivo PART: </div>
+								</div>
+								<div class="experience-box">
+									<p class="">
+										&nbsp;{this.state.vivoPart}
+									</p>
+								</div>
+							</div>
+
+								<div class="d-flex">
+								<div class="experience-box">
+									<div class="font-weight-bold cus-font-size1 color-cus3">Vivo FULL: </div>
+								</div>
+								<div class="experience-box">
+									<p class="">
+										&nbsp;{this.state.vivoFull}
+									</p>
+								</div>
+							</div>
+
+
+
+							<div class="d-flex">
+								<div class="experience-box">
+									<div class="font-weight-bold cus-font-size1 color-cus3">Audio: </div>
+								</div>
+								<div class="experience-box">
+									<p class="">
+										&nbsp;{this.state.audio}
+									</p>
+								</div>
+							</div>
+
+	                          <div class="d-flex">
+								<div class="experience-box">
+									<div class="font-weight-bold cus-font-size1 color-cus3">Audio PART: </div>
+								</div>
+								<div class="experience-box">
+									<p class="">
+										&nbsp;{this.state.audioPart}
+									</p>
+								</div>
+							</div>
+
+								<div class="d-flex">
+								<div class="experience-box">
+									<div class="font-weight-bold cus-font-size1 color-cus3">Audio FULL: </div>
+								</div>
+								<div class="experience-box">
+									<p class="">
+										&nbsp;{this.state.audioFull}
+									</p>
+								</div>
+							</div>
+
+
+
+<div class="d-flex">
+								<div class="experience-box">
+									<div class="font-weight-bold cus-font-size1 color-cus3">Video: </div>
+								</div>
+								<div class="experience-box">
+									<p class="">
+										&nbsp;{this.state.video}
+									</p>
+								</div>
+							</div>
+
+	                          <div class="d-flex">
+								<div class="experience-box">
+									<div class="font-weight-bold cus-font-size1 color-cus3">Video PART: </div>
+								</div>
+								<div class="experience-box">
+									<p class="">
+										&nbsp;{this.state.videoPart}
+									</p>
+								</div>
+							</div>
+
+								<div class="d-flex">
+								<div class="experience-box">
+									<div class="font-weight-bold cus-font-size1 color-cus3">Video FULL: </div>
+								</div>
+								<div class="experience-box">
+									<p class="">
+										&nbsp;{this.state.videoFull}
+									</p>
+								</div>
+							</div>
+
+
+
 						</div>
 
 
