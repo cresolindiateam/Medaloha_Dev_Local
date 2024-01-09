@@ -1164,17 +1164,21 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 					<div class="col-md-12 col-lg-12"> 
 						<div class="widget awards-widget">
 							<h4 class="widget-title font-weight-bold">Consultation description</h4>
+							
+                 {
+                            	(this.state.message!='' && this.state.message!='undefined')?
 							<div class="d-flex">
 								<div class="experience-box">
 									<div class="widget-title font-weight-bold cus-font-size1 color-cus3">Chat: </div>
-								</div>
-								<div class="experience-box">
+								</div><div class="experience-box">
 									<p>
 										&nbsp;{(this.state.message!='undefined')?this.state.message:'-'}
 									</p>
-								</div>
-							</div>
+								</div></div>:""}
 
+							
+{
+                            	(this.state.messagePart!='')?
 							<div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Chat PART: </div>
@@ -1184,8 +1188,13 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 										&nbsp;{this.state.messagePart}
 									</p>
 								</div>
-							</div>
+							</div>:""
 
+						}
+
+
+{
+                            	(this.state.messageFull!='')?
 							<div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Chat FULL: </div>
@@ -1195,9 +1204,11 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 										&nbsp;{this.state.messageFull}
 									</p>
 								</div>
-							</div>
+							</div>:""}
 
 
+{
+                            	(this.state.vivo!='')?
 								<div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Vivo: </div>
@@ -1207,8 +1218,11 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 										&nbsp;{(this.state.vivo!='undefined')?this.state.vivo:'-'}
 									</p>
 								</div>
-							</div>
+							</div>:""}
 
+
+{
+                            	(this.state.vivoPart!='')?
 								<div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Vivo PART: </div>
@@ -1218,8 +1232,11 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 										&nbsp;{this.state.vivoPart}
 									</p>
 								</div>
-							</div>
+							</div>:""}
 
+
+{
+                            	(this.state.vivoFull!='')?
 								<div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Vivo FULL: </div>
@@ -1229,10 +1246,11 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 										&nbsp;{this.state.vivoFull}
 									</p>
 								</div>
-							</div>
+							</div>:""}
 
 
-
+{
+                            	(this.state.audio!='')?
 							<div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Audio: </div>
@@ -1242,8 +1260,11 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 										&nbsp;{this.state.audio}
 									</p>
 								</div>
-							</div>
+							</div>:""}
 
+
+{
+                            	(this.state.audioPart!='')?
 	                          <div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Audio PART: </div>
@@ -1253,8 +1274,10 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 										&nbsp;{this.state.audioPart}
 									</p>
 								</div>
-							</div>
+							</div>:""}
 
+{
+                            	(this.state.audioFull!='')?
 								<div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Audio FULL: </div>
@@ -1264,10 +1287,11 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 										&nbsp;{this.state.audioFull}
 									</p>
 								</div>
-							</div>
+							</div>:""}
 
 
-
+{
+                            	(this.state.video!='')?
 <div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Video: </div>
@@ -1277,8 +1301,10 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 										&nbsp;{this.state.video}
 									</p>
 								</div>
-							</div>
+							</div>:""}
 
+{
+                            	(this.state.videoPart!='')?
 	                          <div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Video PART: </div>
@@ -1288,7 +1314,11 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 										&nbsp;{this.state.videoPart}
 									</p>
 								</div>
-							</div>
+							</div>:""}
+
+
+{
+                            	(this.state.videoFull!='')?
 
 								<div class="d-flex">
 								<div class="experience-box">
@@ -1299,7 +1329,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 										&nbsp;{this.state.videoFull}
 									</p>
 								</div>
-							</div>
+							</div>:""}
 
 
 

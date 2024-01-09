@@ -38,6 +38,7 @@ class Publicoverview extends React.Component {
 			videopart:"",
 			audio:"",
 			audiopart:"",
+		
 			audiofull:"",
 			vivo:"",
 			vivofull:"",
@@ -186,7 +187,10 @@ class Publicoverview extends React.Component {
   
 
 
- componentDidMount() {   
+ componentDidMount() {
+
+
+
 
 axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultation?specialist_id='+localStorage.getItem('specialist_id'))
 		 .then(res => {
@@ -224,42 +228,57 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 			// 10 in-person , 11 in person short , 12 in person full
 			if(element['provided_type']==1){
 				this.setState({message_trigger:true});
+				
+
 			} 
 			if(element['provided_type']==2){
 				this.setState({message_part_trigger:true});
+				
 			}
 			if(element['provided_type']==3){
 				this.setState({message_full_trigger:true});
+				
 			}
 
 			if(element['provided_type']==4){
 				this.setState({video_trigger:true});
+					
 			} 
 			if(element['provided_type']==5){
 				this.setState({video_part_trigger:true});
+				
 			}
 			if(element['provided_type']==6){
 				this.setState({video_full_trigger:true});
+				
 			}
 
 			if(element['provided_type']==7){
 				this.setState({audio_only_trigger:true});
+				
 			} 
 			if(element['provided_type']==8){
 				this.setState({audio_only_part_trigger:true});
+			
+
 			}
 			if(element['provided_type']==9){
+				
 				this.setState({audio_only_full_trigger:true});
+				
 			}
 
 			if(element['provided_type']==10){
 				this.setState({inperson_trigger:true});
+				
 			} 
 			if(element['provided_type']==11){
 				this.setState({inperson_part_trigger:true});
+				
 			}
 			if(element['provided_type']==12){
 				this.setState({inperson_full_trigger:true});
+			
 			}
 
 		});
@@ -345,33 +364,145 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 			console.log(res.data);
 			res.data.forEach(element => {
 				if(element['consultation_id']==1){
-					this.setState({message:element['overview_data']});  
+					
+
+if(this.state.message_trigger==false)
+                           {
+	                        
+	                        this.setState({ message:'' });
+                            }
+                           else{
+
+					this.setState({message:element['overview_data']}); 
+					} 
+
+
 				} 
 				if(element['consultation_id']==2){
-					this.setState({messsagepart:element['overview_data']});  
+					
+
+
+if(this.state.message_part_trigger==false)
+                           {
+	                        
+	                        this.setState({ messsagepart:'' });
+                            }
+                           else{
+
+					this.setState({messsagepart:element['overview_data']}); 
+					} 
+
+
+
 				}
 				if(element['consultation_id']==3){
 					this.setState({messagefull:element['overview_data']});  
+
+
+
+if(this.state.message_full_trigger==false)
+                           {
+	                        
+	                        this.setState({ messagefull:'' });
+                            }
+                           else{
+
+					this.setState({messagefull:element['overview_data']}); 
+					} 
+
 				}
 
 
 				if(element['consultation_id']==4){
-					this.setState({video:element['overview_data']});  
+				
+
+
+if(this.state.video_trigger==false)
+                           {
+	                        
+	                        this.setState({ video:'' });
+                            }
+                           else{
+
+					this.setState({video:element['overview_data']}); 
+					} 
+
+
 				} 
 				if(element['consultation_id']==5){
-					this.setState({videopart:element['overview_data']});  
+
+					
+
+if(this.state.video_part_trigger==false)
+                           {
+	                        
+	                        this.setState({ videopart:'' });
+                            }
+                           else{
+
+					this.setState({videopart:element['overview_data']}); 
+					} 
+
+
+
 				}
 				if(element['consultation_id']==6){
-					this.setState({videofull:element['overview_data']});  
+
+
+if(this.state.video_full_trigger==false)
+                           {
+	                        
+	                        this.setState({ videofull:'' });
+                            }
+                           else{
+
+					this.setState({videofull:element['overview_data']}); 
+					} 
+
+
+
+					 
 				}
 				if(element['consultation_id']==7){
-					this.setState({audio:element['overview_data']});  
+
+                     if(this.state.audio_only_trigger==false)
+                           {
+	                        
+	                        this.setState({ audio:'' });
+                            }
+                           else{
+
+					this.setState({audio:element['overview_data']}); 
+					} 
+
+					
 				} 
 				if(element['consultation_id']==8){
-					this.setState({audiopart:element['overview_data']});  
+
+
+                    if(this.state.audio_only_part_trigger==false)
+                           {
+	                        
+	                        this.setState({ audiopart:'' });
+                            }
+                           else{
+
+					this.setState({audiopart:element['overview_data']}); 
+					} 
 				}
 				if(element['consultation_id']==9){
-					this.setState({audiofull:element['overview_data']});  
+
+                     if(this.state.audio_only_full_trigger==false)
+                           {
+	                        
+	                        this.setState({ audiofull:'' });
+                            }
+                           else{
+
+					this.setState({audiofull:element['overview_data']}); 
+					} 
+
+					
 				}
 
 				if(element['consultation_id']==10){
@@ -386,6 +517,11 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 
 			});
 		 });
+
+
+
+
+
 
         axios.get(process.env.REACT_APP_BASE_URL+`/specilistAPI/GetSpecialistPublicOverViewByID?specialist_id=`+localStorage.getItem('specialist_id')+'&language_code='+localStorage.getItem('i18nextLng')+'&seetingLanguage='+localStorage.getItem('SettingLanguage'))
 	  	 .then(res => {
