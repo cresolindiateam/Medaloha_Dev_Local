@@ -77,6 +77,8 @@ class Dashboard extends React.Component {
 		   settingactive:'active',
 		   searchvalue:'',
 		   streetaddress:'',
+		   recommend_select:'like-btn',
+		   recommend_deselect:'dislike-btn'
 
 		   
         };   
@@ -97,17 +99,35 @@ class Dashboard extends React.Component {
 	  }
 	
 	   InputChanged1(val) {
-		   console.log(val);
+		   alert(val);
 		this.setState({
 		  recommend_status: val
 		});
+
+this.setState({
+		  recommend_select: 'like-btn recommend_select'
+		});
+this.setState({
+		  recommend_deselect: 'dislike-btn'
+		});
+
+
 	  }
 	
 	   InputChanged2(val) {
-		   console.log(val);
+		   alert(val);
 		this.setState({
 		  recommend_status: val
 		});
+
+this.setState({
+		  recommend_select: 'like-btn'
+		});
+
+this.setState({
+		  recommend_deselect: 'dislike-btn recommend_deselect'
+		});
+
 	  } 
 
 	  handleInputChanged3(event) {
@@ -923,7 +943,7 @@ else if(diffInMinutesbefore <= 5 && diffInMinutesbefore >= 0 )
                                                         <div class="input-group-prepend"> 
 															<select class="form-control" name="country" value={this.state.customer_country}  onChange={(e)=> this.setState({ customer_country: e.target.value})}  > <option  selected={this.state.customer_country=="+91"? 'selected':''}>+91</option><option  selected={this.state.customer_country=="+01"? 'selected':''}>+01</option><option  selected={this.state.customer_country=="+44"? 'selected':''}>+44</option></select>
                                                         </div>
-                                                       <input class="form-control" type="text" placeholder="Mobile Number" value={this.state.mobile} onChange={(e)=> this.setState({ mobile: e.target.value})}  />
+                                                       <input class="form-control" type="text" placeholder="Mobile Number" value={(this.state.mobile=='null')?'':this.state.mobile} onChange={(e)=> this.setState({ mobile: e.target.value})}  />
                                                      </div>
                     </div> 
 		<div class="col-12 col-md-6">
@@ -1417,10 +1437,10 @@ else if(diffInMinutesbefore <= 5 && diffInMinutesbefore >= 0 )
 			<textarea id="review_desc" maxlength="100" class="form-control bg-light .custom-height4"  placeholder="Your review" onChange={this.handleInputChanged.bind(this)}></textarea>
 			<p class="recommend-btn mt-3">
 				<span class="mr-2 h4">Recommend?</span>
-				<a href="javascript:void(0)" value="1" class="like-btn"   onClick={() =>this.InputChanged1(1)}>
+				<a href="javascript:void(0)" value="1" class={this.state.recommend_select}   onClick={() =>this.InputChanged1(1)}>
 					<i class="far fa-thumbs-up"></i> Yes
 				</a>
-				<a href="javascript:void(0)" value="0" class="dislike-btn" onClick={() =>this.InputChanged2(0)}>
+				<a href="javascript:void(0)" value="0" class={this.state.recommend_deselect}  onClick={() =>this.InputChanged2(0)}>
 					&nbsp;<i class="far fa-thumbs-down"></i> No
 				</a>
 			</p>
