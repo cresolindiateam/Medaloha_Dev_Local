@@ -137,7 +137,10 @@ class PrivateSetting extends React.Component {
 	  return [ monthNames[mnth],date.getFullYear()].join(" ");
 	}
 
-	
+	fileChangedCloseHandlerID1 = event =>
+	{
+		this.setState({ idfront: '' });
+	}
 	
      fileChangedHandlerID1 = event => {
         this.setState({ idfront: event.target.files[0] })
@@ -762,6 +765,26 @@ class PrivateSetting extends React.Component {
 																   {this.state.fileidfront!=null ? <img src={this.state.fileidfront}  style={{"width" : "20%"}} />:
 																    <img src={this.state.idfront} style={{"width" : "20%"}}  />	  
 																   }
+																    {this.state.idfront && (
+          <button
+            onClick={this.fileChangedCloseHandlerID1}
+            style={{
+              position: 'absolute',
+              top: '45px',
+              left: 0,
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'white'
+            }}
+          >
+          
+            X
+          </button>
+        )}
 																        
 															</div>
 														</div>
