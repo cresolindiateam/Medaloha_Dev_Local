@@ -79,8 +79,20 @@ class PrivateSetting extends React.Component {
 		   filemedicaldegree:null ,
 		   fileuniversitydegree:null,
 		   fileadditionaldegree:null,
+
+		   deleteuniversitydegree:false,
+		   deletemedicaldegree:false,
+		   deletefileadditionaldegree:false,
 		   consultColorArray:['','','','','legend-video','legend-video-part','legend-video-full','legend-video','legend-video-part','legend-video-full','legend-inperson','legend-inperson-part','legend-inperson-full']
         };   
+
+         this.fileChangedCloseHandlerID3 = this.fileChangedCloseHandlerID3.bind(this);
+         this.fileChangedCloseHandlerID4 = this.fileChangedCloseHandlerID4.bind(this);
+          this.fileChangedCloseHandlerID31 = this.fileChangedCloseHandlerID31.bind(this);
+         this.fileChangedCloseHandlerID41 = this.fileChangedCloseHandlerID41.bind(this);
+
+         this.fileChangedCloseHandlerID51 = this.fileChangedCloseHandlerID51.bind(this);
+         this.fileChangedCloseHandlerID5 = this.fileChangedCloseHandlerID5.bind(this);
     }  
 
 
@@ -140,7 +152,70 @@ class PrivateSetting extends React.Component {
 	fileChangedCloseHandlerID1 = event =>
 	{
 		this.setState({ idfront: '' });
+		this.setState({ fileidfront: '' });
 	}
+
+	fileChangedCloseHandlerID2 = event =>
+	{
+		this.setState({ idback: '' });
+		this.setState({ fileidback: '' });
+	}
+
+fileChangedCloseHandlerID3 = event =>
+	{
+		// this.setState({ medicaldegree: null });
+		 this.setState({ filemedicaldegree: null });
+		 	this.setState({ deletemedicaldegree: true });
+	}
+
+
+	fileChangedCloseHandlerID31 = event =>
+	{
+		 this.setState({ medicaldegree: null });
+		 	this.setState({ deletemedicaldegree: true });
+		 // this.setState({ filemedicaldegree: null });
+	}
+
+	fileChangedCloseHandlerID4 = event =>
+	{
+		// this.setState({ universitydegree: null });
+		 this.setState({ fileuniversitydegree: null });
+		 this.setState({ deleteuniversitydegree: true });
+		 
+	}
+	
+
+	fileChangedCloseHandlerID41 = event =>
+	{
+		this.setState({ universitydegree: null });
+
+this.setState({ deleteuniversitydegree: true });
+		
+		 // this.setState({ fileuniversitydegree: null });
+	}
+
+
+
+
+fileChangedCloseHandlerID5 = event =>
+	{
+		// this.setState({ universitydegree: null });
+		 this.setState({ fileadditionaldegree: null });
+		 this.setState({ deletefileadditionaldegree: true });
+		 
+	}
+	
+
+	fileChangedCloseHandlerID51 = event =>
+	{
+		this.setState({ additionaldegree: null });
+
+this.setState({ deletefileadditionaldegree: true });
+		
+		 // this.setState({ fileuniversitydegree: null });
+	}
+
+
 	
      fileChangedHandlerID1 = event => {
         this.setState({ idfront: event.target.files[0] })
@@ -345,11 +420,18 @@ class PrivateSetting extends React.Component {
 			 if(res.data[0]['id_document_back'])
 			 this.setState({idback: process.env.REACT_APP_BASE_URL+"/public/uploads/docs/"+res.data[0]['id_document_back']});
 
+
+
 			 if(res.data[0]['healthcare_documents'])
 			 this.setState({medicaldegree: process.env.REACT_APP_BASE_URL+"/public/uploads/docs/"+res.data[0]['healthcare_documents']});
 
+
+
+
 			 if(res.data[0]['university_documents'])
 			 this.setState({universitydegree: process.env.REACT_APP_BASE_URL+"/public/uploads/docs/"+res.data[0]['university_documents']});
+
+
 
 			 if(res.data[0]['other_documents'])
 			 this.setState({additionaldegree: process.env.REACT_APP_BASE_URL+"/public/uploads/docs/"+res.data[0]['other_documents']});
@@ -357,6 +439,8 @@ class PrivateSetting extends React.Component {
 			 
              this.setState({spec_image : process.env.REACT_APP_BASE_URL+'/public/uploads/docs/profileresize/'+res.data[0]['profile_photo']});
 		 });   
+
+	 
 
 	  }
 
@@ -458,8 +542,18 @@ class PrivateSetting extends React.Component {
          data.append('idfront',this.state.idfront); 
          data.append('idback',this.state.idback); 
 
-		 data.append('medicaldegree',this.state.medicaldegree); 
-         data.append('universitydegree',this.state.universitydegree);
+
+
+data.append('medicaldegree',this.state.medicaldegree); 	
+data.append('deletemedicaldegree',this.state.deletemedicaldegree); 	
+data.append('deletefileadditionaldegree',this.state.deletefileadditionaldegree); 
+
+
+
+data.append('universitydegree',this.state.universitydegree); 	
+
+
+         
 		 data.append('additionaldegree',this.state.additionaldegree);
 		 
   
@@ -478,7 +572,7 @@ class PrivateSetting extends React.Component {
 		 data.append('language',this.state.language);
 		 console.log('data coming')
          console.log(data);
- 
+ console.log('data coming2') 
 
 		 axios.post(process.env.REACT_APP_BASE_URL+`/specilistAPI/updatePrivateSetting`,data)
 		 .then(res => {
@@ -490,8 +584,7 @@ class PrivateSetting extends React.Component {
 				localStorage.setItem("ConsulationMainLang",this.state.language);  
 				alert('Update successfully');
 			}
-			else 
-			alert(res.data.Message);
+			
 			
 	    	}).catch(function (error) {
 			console.log(error);
@@ -785,6 +878,27 @@ class PrivateSetting extends React.Component {
             X
           </button>
         )}
+
+        {this.state.idfrontback && (
+          <button
+            onClick={this.fileChangedCloseHandlerID1}
+            style={{
+              position: 'absolute',
+              top: '45px',
+              left: 0,
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'white'
+            }}
+          >
+          
+            X
+          </button>
+        )}
 																        
 															</div>
 														</div>
@@ -800,6 +914,49 @@ class PrivateSetting extends React.Component {
 {this.state.fileidback!=null ? <img src={this.state.fileidback}  style={{"width" : "20%"}} />:
 																    <img src={this.state.idback} style={{"width" : "20%"}}  />	  
 																   }
+
+																    {this.state.idback && (
+          <button
+            onClick={this.fileChangedCloseHandlerID2}
+            style={{
+              position: 'absolute',
+              top: '45px',
+              left: 0,
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'white'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
+
+        			    {this.state.fileidback && (
+          <button
+            onClick={this.fileChangedCloseHandlerID2}
+            style={{
+              position: 'absolute',
+              top: '45px',
+              left: 0,
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'white'
+            }}
+          >
+          
+            X
+          </button>
+        )}
 															</div>
 														</div>
 														<div className="text-center" >
@@ -869,6 +1026,54 @@ class PrivateSetting extends React.Component {
 																		<img src={this.state.filemedicaldegree} style={{"width" : "20%"}}  />	
 																		:  <img src={this.state.medicaldegree} style={{"width" : "20%"}}  />  
 																		}
+
+ {this.state.filemedicaldegree!=null   && (
+          <button
+            onClick={this.fileChangedCloseHandlerID3}
+            style={{
+              position: 'absolute',
+              top: '0px',
+              right: '15px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'black'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
+
+        {this.state.medicaldegree!=null   && (
+          <button
+            onClick={this.fileChangedCloseHandlerID31}
+            style={{
+              position: 'absolute',
+              top: '0px',
+              right: '15px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'black'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
+
+       
+
+
 													</div>
 													<small className="form-text text-muted"></small> 
 													<small className="form-text text-muted text-center" ><b>
@@ -905,6 +1110,52 @@ class PrivateSetting extends React.Component {
 																		<img src={this.state.fileuniversitydegree} style={{"width" : "20%"}}  />	
 																		:  <img src={this.state.universitydegree} style={{"width" : "20%"}}  />	  
 																		}
+
+
+ {this.state.universitydegree!=null  && (
+          <button
+            onClick={this.fileChangedCloseHandlerID41}
+            style={{
+              position: 'absolute',
+              top: '0px',
+              right: '15px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'black'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
+
+{this.state.fileuniversitydegree!=null   && (
+          <button
+            onClick={this.fileChangedCloseHandlerID4}
+            style={{
+              position: 'absolute',
+              top: '0px',
+              right: '15px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'black'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
+
 													</div>
 													
 
@@ -943,6 +1194,54 @@ class PrivateSetting extends React.Component {
 																		<img src={this.state.fileadditionaldegree} style={{"width" : "20%"}}  />	
 																		:  <img src={this.state.additionaldegree} style={{"width" : "20%"}}  />	  
 																		}
+
+
+ {this.state.additionaldegree!=null  && (
+          <button
+            onClick={this.fileChangedCloseHandlerID51}
+            style={{
+              position: 'absolute',
+              top: '0px',
+              right: '15px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'black'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
+
+{this.state.fileadditionaldegree!=null   && (
+          <button
+            onClick={this.fileChangedCloseHandlerID5}
+            style={{
+              position: 'absolute',
+              top: '0px',
+              right: '15px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'red'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
+
+
+
 													</div>
 
 												</div>
