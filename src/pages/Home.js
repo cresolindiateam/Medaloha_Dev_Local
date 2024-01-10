@@ -396,7 +396,7 @@ handleButtonClicked() {
 
 
 													<div class="text-center">
-														<a href="/search" class="tool-spec-btn">SEE SPECIALISTS</a>
+														<a href={(category.name=='All Specialist')?`/search?location=&name=&tags=`:`/search?location=&name=${category.name}&tags=`} class="tool-spec-btn">SEE SPECIALISTS</a>
 													</div>
 												</span>
 											</div>
@@ -443,7 +443,7 @@ handleButtonClicked() {
 
 
 													<div class="text-center">
-														<a href="/search" class="tool-spec-btn">SEE SPECIALISTS</a>
+														<a href={(category.name=='All Specialist')?`/search?location=&name=&tags=`:`/search?location=&name=${category.name}&tags=`} class="tool-spec-btn">SEE SPECIALISTS</a>
 													</div>
 												</span>
 											</div>
@@ -497,7 +497,7 @@ handleButtonClicked() {
 
 
 													<div class="text-center">
-														<a href="/search" class="tool-spec-btn">SEE SPECIALISTS</a>
+														<a href={(category.name=='All Specialist')?`/search?location=&name=&tags=`:`/search?location=&name=${category.name}&tags=`} class="tool-spec-btn">SEE SPECIALISTS</a>
 													</div>
 												</span>
 											</div>
@@ -549,7 +549,7 @@ handleButtonClicked() {
 
 						   
 						   <div class="text-center">
-							 <a href="/search" class="tool-spec-btn">SEE SPECIALISTS</a>
+							 <a href={(category.name=='All Specialist')?`/search?location=&name=&tags=`:`/search?location=&name=${category.name}&tags=`} class="tool-spec-btn">SEE SPECIALISTS</a>
 						   </div>
 						   </span>
 						   </div>
@@ -581,7 +581,7 @@ handleButtonClicked() {
         <h5 class="tool-spec-heading">{category.description}</h5>
       }
 						   <div class="text-center">
-							 <a href="/search" class="tool-spec-btn">SEE SPECIALISTS</a>
+							 <a href={(category.name=='All Specialist')?`/search?location=&name=&tags=`:`/search?location=&name=${category.name}&tags=`} class="tool-spec-btn">SEE SPECIALISTS</a>
 						   </div>
 						   </span>
 						   </div>
@@ -619,7 +619,7 @@ handleButtonClicked() {
         <h5 class="tool-spec-heading">{category.description}</h5>
       }
 						   <div class="text-center">
-							 <a href="/search" class="tool-spec-btn">SEE SPECIALISTS</a>
+							 <a href={(category.name=='All Specialist')?`/search?location=&name=&tags=`:`/search?location=&name=${category.name}&tags=`} class="tool-spec-btn">SEE SPECIALISTS</a>
 						   </div>
 						   </span>
 						   </div> 
@@ -652,7 +652,7 @@ handleButtonClicked() {
         <h5 class="tool-spec-heading">{category.description}</h5>
       }
 						   <div class="text-center">
-							 <a href="/search" class="tool-spec-btn">SEE SPECIALISTS</a>
+							 <a href={(category.name=='All Specialist')?`/search?location=&name=&tags=`:`/search?location=&name=${category.name}&tags=`} class="tool-spec-btn">SEE SPECIALISTS</a>
 						   </div>
 						   </span>
 						   </div> 
