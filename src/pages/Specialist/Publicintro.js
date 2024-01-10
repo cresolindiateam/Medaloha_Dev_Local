@@ -81,9 +81,26 @@ class Publicintro extends React.Component {
 			fileactivityimage2:null,
 			fileactivityimage3:null,
 			fileactivityimage4:null,
+			deleteprofilepic:false,
+			deleteactivityimage1:false,
+			deleteactivityimage2:false,
+			deleteactivityimage3:false,
+			deleteactivityimage4:false,
 			Consultation:[],
             consultColorArray:['','','','','legend-video','legend-video-part','legend-video-full','legend-video','legend-video-part','legend-video-full','legend-inperson','legend-inperson-part','legend-inperson-full']
-         };   
+         };
+
+this.fileChangedCloseHandlerID2 = this.fileChangedCloseHandlerID2.bind(this);
+         this.fileChangedCloseHandlerID21 = this.fileChangedCloseHandlerID21.bind(this);
+          this.fileChangedCloseHandlerID31 = this.fileChangedCloseHandlerID31.bind(this);
+         this.fileChangedCloseHandlerID3 = this.fileChangedCloseHandlerID3.bind(this);
+
+         this.fileChangedCloseHandlerID41 = this.fileChangedCloseHandlerID41.bind(this);
+         this.fileChangedCloseHandlerID4 = this.fileChangedCloseHandlerID4.bind(this);
+
+         this.fileChangedCloseHandlerID51 = this.fileChangedCloseHandlerID51.bind(this);
+         this.fileChangedCloseHandlerID5 = this.fileChangedCloseHandlerID5.bind(this);
+
      }   
 
 
@@ -189,7 +206,152 @@ class Publicintro extends React.Component {
 		// }
      }  
 
+
+
+fileChangedCloseHandlerID2 = event => {
+			
+				
+				this.setState({
+					fileactivityimage1: null
+				  })
+
+				this.setState({
+					deleteactivityimage1: true
+				  })
+
+			} 
+
+
+			fileChangedCloseHandlerID21 = event => {
+			
+				
+				this.setState({
+					activityimage1: null
+				  })
+
+				this.setState({
+					deleteactivityimage1: true
+				  })
+			} 
+
+
+
+
+fileChangedCloseHandlerID3 = event => {
+			
+				
+				this.setState({
+					fileactivityimage2: null
+				  })
+
+				this.setState({
+					deleteactivityimage2: true
+				  })
+
+			} 
+
+
+			fileChangedCloseHandlerID31 = event => {
+			
+				
+				this.setState({
+					activityimage2: null
+				  })
+
+				this.setState({
+					deleteactivityimage2: true
+				  })
+			} 
+
+
+
+
+fileChangedCloseHandlerID4 = event => {
+			
+				
+				this.setState({
+					fileactivityimage3: null
+				  })
+
+				this.setState({
+					deleteactivityimage3: true
+				  })
+
+			} 
+
+
+			fileChangedCloseHandlerID41 = event => {
+			
+				
+				this.setState({
+					activityimage3: null
+				  })
+
+				this.setState({
+					deleteactivityimage3: true
+				  })
+			} 
+
+
+
+			fileChangedCloseHandlerID5 = event => {
+			
+				
+				this.setState({
+					fileactivityimage4: null
+				  })
+
+				this.setState({
+					deleteactivityimage4: true
+				  })
+
+			} 
+
+
+			fileChangedCloseHandlerID51 = event => {
+			
+				
+				this.setState({
+					activityimage4: null
+				  })
+
+				this.setState({
+					deleteactivityimage4: true
+				  })
+			} 
+
+
+
+
+
  
+fileChangedCloseHandlerID1 = event => {
+			
+				
+				this.setState({
+					fileprofilepic: null
+				  })
+
+				this.setState({
+					deleteprofilepic: true
+				  })
+
+			} 
+
+
+			fileChangedCloseHandlerID11 = event => {
+			
+				
+				this.setState({
+					profilepic: null
+				  })
+
+				this.setState({
+					deleteprofilepic: true
+				  })
+			} 
+
+
 	
 			fileChangedHandlerID1 = event => {
 				console.log(event.target.files);
@@ -198,6 +360,13 @@ class Publicintro extends React.Component {
 					fileprofilepic: URL.createObjectURL(event.target.files[0])
 				  })
 			} 
+
+
+
+
+
+
+
 
 			fileChangedHandlerActivity1 = event => {
 				console.log(event.target.files);
@@ -587,6 +756,13 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 		 data.append('activityimage2',this.state.activityimage2); 
 		 data.append('activityimage3',this.state.activityimage3); 
 		 data.append('activityimage4',this.state.activityimage4); 
+
+
+ data.append('deleteactivityimage1',this.state.deleteactivityimage1); 
+		 data.append('deleteactivityimage2',this.state.deleteactivityimage2); 
+		 data.append('deleteactivityimage3',this.state.deleteactivityimage3); 
+		 data.append('deleteactivityimage4',this.state.deleteactivityimage4); 
+
          data.append('specialist_id',localStorage.getItem('specialist_id'));
          data.append('title',this.state.title);
          data.append('studies',this.state.studies);
@@ -1093,6 +1269,52 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 																									 <img src={this.state.fileprofilepic} style={{"width" : "5%"}}  />	
 																									 :   <img src={this.state.profilepic} style={{"width" : "5%"}}  />	  
 																									}
+ {this.state.profilepic!=null  && (
+          <button
+            onClick={this.fileChangedCloseHandlerID11}
+            style={{
+              position: 'absolute',
+              top: '-18px',
+              left: '90px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'white'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
+
+{this.state.fileprofilepic!=null   && (
+          <button
+            onClick={this.fileChangedCloseHandlerID1}
+            style={{
+              position: 'absolute',
+              top: '-18px',
+              left: '90px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'white'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
+
+
+
 																								<div class="change-photo-btn ml-0 hidden-sm hidden-xs">
 																									<span><i class="fa fa-upload"></i> Profile Photo *</span>
 																									<input type="file" class="upload"  onChange={this.fileChangedHandlerID1} />
@@ -1129,6 +1351,53 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 																									 <img src={this.state.fileactivityimage1} style={{"width" : "20%"}}  />	
 																									 :  <img src={this.state.activityimage1} style={{"width" : "20%"}}  />	  
 																									}
+
+
+ {this.state.activityimage1!=null  && (
+          <button
+            onClick={this.fileChangedCloseHandlerID21}
+            style={{
+              position: 'absolute',
+              bottom: '15px',
+              left: '0px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'white'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
+
+{this.state.fileactivityimage1!=null   && (
+          <button
+            onClick={this.fileChangedCloseHandlerID2}
+            style={{
+              position: 'absolute',
+              bottom: '15px',
+              left: '0px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'white'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
+
+
 																								</div>
 																							</div>
 																							<div class="col-md-3">
@@ -1143,6 +1412,51 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 																									 <img src={this.state.fileactivityimage2} style={{"width" : "20%"}}  />	
 																									 :   <img src={this.state.activityimage2} style={{"width" : "20%"}}  />	  
 																									}
+
+
+
+ {this.state.activityimage2!=null  && (
+          <button
+            onClick={this.fileChangedCloseHandlerID31}
+            style={{
+              position: 'absolute',
+              bottom: '15px',
+              left: '0px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'white'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
+
+{this.state.fileactivityimage2!=null   && (
+          <button
+            onClick={this.fileChangedCloseHandlerID3}
+            style={{
+              position: 'absolute',
+              bottom: '15px',
+              left: '0px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'white'
+            }}
+          >
+          
+            X
+          </button>
+        )}
 																								</div>
 																							</div>
 																							<div class="col-md-3">
@@ -1158,6 +1472,50 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 																									 :   <img src={this.state.activityimage3} style={{"width" : "20%"}}  />	  
 																									}
 
+
+
+ {this.state.activityimage3!=null  && (
+          <button
+            onClick={this.fileChangedCloseHandlerID41}
+            style={{
+              position: 'absolute',
+              bottom: '15px',
+              left: '0px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'white'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
+
+{this.state.fileactivityimage3!=null   && (
+          <button
+            onClick={this.fileChangedCloseHandlerID4}
+            style={{
+              position: 'absolute',
+              bottom: '15px',
+              left: '0px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'white'
+            }}
+          >
+          
+            X
+          </button>
+        )}
 																								</div>
 																							</div>
 																							<div class="col-md-3">
@@ -1172,6 +1530,51 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 																									 <img src={this.state.fileactivityimage4} style={{"width" : "20%"}}  />	
 																									 :   <img src={this.state.activityimage4} style={{"width" : "20%"}}  />	  
 																									}
+
+
+{this.state.activityimage4!=null  && (
+          <button
+            onClick={this.fileChangedCloseHandlerID51}
+            style={{
+              position: 'absolute',
+              bottom: '15px',
+              left: '0px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'white'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
+
+{this.state.fileactivityimage4!=null   && (
+          <button
+            onClick={this.fileChangedCloseHandlerID5}
+            style={{
+              position: 'absolute',
+              bottom: '15px',
+              left: '0px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'white'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
 																								</div>
 																							</div>
 
