@@ -101,11 +101,27 @@ class Publicextra extends React.Component {
 	 handleChangeEnd(event , i) { 
 		console.log('this.state.endArray22');
 		console.log(event);console.log(i);
+
+
+
+const startTime = new Date(this.state.startArray);
+const endTime = new Date(event);
+// alert(startTime.getTime());
+// alert(endTime.getTime());
+
+if(endTime.getTime()>startTime.getTime()){
+
 		let endArray = [...this.state.endArray];
 		endArray[i] = event;
 		this.setState({ endArray }); 
 		console.log('this.state.endArray');
 		console.log(this.state.endArray);
+	}
+else
+{
+	alert("End Time is Greater than start time");
+}
+
 	 }
 
 
