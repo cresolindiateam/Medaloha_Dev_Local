@@ -55,25 +55,42 @@ class Publicextra extends React.Component {
 		   timezoneData:[],
 		   endArray:[],
 		   workingDataFinal:[],
+		   // workingDataFinal2:[],
 		   daystring2:[],
 		   startstring2:[],
 		   endstring2:[],
+
+		   
 		   c_name: "" ,
 		   c_surname : "",
 		   c_image:"assets/img/doctors/doctor-thumb-02.jpg", 
 		   spec_image:"",
 		   name: "" ,
 		   surname : "",
+		   pairs :[],
 		   consultColorArray:['','','','','legend-video','legend-video-part','legend-video-full','legend-video','legend-video-part','legend-video-full','legend-inperson','legend-inperson-part','legend-inperson-full']
          };   
+         this.savePair = this.savePair.bind(this);
      }  
 
- 
+  savePair = (day, time) => {
+
+  	 this.setState(prevState => ({
+      pairs: [...prevState.pairs, { day, time }]
+    }));
+
+  };
+
+   checkForMatch = (day, time) => {
+    return this.state.pairs.some(pair => pair.day === day && pair.time === time);
+  };
 	 
-	 handleChangeTitle(i, event) { 
+	 handleChangeTitle(i , event) { 
+	 	 alert(event.target.value)
 		let daysArray = [...this.state.daysArray];
 		daysArray[i] = event.target.value;
-		this.setState({ daysArray }); 
+		this.setState({ daysArray });
+		 alert(daysArray); 
 	 }
 
 
@@ -91,8 +108,24 @@ class Publicextra extends React.Component {
 	 handleChangeStart(event , i) { 
 		console.log('this.state.startArray22');
 		console.log(event);console.log(i);
+		
+
+
 		let startArray = [...this.state.startArray];
 		startArray[i] = event;
+
+
+       //        const time = event.toString().split(" ")[4];
+       //        this.savePair(this.state.daysArray[i], time);
+       //        const isMatch = this.checkForMatch(this.state.daysArray[i], time);
+
+			    // if (isMatch) {
+			    //   alert("Both day and time match! please select another time slot");
+			    //   return false;
+			    // } else {
+			    //   //alert("No match found.");
+			    // }
+
 		this.setState({ startArray }); 
 		console.log('this.state.startArray');
 		console.log(this.state.startArray);
@@ -104,10 +137,10 @@ class Publicextra extends React.Component {
 
 
 
-const startTime = new Date(this.state.startArray);
+const startTime = new Date(this.state.startArray[i]);
 const endTime = new Date(event);
-// alert(startTime.getTime());
-// alert(endTime.getTime());
+ // alert(startTime.getTime());
+ // alert(endTime.getTime());
 
 if(endTime.getTime()>startTime.getTime()){
 
@@ -138,11 +171,14 @@ else
 	 createDynamicUI(workingDataArray){
 		 console.log('this.state.workingData');
 		  console.log(workingDataArray); 
-		  workingDataArray.forEach((data) =>{ 
-			this.state.daystring2.push(data.days);
-			this.state.startstring2.push(data.start_time);
-			this.state.endstring2.push(data.end_time);  
-		  });
+
+		 //  workingDataArray.forEach((data) =>{ 
+
+		 //  	console.log(data.days);
+			// this.state.daystring2.push(data.days);
+			// this.state.startstring2.push(data.start_time);
+			// this.state.endstring2.push(data.end_time);  
+		 //  });
 	 
 
 	 return workingDataArray.map((el, i) => 
@@ -239,13 +275,13 @@ else
 							 <label>Working Days</label>
 							  <select class="form-control"  onChange={this.handleChangeTitle.bind(this, i+this.state.workingDataFinal.length)} >
 							  <option value="">Please choose</option>
-								  <option>Sun</option>
-								  <option>Mon</option>
-								  <option>Tues</option>
-								  <option>Wed</option>
-								  <option>Thus</option>
-								  <option>Fri</option>
-								  <option>Sat</option> 
+								<option   value='Sun'>Sun</option>
+							   <option   value='Mon'>Mon</option>
+							   <option   value='Tues'>Tues</option>
+							   <option   value='Wed'>Wed</option>
+							   <option   value='Thus'>Thus</option>
+							   <option   value='Fri'>Fri</option>
+							   <option   value='Sat'>Sat</option>
 							  </select>
 						   </div>  
 						   <div class="col-md-3"> 
@@ -312,13 +348,13 @@ else
 							  <label>Working Days</label>
 							   <select class="form-control"  onChange={this.handleChangeTitle.bind(this, i)} >
 							       <option value="">Please choose</option>
-								   <option>Sun</option>
-								   <option>Mon</option>
-								   <option>Tues</option>
-								   <option>Wed</option>
-								   <option>Thus</option>
-								   <option>Fri</option>
-								   <option>Sat</option> 
+								  <option   value='Sun'>Sun</option>
+							   <option   value='Mon'>Mon</option>
+							   <option   value='Tues'>Tues</option>
+							   <option   value='Wed'>Wed</option>
+							   <option   value='Thus'>Thus</option>
+							   <option   value='Fri'>Fri</option>
+							   <option   value='Sat'>Sat</option>
 							   </select>
 							</div>  
 							<div class="col-md-3"> 
@@ -497,6 +533,9 @@ else
   
  componentDidMount() {   
 
+
+  
+
 	axios.get(process.env.REACT_APP_BASE_URL+`/specilistAPI/getReply?specialist_id=`+localStorage.getItem('specialist_id'))
 	.then(res => { 
 		this.setState({getreplyData : res.data.Data}); 
@@ -541,7 +580,30 @@ axios.get(process.env.REACT_APP_BASE_URL+`/specilistAPI/GetSpecialistWorkingTime
 	if(res.data.Status){   
 		res.data.WorkingData.forEach((item) => {
 			this.state.workingDataFinal.push(item); 
+			//this.state.workingDataFinal2.push(item); 
 		 });
+
+console.log("jani");
+console.log(this.state.workingDataFinal);
+console.log("jani");
+  this.state.workingDataFinal.forEach((data) =>{ 
+
+		  	// console.log(data.days);
+			// this.state.daystring2.push(data.days);
+			// this.state.startstring2.push(data.start_time);
+			// this.state.endstring2.push(data.end_time);  
+
+this.setState(prevState => ({
+    daystring2: [...prevState.daystring2, data.days],
+    startstring2: [...prevState.startstring2, data.start_time],
+    endstring2: [...prevState.endstring2, data.end_time]
+  }));
+
+
+
+
+		  });
+
 		 console.log('workingData2');
 		 console.log(this.state.workingDataFinal.length);
 	} 
@@ -641,53 +703,77 @@ if(res.data[0]['dob']=="" ||  res.data[0]['dob']=="0000-00-00" || res.data[0]['d
 
 	  SavePublicExtraInformation =(e) => { 
          e.preventDefault();   
-		 console.warn(this.state);  
+		 // console.warn(this.state);  
 
-		 console.log('daystring2');
+		 // console.log('daystring2');
  
-		 console.log(this.state.daystring2);
-		 console.log(this.state.daysArray);
+		 // console.log(this.state.daystring2);
+		 // console.log(this.state.daysArray);
 
-		 const daysUnique = Array.from(new Set(this.state.daystring2));
-		 const startsUnique = Array.from(new Set(this.state.startstring2));
-		 const endsUnique = Array.from(new Set(this.state.endstring2));
+		 // const daysUnique = Array.from(new Set(this.state.daystring3));
+		 // const startsUnique = Array.from(new Set(this.state.startstring3));
+		 // const endsUnique = Array.from(new Set(this.state.endstring3));
  
 
 		 var daystring = [];
+
+		 
 		 this.state.daysArray.forEach((item) => {
 			daystring.push(item);
 		 });
 
-		 if(daysUnique){ // Edit time 
-		 	daysUnique.forEach((item) => {
-				daystring.push(item);
-			 });
-		 }
+// alert(this.state.daystring3);
+// alert(this.state.startstring3);
+// alert(this.state.endstring3);
+
+ daystring = this.state.daystring2.concat(daystring);
+
+// alert(mergedArray);
+// alert(daysUnique+"haha");
+// alert(startsUnique+"ha aj");
+// alert(endsUnique+"ha vj");
+
+
+// alert(daystring+"hi");
+
+
+		 // if(daysUnique){ // Edit time 
+		 // 	daysUnique.forEach((item) => {
+			// 	daystring.push(item);
+			//  });
+		 // }
 
 		 var startstring = [];
+		 
 		 this.state.startArray.forEach((item) => {
 			var time = moment(item).format('HH:mm:ss');
 			startstring.push(time);
 		 });
 
-		 if(startsUnique){ // Edit time 
-			startsUnique.forEach((item) => {
-				startstring.push(item);
-			});
-		}
+		  startstring = this.state.startstring2.concat(startstring);
+		// alert(startstring);
+
+		//  if(startsUnique){ // Edit time 
+		// 	startsUnique.forEach((item) => {
+		// 		startstring.push(item);
+		// 	});
+		// }
 		 
+
 		 var endstring = [];
+		 
+
 		 this.state.endArray.forEach((item) => {
 			var time = moment(item).format('HH:mm:ss');
 			endstring.push(time);
 		 });
-
-
-		 if(endsUnique){ // Edit time 
-			endsUnique.forEach((item) => {
-				endstring.push(item);
-			});
-		}
+// alert(endstring);
+  endstring = this.state.endstring2.concat(endstring);
+		//  if(endsUnique){ // Edit time 
+		// 	endsUnique.forEach((item) => {
+		// 		endstring.push(item);
+		// 	});
+		// }
 		 
 
 		 const overviewData = {holistic_center :this.state.holistic_center , holistic_location : this.state.holistic_location,
