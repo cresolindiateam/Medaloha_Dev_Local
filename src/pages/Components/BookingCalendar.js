@@ -445,9 +445,15 @@ if(currentDate > targetDate)
         axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/removeEvent?eventId='+event.id)
         .then(res => {
         //  this.setState({Consultation : res.data});
-          console.log('res.data');
-          console.log(res.data);
-          event.remove();
+          console.log('jayja');
+          if(res.data[0].booking_status==2)
+          {
+         alert("can't remove this slot already booked");
+       }
+       else
+       {
+         event.remove();
+       }
         });   
          
       }
