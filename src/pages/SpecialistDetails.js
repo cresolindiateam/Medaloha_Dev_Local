@@ -377,6 +377,13 @@ console.log('str001');
       
     componentDidMount() { 
 
+
+if(!localStorage.getItem('globaluserid'))
+{
+	this.setState({confirmationPath : '../login'});
+}
+
+
  setTimeout(() => {
      this.setState({ setCopySuccess: '' }); // Set uploading state to false after some time (simulating upload completion)
     }, 2000);
@@ -1106,7 +1113,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 
 	<div class="">
 					<div class="col-md-12 mb-3"> 
-				     	{this.state.ConfirmButton && this.state.ConfirmButton==true ? <a href={this.state.confirmationPath} class="btn btn-primary  rounded float-right" id="myLink_33" style={{marginBottom:'10px'}} >Go To Booking</a>  : <a href='#' class="btn btn-primary  rounded float-right"  id="myLink_33"  style={{marginBottom:'10px'}}>Slots Not Available</a>}  
+				     	{this.state.ConfirmButton && this.state.ConfirmButton==true ? <a href={this.state.confirmationPath} class="ajay btn btn-primary  rounded float-right" id="myLink_33" style={{marginBottom:'10px'}} >Go To Booking</a>  : <a href='#' class="btn btn-primary  rounded float-right"  id="myLink_33"  style={{marginBottom:'10px'}}>Slots Not Available</a>}  
 					 </div> 
 					<div id="modal1" class="modal">
 						<div class="modal-content">
