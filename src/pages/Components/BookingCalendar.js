@@ -368,7 +368,19 @@ updateInputValue(event)
 
   handleDateSelect = (selectInfo) => {
 
-    //console.log('selectInfo');console.log(selectInfo);
+  
+const targetDate = new Date(selectInfo.start);
+const currentDate = new Date();
+
+if(currentDate > targetDate) 
+{
+  alert("Can not select Older dates");
+   this.setState({
+      modelIsOpen: !this.state.modelIsOpen
+    });
+} 
+
+
 
    this.setState({
       modelIsOpen: !this.state.modelIsOpen
