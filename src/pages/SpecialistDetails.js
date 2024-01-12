@@ -10,7 +10,9 @@ import { Redirect } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import GoToSection from './Components/Gotosections';
+import $ from 'jquery';
 require('dotenv').config();
+
 
 // const { t, i18n } = useTranslation(); 
 
@@ -172,7 +174,9 @@ class SpecialistDetails extends React.Component {
 			videoTitle6:'',
 			videoTitlePrice6:'',
 			videoLegend6:'',
-			setCopySuccess:'' 
+			setCopySuccess:'',
+			disablegotobooking:true,
+
 
 		 
         };   
@@ -222,6 +226,10 @@ class SpecialistDetails extends React.Component {
 		this.setState({ checked12: false }); 
 		var specialist_id = this.props.match.params.id;
         this.setState({confirmationPath:'/bookingmessageconsultation/'+specialist_id});
+
+this.setState({disablegotobooking:false});
+
+
      }
 	 handleChange11(e,legendValue) {
 		// alert(e.target.value);
@@ -233,6 +241,8 @@ class SpecialistDetails extends React.Component {
 		 this.setState({ checked12: false }); 
 		 var specialist_id = this.props.match.params.id;
 		 this.setState({confirmationPath:'/bookingmessageconsultation/'+specialist_id});
+
+		 this.setState({disablegotobooking:false});
 	  }
  
 	  handleChange12(e,legendValue) {
@@ -245,6 +255,8 @@ class SpecialistDetails extends React.Component {
 		  this.setState({ checked: false }); 
 		  var specialist_id = this.props.match.params.id;
 		  this.setState({confirmationPath:'/bookingmessageconsultation/'+specialist_id});
+
+		  this.setState({disablegotobooking:false});
 	   }
  
 	handleInputChanged(event) {
@@ -295,6 +307,8 @@ console.log('str001');
 		this.setState({ checked24: false });
 		var specialist_id = this.props.match.params.id;
         this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
+
+        this.setState({disablegotobooking:false});
      }
 
 	 handleChange21(e,legendValue) {
@@ -308,6 +322,8 @@ console.log('str001');
 		 this.setState({ checked24: false });
 		 var specialist_id = this.props.match.params.id;
 		 this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
+
+		 this.setState({disablegotobooking:false});
 	  }
  
 
@@ -322,6 +338,8 @@ console.log('str001');
 		 this.setState({ checked24: false });
 		 var specialist_id = this.props.match.params.id;
 		 this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
+
+		 this.setState({disablegotobooking:false});
 	  }
 
 	  handleChange24(e,legendValue) {
@@ -336,6 +354,8 @@ console.log('str001');
 	
 		 var specialist_id = this.props.match.params.id;
 		 this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
+
+		 this.setState({disablegotobooking:false});
 	  }
  
  
@@ -350,6 +370,9 @@ console.log('str001');
 			this.setState({ checked3: !this.state.checked3 });
 			var specialist_id = this.props.match.params.id;
 			this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
+
+
+			this.setState({disablegotobooking:false});
 		 }
 	
 		 handleChange31(e,legendValue) {
@@ -361,6 +384,8 @@ console.log('str001');
 			this.setState({ checked31: !this.state.checked31 });
 			var specialist_id = this.props.match.params.id;
 			this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
+
+			this.setState({disablegotobooking:false});
 		 }
 		
 		 handleChange33(e,legendValue) {
@@ -372,16 +397,43 @@ console.log('str001');
 			this.setState({ checked33: !this.state.checked33 });
 			var specialist_id = this.props.match.params.id;
 			this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
-		 }
+
 		
+// if(this.state.checked == false && this.state.checked11 == false && this.state.checked12 == false && this.state.checked2 == false 
+// 	&& this.state.checked21 == false && this.state.checked22 == false  && this.state.checked3 == false && this.state.checked31 == false ||
+// 	 this.state.checked33 == false)
+// {
+// 	alert("hello");
+//    this.setState({disablegotobooking:true});
+
+// }
+
+			this.setState({disablegotobooking:false});
+		 
+		 }
+
+ checkAllUnchecked = () => {
+    // Use jQuery to find all checkboxes and check their state
+    const areAllUnchecked = $('input[type="checkbox"]:checked').length === 0;
+    
+    areAllUnchecked ? this.setState({disablegotobooking:true}) : this.setState({disablegotobooking:false});
+  };		
       
     componentDidMount() { 
 
 
-if(!localStorage.getItem('globaluserid'))
+ this.interval = setInterval(this.checkAllUnchecked, 5000);
+
+
+
+
+if(!localStorage.getItem('globaluserid') && !localStorage.getItem('specialist_id')  )
 {
 	this.setState({confirmationPath : '../login'});
 }
+
+
+
 
 
  setTimeout(() => {
@@ -1113,7 +1165,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 
 	<div class="">
 					<div class="col-md-12 mb-3"> 
-				     	{this.state.ConfirmButton && this.state.ConfirmButton==true ? <a href={this.state.confirmationPath} class="ajay btn btn-primary  rounded float-right" id="myLink_33" style={{marginBottom:'10px'}} >Go To Booking</a>  : <a href='#' class="btn btn-primary  rounded float-right"  id="myLink_33"  style={{marginBottom:'10px'}}>Slots Not Available</a>}  
+				     	{this.state.ConfirmButton && this.state.ConfirmButton==true ? <a href={this.state.confirmationPath}   class={(this.state.disablegotobooking)?'ajay btn btn-primary  rounded float-right disabled-link':'ajay btn btn-primary  rounded float-right'}  id="myLink_33" style={{marginBottom:'10px'}} >Go To Booking</a>  : <a href='#' class="btn btn-primary  rounded float-right"  id="myLink_33"  style={{marginBottom:'10px'}}>Slots Not Available</a>}  
 					 </div> 
 					<div id="modal1" class="modal">
 						<div class="modal-content">
