@@ -1231,13 +1231,13 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 									<div class="widget-title font-weight-bold cus-font-size1 color-cus3">Chat: </div>
 								</div><div class="experience-box">
 									<p>
-										&nbsp;{(this.state.message!='undefined')?this.state.message:'-'}
+										&nbsp;{this.state.message}
 									</p>
 								</div></div>:""}
 
 							
 {
-                            	(this.state.messagePart!='')?
+                            	(this.state.messagePart!='' && this.state.messagePart!='undefined')?
 							<div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Chat PART: </div>
@@ -1253,7 +1253,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 
 
 {
-                            	(this.state.messageFull!='')?
+                            	(this.state.messageFull!='' && this.state.messageFull!='undefined')?
 							<div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Chat FULL: </div>
@@ -1267,21 +1267,21 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 
 
 {
-                            	(this.state.vivo!='')?
+                            	(this.state.vivo!='' && this.state.vivo!='undefined')?
 								<div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Vivo: </div>
 								</div>
 								<div class="experience-box">
 									<p class="">
-										&nbsp;{(this.state.vivo!='undefined')?this.state.vivo:'-'}
+										&nbsp;{this.state.vivo}
 									</p>
 								</div>
 							</div>:""}
 
 
 {
-                            	(this.state.vivoPart!='')?
+                            	(this.state.vivoPart!='' && this.state.vivoPart!='undefined')?
 								<div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Vivo PART: </div>
@@ -1295,7 +1295,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 
 
 {
-                            	(this.state.vivoFull!='')?
+                            	(this.state.vivoFull!='' && this.state.vivoFull!='undefined')?
 								<div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Vivo FULL: </div>
@@ -1309,7 +1309,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 
 
 {
-                            	(this.state.audio!='')?
+                            	(this.state.audio!='' && this.state.audio!='undefined')?
 							<div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Audio: </div>
@@ -1323,7 +1323,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 
 
 {
-                            	(this.state.audioPart!='')?
+                            	(this.state.audioPart!='' && this.state.audioPart!='undefined')?
 	                          <div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Audio PART: </div>
@@ -1336,7 +1336,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 							</div>:""}
 
 {
-                            	(this.state.audioFull!='')?
+                            	(this.state.audioFull!='' && this.state.audioFull!='undefined')?
 								<div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Audio FULL: </div>
@@ -1350,7 +1350,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 
 
 {
-                            	(this.state.video!='')?
+                            	(this.state.video!='' && this.state.video!='undefined')?
 <div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Video: </div>
@@ -1363,7 +1363,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 							</div>:""}
 
 {
-                            	(this.state.videoPart!='')?
+                            	(this.state.videoPart!='' && this.state.videoPart!='undefined')?
 	                          <div class="d-flex">
 								<div class="experience-box">
 									<div class="font-weight-bold cus-font-size1 color-cus3">Video PART: </div>
@@ -1377,7 +1377,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 
 
 {
-                            	(this.state.videoFull!='')?
+                            	(this.state.videoFull!='' && this.state.videoFull!='undefined')?
 
 								<div class="d-flex">
 								<div class="experience-box">
@@ -1398,7 +1398,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 						 
 						<div class="widget about-widget">
 							<h4 class="widget-title font-weight-bold">About Me</h4>
-							<p>{this.state.aboutme}</p>
+							<p>{this.state.aboutme!='null'?this.state.aboutme:""}</p>
 						</div>
 					 
 
@@ -1407,7 +1407,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 							<h4 class="widget-title font-weight-bold">My holistic expertise</h4>
 							<div class="experience-box">
 								<p>
-                                {this.state.specialistHolesticExp}
+                                {this.state.specialistHolesticExp!='null'?this.state.specialistHolesticExp:""}
 								</p>
 							</div>
 						</div>
@@ -1416,7 +1416,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 							<h4 class="widget-title font-weight-bold">Education</h4>
 							<div class="experience-box">
 								<p>
-                                {this.state.specialistEducation}
+                                {this.state.specialistEducation!='null'?this.state.specialistEducation:""}
 								</p>
 							</div>
 						</div>
@@ -1431,7 +1431,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 							<h4 class="widget-title font-weight-bold">Work & Experience</h4>
 							<div class="experience-box">
 								<p>
-								{this.state.specialistWorkingExperienceDetails}
+								{this.state.specialistWorkingExperienceDetails!='null'?this.state.specialistWorkingExperienceDetails:""}
 								</p>
 							</div>
 						</div>
@@ -1442,10 +1442,14 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 							<h4 class="widget-title font-weight-bold">See presentation videos</h4>
 							<div class="experience-box">
 								<p>
-									<a target="_blank" href={this.state.specialistVedioUrl1}>Video Title Here-1</a>
+								{ this.state.specialistVedioUrl1 && this.state.specialistVedioUrl1.trim() !=='' ?
+									<a target="_blank" href={this.state.specialistVedioUrl1}>Video Title Here-1</a>:""
+								}
 								</p>
 								<p>
-									<a target="_blank" href={this.state.specialistVedioUrl2}>Video Title Here-2</a>
+								{this.state.specialistVedioUrl2 && this.state.specialistVedioUrl2.trim() !=='' ?
+									<a target="_blank" href={this.state.specialistVedioUrl2}>Video Title Here-2</a>:""
+								}
 								</p>
 							</div>
 						</div>
@@ -1456,7 +1460,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 							<h4 class="widget-title font-weight-bold">Languages available for consultation</h4>
 							<div class="experience-box">
 								<p>
-									{this.state.specialistAvaLanguage}
+									{this.state.specialistAvaLanguage!='null'?this.state.specialistAvaLanguage:""}
 								</p>
 							</div>
 						</div>
@@ -1464,7 +1468,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 							<h4 class="widget-title font-weight-bold">Other contributions</h4>
 							<div class="experience-box">
 								<p>
-                                {this.state.specialistOtherContribution}
+                                {this.state.specialistOtherContribution!='null'?this.state.specialistOtherContribution:""}
 								</p>
 							</div>
 						</div>
@@ -1472,7 +1476,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 							<h4 class="widget-title font-weight-bold">Mission</h4>
 							<div class="experience-box">
 								<p>
-                                {this.state.specialistMission}
+                                {this.state.specialistMission!='null'?this.state.specialistMission:""}
 								</p>
 							</div>
 						</div>
@@ -1481,7 +1485,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 							<h4 class="widget-title font-weight-bold">Comments</h4>
 							<div class="experience-box">
 								<p>
-                                {this.state.specialistOtherComments}
+                                {this.state.specialistOtherComments!='null'?this.state.specialistOtherComments:""}
 								</p>
 							</div>
 						</div>

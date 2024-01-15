@@ -714,21 +714,21 @@ if(this.state.video_full_trigger==false)
             return false;
 		  }
 
-		  if(this.state.aboutme.length>1000){
+		  if(this.state.aboutme  && this.state.aboutme.length>1000){
 			alert('Please enter 1000 Max Consultation Description (About).');
             return false;
 		  }
 
-		  if(this.state.holisticexperience.length>1000){
+		  if(this.state.holisticexperience && this.state.holisticexperience.length>1000){
 			alert('Please enter 1000 Max holistic experience .');
             return false;
 		  }
-		  if(this.state.education.length>1000){
+		  if(this.state.education  && this.state.education.length>1000){
 			alert('Please enter 1000 Max education .');
             return false;
 		  }
 
-		  if(this.state.workexperience.length>1000){
+		  if(this.state.workexperience && this.state.workexperience.length>1000){
 			alert('Please enter 1000 Max work experience .');
             return false;
 		  }
@@ -1143,20 +1143,20 @@ if(this.state.video_full_trigger==false)
 											<div class="col-12 col-md-12">
 												<div class="form-group">
 													<label>About me</label>
-													<textarea  class="c-h-10 form-control" placeholder="Max 1000 characters " onChange={(e)=>this.setState({aboutme:e.target.value})} value={this.state.aboutme} ></textarea>
+													<textarea  class="c-h-10 form-control" placeholder="Max 1000 characters " onChange={(e)=>this.setState({aboutme:e.target.value})} value={this.state.aboutme!='null'?this.state.aboutme:""} ></textarea>
 												</div>
 											</div>
 											<div class="col-12 col-md-12">
 												<div class="form-group">
 													<label class="">My holistic expertise *</label>
-													<textarea class="form-control c-h-10"  placeholder="Max 1000 characters" onChange={(e)=>this.setState({holisticexperience:e.target.value})} value={this.state.holisticexperience} ></textarea>
+													<textarea class="form-control c-h-10"  placeholder="Max 1000 characters" onChange={(e)=>this.setState({holisticexperience:e.target.value})} value={this.state.holisticexperience!='null'?this.state.holisticexperience:""} ></textarea>
 												</div>
 											</div>
 
 											<div class="col-12 col-md-12">
 												<div class="form-group">
 													<label class="">Education *</label>
-													<textarea  class="c-h-10 form-control" placeholder="Max 1000 characters" onChange={(e)=>this.setState({education:e.target.value})} value={this.state.education} ></textarea>
+													<textarea  class="c-h-10 form-control" placeholder="Max 1000 characters" onChange={(e)=>this.setState({education:e.target.value})} value={this.state.education!='null'?this.state.education:""} ></textarea>
 												</div>
 											</div>
 
@@ -1164,7 +1164,7 @@ if(this.state.video_full_trigger==false)
 												<div class="col-12 col-md-12">
 												<div class="form-group">
 													<label class="">Work &amp; Experience *</label>
-													<textarea  class="c-h-10 form-control" placeholder="Max 1000 characters" onChange={(e)=>this.setState({workexperience:e.target.value})} value={this.state.workexperience} ></textarea>
+													<textarea  class="c-h-10 form-control" placeholder="Max 1000 characters" onChange={(e)=>this.setState({workexperience:e.target.value})} value={this.state.workexperience!='null'?this.state.workexperience:""} ></textarea>
 												</div>
 											</div>
 											
@@ -1186,25 +1186,25 @@ if(this.state.video_full_trigger==false)
 											<div class="col-12 col-md-12">
 												<div class="form-group">
 													<label class="text-dark">Languages available for consultation</label>
-													<textarea  class="c-h-10 form-control" placeholder="Max 100 characters" onChange={(e)=>this.setState({languagedetails:e.target.value})} value={this.state.languagedetails} ></textarea>
+													<textarea  class="c-h-10 form-control" placeholder="Max 100 characters" onChange={(e)=>this.setState({languagedetails:e.target.value})} value={this.state.languagedetails!='null'?this.state.languagedetails:""} ></textarea>
 												</div>
 											</div>
 											<div class="col-12 col-md-12">
 												<div class="form-group">
 													<label class="text-dark">Other Contribution</label>
-													<textarea  class="c-h-10 form-control" placeholder="Max 1000 characters" onChange={(e)=>this.setState({othercontribution:e.target.value})} value={this.state.othercontribution} ></textarea>
+													<textarea  class="c-h-10 form-control" placeholder="Max 1000 characters" onChange={(e)=>this.setState({othercontribution:e.target.value})} value={this.state.othercontribution!='null'?this.state.othercontribution:""} ></textarea>
 												</div>
 											</div>
 											<div class="col-12 col-md-12">
 												<div class="form-group">
 													<label class="text-dark">Mission</label>
-													<textarea  class="c-h-10 form-control" placeholder="Max 1000 characters" onChange={(e)=>this.setState({mission:e.target.value})} value={this.state.mission} ></textarea>
+													<textarea  class="c-h-10 form-control" placeholder="Max 1000 characters" onChange={(e)=>this.setState({mission:e.target.value})} value={this.state.mission!='null'?this.state.mission:""} ></textarea>
 												</div>
 											</div>
 											<div class="col-12 col-md-12">
 												<div class="form-group">
 													<label class="text-dark">Comment</label>
-													<textarea  class="c-h-10 form-control" placeholder="Max 1000 characters" onChange={(e)=>this.setState({Comment:e.target.value})} value={this.state.Comment} ></textarea>
+													<textarea  class="c-h-10 form-control" placeholder="Max 1000 characters" onChange={(e)=>this.setState({Comment:e.target.value})} value={this.state.Comment!='null'?this.state.Comment:""} ></textarea>
 												</div>
 											</div>
 
