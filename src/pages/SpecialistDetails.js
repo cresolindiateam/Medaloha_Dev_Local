@@ -712,10 +712,20 @@ if(!localStorage.getItem('globaluserid') && !localStorage.getItem('specialist_id
   favSpecialist() { 
 	var specialist_id = this.props.match.params.id;
 	var ct_id = localStorage.getItem('customer_id');
-	if(ct_id== null){
-		alert("Please login before choose Favourite");
+	var sp_id = localStorage.getItem('specialist_id');
+
+
+if(sp_id == null && ct_id == null)
+{
+ alert("Please login before choose Favourite");
+		return false;	
+}
+else if(sp_id !=null && ct_id == null)
+{
+	// alert("Please login before choose Favourite");
 		return false;
-	} else {
+}
+ else {
 
 		const clientData = {user_id :ct_id, specialist_id : specialist_id}
 		console.log(clientData); 
