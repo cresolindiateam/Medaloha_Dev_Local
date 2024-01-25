@@ -192,9 +192,29 @@ class SpecialistDetails extends React.Component {
           console.log(event.target.files);
         this.setState({ idback: event.target.files[0] })
       } 
+
+       GoogleMapRedirect = event => {
+
+
+
+    const country = this.state.SpecialistCountry!='null'?this.state.SpecialistCountry:""; // Replace with your desired country
+    const city = this.state.SpecialistCity!='null'?this.state.SpecialistCity:""; // Replace with your desired city
+
+    // Construct the Google Maps URL with the specified country and city
+
+    if(country || city){
+    const mapUrl = `https://www.google.com/maps?q=${city},${country}`;
+
+    // Redirect the user to the Google Maps URL
+    window.location.href = mapUrl;
+   }
+}
       
        ClipboardComponent = () => {
  
+
+
+
   const textToCopy = window.location.href;
 
 
@@ -420,6 +440,7 @@ console.log('str001');
   };		
       
     componentDidMount() { 
+
 
 
  this.interval = setInterval(this.checkAllUnchecked, 5000);
@@ -1615,13 +1636,13 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 												<div class="widget-content">
 													<h3>Location </h3><hr/>
 													<div class="doc-info-cont">
-														<h4 class="doc-name"><a href="specialist-profile.html" class="text-dark">{this.state.Holisticcenter}
+														<h4 class="doc-name"><a href="specialist-profile.html" class="text-dark">{this.state.Holisticcenter!='null'?this.state.Holisticcenter:""}
 														</a></h4>
-														<p class="doc-speciality">{this.state.Holisticlocation}</p>
+														<p class="doc-speciality">{this.state.Holisticlocation!='null'?this.state.Holisticlocation:""}</p>
 													 
 
 														<div class="clinic-details">
-															<p class="doc-location mb-2"><i class="fas fa-map-marker-alt"></i> {this.state.SpecialistCountry}, ({this.state.SpecialistCity}) -<a href="" class="text-info font-weight-bold">Get Direction</a>
+															<p class="doc-location mb-2"><i class="fas fa-map-marker-alt"></i> {this.state.SpecialistCountry!='null'?this.state.SpecialistCountry:""}, ({this.state.SpecialistCity!='null'?this.state.SpecialistCity:""}) -<a href="javascript:void(0)" onClick={this.GoogleMapRedirect} class="text-info font-weight-bold">Get Direction</a>
 															</p>
 															<ul class="clinic-gallery">
                                                             {this.state.SpecialistActivityImg1 !=  null ?
@@ -1684,12 +1705,12 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 <div class="listing-day">
 
 
-<div class="day">{(datat.length>0)? datat.slice(0, datat.indexOf('-')):''}</div>
+<div class="day">{datat!='null'?(datat.length>0)? datat.slice(0, datat.indexOf('-')):'':''}</div>
 
 
 
 <div class="time-items">
-									<span class="time">{(datat.length>0)? datat.slice(datat.indexOf('-') + 1):''} </span>
+									<span class="time">{datat!='null'?(datat.length>0)? datat.slice(datat.indexOf('-') + 1):'':""} </span>
 								</div>
 
 
@@ -1702,7 +1723,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 														
 															<hr/>
  
-															<h4 class="text-center">Time Zone: {this.state.SpecialistTimezone}  {this.state.SpecialistOffsetString} </h4>
+															<h4 class="text-center">Time Zone: {this.state.SpecialistTimezone!='null' && this.state.SpecialistTimezone!='Select Country'?this.state.SpecialistTimezone:''}  {this.state.SpecialistOffsetString!='+undefined'?this.state.SpecialistOffsetString:""} </h4>
 														</div>
 													</div>
 												 

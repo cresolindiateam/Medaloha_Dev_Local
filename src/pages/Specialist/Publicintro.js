@@ -1243,7 +1243,7 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 																							<div class="">
 																								<label>Set your location</label>
 																								<select class="form-control" value={this.state.country} onChange={(e)=> this.countrydropdown(e.target.value) }>
-																								<option>Select Country</option>
+																								<option value=''>Select Country</option>
 																									{this.state.countryData.map( (country)=> (
 																									<option value={country.id}>{country.name}</option> 
 																									))} 

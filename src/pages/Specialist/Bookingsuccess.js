@@ -184,7 +184,7 @@ class Bookingsuccess extends React.Component {
 										</p>
 										<a href={this.state.invoiceURL} class="btn btn-primary view-inv-btn">View Invoice</a>
 									</div>
-									<center><a  style={{display:'none'}} class="btn btn-info mt-4" onClick={this.addtogoogle}>Add To Google Calender</a></center>
+									<center><a   class="btn btn-info mt-4" onClick={this.addtogoogle}>Add To Google Calender</a></center>
 									
 								</div>
 							</div>

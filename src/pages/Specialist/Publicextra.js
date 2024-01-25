@@ -1117,13 +1117,13 @@ if(res.data[0]['dob']=="" ||  res.data[0]['dob']=="0000-00-00" || res.data[0]['d
 					<div class="col-12 col-md-6">
 					<div class="form-group">
 					<label>Name of your holistic centre</label>
-					<input type="text" class="form-control" placeholder="Name of your holistic centre" value={this.state.holistic_center} onChange={(e)=> this.setState({holistic_center:e.target.value})} />
+					<input type="text" class="form-control" placeholder="Name of your holistic centre" value={this.state.holistic_center!='null'?this.state.holistic_center:""} onChange={(e)=> this.setState({holistic_center:e.target.value})} />
 					</div>
 					</div>
 					<div class="col-12 col-md-6">
 					<div class="form-group">
 					<label>Direction of the holistic location</label> 
-					<input type="text" class="form-control" placeholder="Direction of the holistic location" value={this.state.holistic_location} onChange={(e)=> this.setState({holistic_location:e.target.value})}  />
+					<input type="text" class="form-control" placeholder="Direction of the holistic location" value={this.state.holistic_location!='null'?this.state.holistic_location:""} onChange={(e)=> this.setState({holistic_location:e.target.value})}  />
 					<div class="text-left">
 					<input class="align-middle" type="checkbox" />
 					Exact location provided on demand or after booking
