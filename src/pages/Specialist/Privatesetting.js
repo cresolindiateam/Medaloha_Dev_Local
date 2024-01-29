@@ -336,6 +336,14 @@ this.setState({ deletefileadditionaldegree: true });
 		this.setState({ messageBox:true });
 		this.setState({messageactive:'active'}); 
 		}
+
+		if(this.props.location.search=='?pat_review'){
+		this.setState({ calendarBox:false });
+		this.setState({ settingBox:false }); 
+		this.setState({ reviewBox:true });
+		this.setState({ messageBox:false });
+		this.setState({reviewactive:'active'}); 
+		}
 		
 
 
@@ -738,7 +746,7 @@ data.append('universitydegree',this.state.universitydegree);
 											</li> 
 							 
 											<li className="nav-item">
-												<a className="nav-link" href="#billing" data-toggle="tab" onClick={this.showreview}>
+												<a className={"nav-link "+this.state.reviewactive} href="#billing" data-toggle="tab" onClick={this.showreview}>
 
 												
 
@@ -1552,7 +1560,7 @@ data.append('universitydegree',this.state.universitydegree);
  
  
 				{this.state.reviewBox &&
-				 <div className="tab-pane" id="billing"> 
+				 <div className={"tab-pane "+this.state.reviewactive}  id="billing"> 
 				 <div className="widget review-listing mt-3">
 					<h2 className="text-center">Reviews  :</h2>
 					<ul className="comments-list"> 

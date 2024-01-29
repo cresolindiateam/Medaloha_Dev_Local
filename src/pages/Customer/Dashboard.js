@@ -351,7 +351,18 @@ this.setState({
  
 
 
-
+if(this.props.location.search=='?pat_appointments'){
+			this.setState({ messageBox:false });
+			this.setState({ settingBox:false }); 
+			this.setState({ reviewBox:false });
+		   this.setState({ favouriteBox:false });
+		   this.setState({ bookingBox:true });
+		   this.setState({messageactive:'block'})
+		   this.setState({bookingactive:'active'})
+		   this.setState({favouriteactive:'block'})
+		   this.setState({reviewactive:'block'})
+		   this.setState({settingactive:'block'})
+		 }
          
 
 
