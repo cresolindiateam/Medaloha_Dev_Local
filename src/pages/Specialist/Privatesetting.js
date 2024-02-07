@@ -79,7 +79,6 @@ class PrivateSetting extends React.Component {
 		   filemedicaldegree:null ,
 		   fileuniversitydegree:null,
 		   fileadditionaldegree:null,
-
 		   deleteuniversitydegree:false,
 		   deletemedicaldegree:false,
 		   deletefileadditionaldegree:false,
@@ -94,6 +93,67 @@ class PrivateSetting extends React.Component {
          this.fileChangedCloseHandlerID51 = this.fileChangedCloseHandlerID51.bind(this);
          this.fileChangedCloseHandlerID5 = this.fileChangedCloseHandlerID5.bind(this);
     }  
+
+
+
+
+handleFrontImageClick1  = event =>
+{
+	window.open(this.state.fileidfront, '_blank');
+}
+
+handleFrontImageClick2 = event =>
+{
+	window.open(this.state.idfront, '_blank');
+}
+
+
+handleFrontImageClick11  = event =>
+{
+	window.open(this.state.fileidback, '_blank');
+}
+
+handleFrontImageClick21 = event =>
+{
+	window.open(this.state.idback, '_blank');
+}
+
+
+
+handleImageClick21 = event =>
+{
+	window.open(this.state.filemedicaldegree, '_blank');
+}
+
+handleImageClick22 = event =>
+{
+	window.open(this.state.medicaldegree, '_blank');
+}
+
+
+handleImageClick31 = event =>
+{
+	window.open(this.state.fileuniversitydegree, '_blank');
+}
+
+handleImageClick32 = event =>
+{
+	window.open(this.state.universitydegree, '_blank');
+}
+
+handleImageClick41 = event =>
+{
+	window.open(this.state.fileadditionaldegree, '_blank');
+}
+
+handleImageClick42 = event =>
+{
+	window.open(this.state.additionaldegree, '_blank');
+}
+
+
+
+
 
 
 	handleInputChanged(event) {
@@ -188,10 +248,7 @@ fileChangedCloseHandlerID3 = event =>
 	fileChangedCloseHandlerID41 = event =>
 	{
 		this.setState({ universitydegree: null });
-
-this.setState({ deleteuniversitydegree: true });
-		
-		 // this.setState({ fileuniversitydegree: null });
+        this.setState({ deleteuniversitydegree: true });
 	}
 
 
@@ -505,13 +562,14 @@ this.setState({ deletefileadditionaldegree: true });
             return false;
          }
  
+
          if(this.state.placeofbirth==""){
             alert('Please enter place of birth.');
             return false;
          }
 		  
 
-		 if(this.state.dob==""){
+		 if(this.state.dob=="" || this.state.dob=="0000-00-00" || this.state.dob==null){
             alert('Please enter DOB.');
             return false;	
          }
@@ -522,12 +580,14 @@ this.setState({ deletefileadditionaldegree: true });
             return false;	
          }
 
-		 if(this.state.idfront==""){
+// console.log("rajbari");
+// console.log(this.state.idfront);
+		 if(this.state.idfront=="" ||  this.state.idfront==null){
             alert('Please upload Front Documents');
             return false;
          }
 		  
-		 if(this.state.idback==""){
+		 if(this.state.idback=="" ||  this.state.idback==null){
             alert('Please upload Back Documents.');
             return false;
          }
@@ -555,6 +615,7 @@ this.setState({ deletefileadditionaldegree: true });
 data.append('medicaldegree',this.state.medicaldegree); 	
 data.append('deletemedicaldegree',this.state.deletemedicaldegree); 	
 data.append('deletefileadditionaldegree',this.state.deletefileadditionaldegree); 
+data.append('deleteuniversitydegree',this.state.deleteuniversitydegree); 	
 
 
 
@@ -863,8 +924,8 @@ data.append('universitydegree',this.state.universitydegree);
 																	<input type="file" className="upload" onChange={this.fileChangedHandlerID1} />
 																</div>
 																<small className="form-text text-muted text-center"><b>  Front Side Image * </b> </small>
-																   {this.state.fileidfront!=null ? <img src={this.state.fileidfront}  style={{"width" : "20%"}} />:
-																    <img src={this.state.idfront} style={{"width" : "20%"}}  />	  
+																   {this.state.fileidfront!=null ? <img  onClick={this.handleFrontImageClick1}  src={this.state.fileidfront}  style={{"width" : "20%", "cursor" :"pointer"}} />:
+																    <img  onClick={this.handleFrontImageClick2}  src={this.state.idfront} style={{"width" : "20%", "cursor" :"pointer"}}  />	  
 																   }
 																    {this.state.idfront && (
           <button
@@ -916,11 +977,11 @@ data.append('universitydegree',this.state.universitydegree);
 																	<span><i className="fa fa-upload"></i> Identity Document *</span>
 																	<input type="file" className="upload" onChange={this.fileChangedHandlerID2} />
 																</div>
-																<small className="form-text text-muted text-center"><b> Back Side Image *</b></small>
+																<small className="form-text text-muted text-center"><b> Back 1Side Image *</b></small>
 															     
 
-{this.state.fileidback!=null ? <img src={this.state.fileidback}  style={{"width" : "20%"}} />:
-																    <img src={this.state.idback} style={{"width" : "20%"}}  />	  
+{this.state.fileidback!=null ? <img onClick={this.handleFrontImageClick11} src={this.state.fileidback}  style={{"width" : "20%","cursor":"pointer"}} />:
+																    <img   onClick={this.handleFrontImageClick21}  src={this.state.idback} style={{"width" : "20%","cursor":"pointer"}}  />	  
 																   }
 
 																    {this.state.idback && (
@@ -1030,9 +1091,10 @@ data.append('universitydegree',this.state.universitydegree);
 													<div className="change-photo-btn">
 														<span><i className="fa fa-upload"></i> 	Medicine Degree</span>
 														<input type="file" className="upload" onChange={this.fileChangedHandlerID3}  />
+														</div>
 														{this.state.filemedicaldegree !=null ? 
-																		<img src={this.state.filemedicaldegree} style={{"width" : "20%"}}  />	
-																		:  <img src={this.state.medicaldegree} style={{"width" : "20%"}}  />  
+																		<img src={this.state.filemedicaldegree}   onClick={this.handleImageClick21}  style={{"width" : "20%","cursor":"pointer"}}  />	
+																		:  <img src={this.state.medicaldegree}  onClick={this.handleImageClick22}  style={{"width" : "20%","cursor":"pointer"}}  />  
 																		}
 
  {this.state.filemedicaldegree!=null   && (
@@ -1040,8 +1102,8 @@ data.append('universitydegree',this.state.universitydegree);
             onClick={this.fileChangedCloseHandlerID3}
             style={{
               position: 'absolute',
-              top: '0px',
-              right: '15px',
+              top: '60px', 
+              left: '5px',
               backgroundColor: '#20c0f3',
               border: 'none',
               cursor: 'pointer',
@@ -1062,8 +1124,8 @@ data.append('universitydegree',this.state.universitydegree);
             onClick={this.fileChangedCloseHandlerID31}
             style={{
               position: 'absolute',
-              top: '0px',
-              right: '15px',
+              top: '60px',
+              left: '5px',
               backgroundColor: '#20c0f3',
               border: 'none',
               cursor: 'pointer',
@@ -1082,7 +1144,7 @@ data.append('universitydegree',this.state.universitydegree);
        
 
 
-													</div>
+													
 													<small className="form-text text-muted"></small> 
 													<small className="form-text text-muted text-center" ><b>
 													Upload  file with medical, pharmaceutical, biomedical degree, university exams, professional qualification and other relevant information.</b></small>
@@ -1114,9 +1176,10 @@ data.append('universitydegree',this.state.universitydegree);
 													<div className="change-photo-btn">
 														<span><i className="fa fa-upload"></i>University Degree</span>
 														<input type="file" className="upload"  onChange={this.fileChangedHandlerID4} />
+														</div>
 														{this.state.fileuniversitydegree !=null ? 
-																		<img src={this.state.fileuniversitydegree} style={{"width" : "20%"}}  />	
-																		:  <img src={this.state.universitydegree} style={{"width" : "20%"}}  />	  
+																		<img onClick={this.handleImageClick31}  src={this.state.fileuniversitydegree} style={{"width" : "20%","cursor":"pointer"}}  />	
+																		:  <img onClick={this.handleImageClick32} src={this.state.universitydegree} style={{"width" : "20%","cursor":"pointer"}}  />	  
 																		}
 
 
@@ -1125,8 +1188,8 @@ data.append('universitydegree',this.state.universitydegree);
             onClick={this.fileChangedCloseHandlerID41}
             style={{
               position: 'absolute',
-              top: '0px',
-              right: '15px',
+              top: '60px',
+              left: '5px',
               backgroundColor: '#20c0f3',
               border: 'none',
               cursor: 'pointer',
@@ -1147,8 +1210,8 @@ data.append('universitydegree',this.state.universitydegree);
             onClick={this.fileChangedCloseHandlerID4}
             style={{
               position: 'absolute',
-              top: '0px',
-              right: '15px',
+              top: '60px',
+              left: '5px',
               backgroundColor: '#20c0f3',
               border: 'none',
               cursor: 'pointer',
@@ -1164,7 +1227,7 @@ data.append('universitydegree',this.state.universitydegree);
         )}
 
 
-													</div>
+													
 													
 
 													<small className="form-text text-muted text-center"><b>
@@ -1198,9 +1261,10 @@ data.append('universitydegree',this.state.universitydegree);
 													<div className="change-photo-btn">
 														<span><i className="fa fa-upload"></i>Additional info to upload</span>
 														<input type="file" className="upload" onChange={this.fileChangedHandlerID5}  />
+														</div>
 														{this.state.fileadditionaldegree !=null ? 
-																		<img src={this.state.fileadditionaldegree} style={{"width" : "20%"}}  />	
-																		:  <img src={this.state.additionaldegree} style={{"width" : "20%"}}  />	  
+																		<img  onClick={this.handleImageClick41}  src={this.state.fileadditionaldegree} style={{"width" : "20%","cursor":"pointer"}}  />	
+																		:  <img onClick={this.handleImageClick42} src={this.state.additionaldegree} style={{"width" : "20%","cursor":"pointer"}}  />	  
 																		}
 
 
@@ -1209,8 +1273,8 @@ data.append('universitydegree',this.state.universitydegree);
             onClick={this.fileChangedCloseHandlerID51}
             style={{
               position: 'absolute',
-              top: '0px',
-              right: '15px',
+              top: '60px',
+              left: '38%',
               backgroundColor: '#20c0f3',
               border: 'none',
               cursor: 'pointer',
@@ -1231,8 +1295,8 @@ data.append('universitydegree',this.state.universitydegree);
             onClick={this.fileChangedCloseHandlerID5}
             style={{
               position: 'absolute',
-              top: '0px',
-              right: '15px',
+              top: '60px',
+              left: '38%',
               backgroundColor: '#20c0f3',
               border: 'none',
               cursor: 'pointer',
@@ -1250,11 +1314,11 @@ data.append('universitydegree',this.state.universitydegree);
 
 
 
-													</div>
+											<small className="form-text text-muted text-center">Allowed PDF, JPG, GIF or PNG. Max size of 5MB</small></div></div>
+	
 
 												</div>
-												<small className="form-text text-muted text-center">Allowed PDF, JPG, GIF or PNG. Max size of 5MB</small></div></div>
-
+												
 												<div className="row "> 
 													<div className="col-md-12 mb-4">
 														<div className="submit-section">
