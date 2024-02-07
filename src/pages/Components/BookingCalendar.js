@@ -62,6 +62,15 @@ updateInputValue(event)
   }
 }
             componentDidMount() {
+
+
+axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/EmailRegisterForNextSlotCheck?spec_id='+localStorage.getItem('specialist_id'))
+                  .then(response => { 
+                   
+                   console.log(response.data);
+                  })
+
+
                 axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetCalendarEvents?specialist_id='+localStorage.getItem('specialist_id'))
                   .then(response => { 
                     this.setState({event: response.data})
@@ -369,6 +378,9 @@ updateInputValue(event)
   handleDateSelect = (selectInfo) => {
 
   
+
+
+
 const targetDate = new Date(selectInfo.start);
 const currentDate = new Date();
 
@@ -385,6 +397,14 @@ if(currentDate > targetDate)
    this.setState({
       modelIsOpen: !this.state.modelIsOpen
     });
+
+
+
+
+
+
+
+
 
 
     var year = moment(selectInfo.startStr).format('YYYY-MM-DD');

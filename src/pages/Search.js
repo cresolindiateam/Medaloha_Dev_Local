@@ -303,7 +303,10 @@ chooseEvent= e => {
 
 
   gotopage(text,spec_id,count,price, legendid) { 
-	 //alert(count); 
+	 alert(count);
+
+
+
 	  localStorage.setItem('value',price); // price
 	  localStorage.setItem('legend',legendid);  // legend id  
   if(text==null){ 
@@ -313,6 +316,8 @@ chooseEvent= e => {
   	if(text=='chat'){
   	 const { history } = this.props; 
 	   if(count==2)
+
+
         history.push("/specialistDetails/"+spec_id);
 		if(count==1)
 	    history.push("/bookingmessageconsultation/"+spec_id); 
@@ -321,8 +326,29 @@ chooseEvent= e => {
     if(text=='video'){
   	 const { history } = this.props; 
 	   if(count==2)
+	   		//alert(legendid+"vijay");
+{
+
+var ct_id = localStorage.getItem('customer_id')
+
+if(ct_id!=null)
+{
+const clientData = {user_id :ct_id, specialist_id : spec_id}
+		console.log(clientData); 
+		axios.post(process.env.REACT_APP_BASE_URL+`/customerAPI/EmailRegisterForNextSlot`, clientData)
+		.then(res => {  
+			// if(res.data['Status']){
+				alert(res);
+			// }
+
+		});
+}
+
 	   history.push("/specialistDetails/"+spec_id);
+
+	}
 	   if(count==1)
+	   	//alert(legendid+"ajay");
      history.push("/bookingvideoconsultation/"+spec_id);
     }
 
@@ -549,8 +575,8 @@ if(text=='audio'){
  <li class="list-group-item d-flex">
    <img src="assets/images/video.png" class="custom-width custom-height" />
    <h6 class="orange ml-2 text-left consult_text_box">Video </h6>
-  {data.OthersData && data.OthersData['videoCount']==0 ?  <button  onClick={e=>this.gotopage('video',data.SpecialistPublicPrivateID,0,0,0)} class="w-100 bg-orange font-size-10 font-weight-bold" >
-   No free shots: <i class="fa fa-bell"></i> Alert 
+  {data.OthersData && data.OthersData['videoCount']==0 ?  <button  onClick={e=>this.gotopage('video',data.SpecialistPublicPrivateID,2,0,0)} class="w-100 bg-orange font-size-10 font-weight-bold" >
+   No free slots: <i class="fa fa-bell"></i> Alert 
   </button> : <button onClick={e=>this.gotopage('video',data.SpecialistPublicPrivateID,data.OthersData['videoCount'],data.OthersData['videoPrice'],4)} class="w-100 bg-orange font-size-10 font-weight-bold" >
    Next Availability:   {data.OthersData['videoDate']}
   </button>}
@@ -562,8 +588,8 @@ if(text=='audio'){
 <img src="assets/images/audio.png" class="cystom-width custom-height" />
 <h6 class="orange ml-2 text-left consult_text_box" >&nbsp;Audio</h6>
 
-{data.OthersData && data.OthersData['audioCount']==0 ?<button class="w-100 bg-orange text-white font-weight-bold font-size-11" onClick={e=>this.gotopage('audio',data.SpecialistPublicPrivateID,0,0,0)}>
-   No free shots: <i class="fa fa-bell"></i> Alert 
+{data.OthersData && data.OthersData['audioCount']==0 ?<button class="w-100 bg-orange text-white font-weight-bold font-size-11" onClick={e=>this.gotopage('audio',data.SpecialistPublicPrivateID,2,0,0)}>
+   No free slots: <i class="fa fa-bell"></i> Alert 
 </button> : <button class="w-100 bg-orange text-white font-weight-bold font-size-11" onClick={e=>this.gotopage('audio',data.SpecialistPublicPrivateID,data.OthersData['audioCount'],data.OthersData['audioPrice'],7)}>
 Next Availability: {data.OthersData['audioDate']}
 </button>}
@@ -573,8 +599,8 @@ Next Availability: {data.OthersData['audioDate']}
 <li class="list-group-item d-flex">
 <img src="assets/images/live.png" class="cystom-width custom-height" />
 <h6 class="blue ml-2 text-left consult_text_box" >&nbsp;In-vivo</h6>
-{data.OthersData && data.OthersData['vivoCount']==0 ? <button class="w-100 bg-blue text-white font-weight-bold font-size-11" onClick={e=>this.gotopage('invivo',data.SpecialistPublicPrivateID,0,0,0)}>
-   No free shots: <i class="fa fa-bell"></i> Alert 
+{data.OthersData && data.OthersData['vivoCount']==0 ? <button class="w-100 bg-blue text-white font-weight-bold font-size-11" onClick={e=>this.gotopage('invivo',data.SpecialistPublicPrivateID,2,0,0)}>
+   No free slots: <i class="fa fa-bell"></i> Alert 
 </button> : <button class="w-100 bg-blue text-white font-weight-bold font-size-11" onClick={e=>this.gotopage('invivo',data.SpecialistPublicPrivateID,data.OthersData['vivoCount'],data.OthersData['vivoPrice'],10)}>
 Next Availability: {data.OthersData['vivoDate']}
 </button>}
