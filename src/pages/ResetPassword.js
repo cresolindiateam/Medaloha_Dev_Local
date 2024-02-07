@@ -56,7 +56,7 @@ class ResetPassword extends React.Component {
   resetPassword =(e) => {
     e.preventDefault();    
      
-alert('hello');
+//alert('hello');
           if(this.state.password==""){
             alert('Please enter password.');
             return false;

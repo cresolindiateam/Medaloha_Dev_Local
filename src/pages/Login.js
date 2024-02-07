@@ -61,7 +61,7 @@ class Login extends React.Component {
  resetPassword =(e) => {
     e.preventDefault();    
      
-alert('hello');
+//alert('hello');
           if(this.state.forgotemail==""){
             alert('Please enter email.');
             return false;

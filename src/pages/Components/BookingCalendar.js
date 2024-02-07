@@ -64,11 +64,11 @@ updateInputValue(event)
             componentDidMount() {
 
 
-axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/EmailRegisterForNextSlotCheck?spec_id='+localStorage.getItem('specialist_id'))
-                  .then(response => { 
+// axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/EmailRegisterForNextSlotCheck?spec_id='+localStorage.getItem('specialist_id'))
+//                   .then(response => { 
                    
-                   console.log(response.data);
-                  })
+//                    console.log(response.data);
+//                   })
 
 
                 axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetCalendarEvents?specialist_id='+localStorage.getItem('specialist_id'))
@@ -126,6 +126,14 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/EmailRegisterForNextSlot
             console.log('eventBoxColor'); 
              console.log(this.state.eventBoxColor);
             console.log(this.state.ifCalendarBoxRender);
+
+
+axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/EmailRegisterForNextSlotCheck?spec_id='+localStorage.getItem('specialist_id'))
+                  .then(response => { 
+                   
+                   console.log(response.data);
+                  })
+            
             // this.handleDateSelect()
             //var data2 = [{"id":14,"title":" depak goud60","start":"2021-08-22 02:00:00"},{"id":15,"title":",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,60","start":"2021-08-22 02:00:00"},{"id":13,"title":"Ram coming again","start":"2021-08-24 01:00:00"}];
             // INITIAL_EVENTS.push({"id":14,"title":" depak 0000000","start":"2021-08-22 02:00:00"}) ;
