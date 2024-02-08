@@ -105,6 +105,58 @@ this.fileChangedCloseHandlerID2 = this.fileChangedCloseHandlerID2.bind(this);
 
 
 
+handleImageClick11  = event =>
+{
+	window.open(this.state.fileprofilepic, '_blank');
+}
+
+handleImageClick12 = event =>
+{
+	window.open(this.state.profilepic, '_blank');
+}
+
+
+handleImageClick21  = event =>
+{
+	window.open(this.state.fileactivityimage1, '_blank');
+}
+
+handleImageClick22 = event =>
+{
+	window.open(this.state.activityimage1, '_blank');
+}
+
+handleImageClick31  = event =>
+{
+	window.open(this.state.fileactivityimage2, '_blank');
+}
+
+handleImageClick32 = event =>
+{
+	window.open(this.state.activityimage2, '_blank');
+}
+
+handleImageClick41  = event =>
+{
+	window.open(this.state.fileactivityimage3, '_blank');
+}
+
+handleImageClick42 = event =>
+{
+	window.open(this.state.activityimage3, '_blank');
+}
+
+handleImageClick51  = event =>
+{
+	window.open(this.state.fileactivityimage4, '_blank');
+}
+
+handleImageClick52 = event =>
+{
+	window.open(this.state.activityimage4, '_blank');
+}
+
+
 	handleInputChanged(event) {
 		this.setState({
 		  reply_content: event.target.value
@@ -708,8 +760,8 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
             return false;
          }
 
-         if(this.state.city==null){
-            alert('Please enter place of birth.');
+         if(this.state.city == null || this.state.city == ""){
+            alert('Please enter city.');
             return false;
          } 
 
@@ -1241,7 +1293,7 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 
 																						<div class="col-12 col-md-5">
 																							<div class="">
-																								<label>Set your location</label>
+																								<label>Set your location *</label>
 																								<select class="form-control" value={this.state.country} onChange={(e)=> this.countrydropdown(e.target.value) }>
 																								<option value=''>Select Country</option>
 																									{this.state.countryData.map( (country)=> (
@@ -1254,7 +1306,7 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 																							<div class="form-group">
 																								<label> </label>  
 																							   <select class="form-control mt-2" value={this.state.city} onChange={(e)=> this.setState({ city: e.target.value})}>
-																									<option>Select City</option>
+																									<option value=''>Select City</option>
 																									{this.state.cityData.map( (city)=> (
 																										<option  selected={city.id==this.state.city?'selected':null} value={city.id}>{city.name}</option> 
 																									))} 
@@ -1266,8 +1318,8 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 																							<div class="upload-img">
 																								<label>Profile Photo *</label>
 																								{this.state.fileprofilepic!=null ? 
-																									 <img src={this.state.fileprofilepic} style={{"width" : "5%"}}  />	
-																									 :   <img src={this.state.profilepic} style={{"width" : "5%"}}  />	  
+																									 <img  onClick={this.handleImageClick11} src={this.state.fileprofilepic} style={{"width" : "5%","cursor":"pointer"}}  />	
+																									 :   <img onClick={this.handleImageClick12} src={this.state.profilepic} style={{"width" : "5%","cursor":"pointer"}}  />	  
 																									}
  {this.state.profilepic!=null  && (
           <button
@@ -1348,8 +1400,8 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 																									</div>
 																									<small class="form-text text-muted text-center"> Allowed JPG, GIF or PNG. Max size of 2MB</small>
 																									{this.state.fileactivityimage1 !=null ? 
-																									 <img src={this.state.fileactivityimage1} style={{"width" : "20%"}}  />	
-																									 :  <img src={this.state.activityimage1} style={{"width" : "20%"}}  />	  
+																									 <img  onClick={this.handleImageClick21}  src={this.state.fileactivityimage1} style={{"width" : "20%","cursor":"pointer"}}  />	
+																									 :  <img onClick={this.handleImageClick22} src={this.state.activityimage1} style={{"width" : "20%","cursor":"pointer"}}  />	  
 																									}
 
 
@@ -1409,8 +1461,8 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 																									</div>
 																									<small class="form-text text-muted text-center"> Allowed JPG, GIF or PNG. Max size of 2MB</small>
 																									{this.state.fileactivityimage2 !=null ? 
-																									 <img src={this.state.fileactivityimage2} style={{"width" : "20%"}}  />	
-																									 :   <img src={this.state.activityimage2} style={{"width" : "20%"}}  />	  
+																									 <img   onClick={this.handleImageClick31}  src={this.state.fileactivityimage2} style={{"width" : "20%","cursor":"pointer"}}  />	
+																									 :   <img onClick={this.handleImageClick32} src={this.state.activityimage2} style={{"width" : "20%","cursor":"pointer"}}  />	  
 																									}
 
 
@@ -1468,8 +1520,8 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 																									</div>
 																									<small class="form-text text-muted text-center"> Allowed JPG, GIF or PNG. Max size of 2MB</small>
 																									{this.state.fileactivityimage3!=null ? 
-																									 <img src={this.state.fileactivityimage3} style={{"width" : "20%"}}  />	
-																									 :   <img src={this.state.activityimage3} style={{"width" : "20%"}}  />	  
+																									 <img onClick={this.handleImageClick41}  src={this.state.fileactivityimage3} style={{"width" : "20%","cursor":"pointer"}}  />	
+																									 :   <img onClick={this.handleImageClick42} src={this.state.activityimage3} style={{"width" : "20%","cursor":"pointer"}}  />	  
 																									}
 
 
@@ -1527,8 +1579,8 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 																									</div>
 																									<small class="form-text text-muted text-center"> Allowed JPG, GIF or PNG. Max size of 2MB</small>
 																									{this.state.fileactivityimage4!=null ? 
-																									 <img src={this.state.fileactivityimage4} style={{"width" : "20%"}}  />	
-																									 :   <img src={this.state.activityimage4} style={{"width" : "20%"}}  />	  
+																									 <img onClick={this.handleImageClick51}  src={this.state.fileactivityimage4} style={{"width" : "20%","cursor":"pointer"}}  />	
+																									 :   <img onClick={this.handleImageClick52} src={this.state.activityimage4} style={{"width" : "20%","cursor":"pointer"}}  />	  
 																									}
 
 
