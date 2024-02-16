@@ -81,6 +81,7 @@ class Publicoverview extends React.Component {
 				audio_only_part_trigger:false ,
 				audio_only_full_trigger:false ,
 					Consultation:[],
+					nextEnabled:false,
             consultColorArray:['','','','','legend-video','legend-video-part','legend-video-full','legend-video','legend-video-part','legend-video-full','legend-inperson','legend-inperson-part','legend-inperson-full']
         
          };   
@@ -533,9 +534,35 @@ if(this.state.video_full_trigger==false)
             // this.setState({message:res.data[0]['consultation_description_message']});  
 			// this.setState({messsagepart:res.data[0]['consultation_description_message_part']});  
 			 this.setState({aboutme:res.data[0]['about_me']});
+
+if(this.state.aboutme!=''){
+
+	//alert("ajay");
+  this.setState({ nextEnabled: true });
+}
+
+
 			 this.setState({holisticexperience:res.data[0]['holistic_expertise']});
+
+if(this.state.holisticexperience!=''){
+  this.setState({ nextEnabled: true });
+}
+
+
+
 			 this.setState({education:res.data[0]['education']});
+
+if(this.state.education!=''){
+  this.setState({ nextEnabled: true });
+}
+
+
 			 this.setState({workexperience:res.data[0]['work_experience_detail']});
+
+if(this.state.workexperience!=''){
+  this.setState({ nextEnabled: true });
+}
+
 			 this.setState({videourl1:res.data[0]['presentation_video_url1']});
              this.setState({videourl2:res.data[0]['presentation_video_url2']});
 			 this.setState({languagedetails:res.data[0]['available_languages']});
@@ -574,62 +601,89 @@ console.log("mytest");
 
         if((this.state.message_trigger==true && this.state.message == "undefined") || (this.state.message_trigger==true && this.state.message == ""))
         {
+        	this.setState({ nextEnabled: false });
             alert('Please enter Message.');
             return false;
         }
 
 		  if( this.state.message_part_trigger==true &&  (this.state.messsagepart=="undefined" || this.state.messsagepart=="")){
+			
+            this.setState({ nextEnabled: false });
 			alert('Please enter Message Part.');
+
             return false;
 		  }
 
 		  if(this.state.message_full_trigger == true  && (this.state.messagefull=="" || this.state.messagefull=="undefined")){
+			
+            this.setState({ nextEnabled: false });
 			alert('Please enter Message Full.');
             return false;
 		  }
 		  
 		  if(this.state.video_trigger == true &&  (this.state.video=="" || this.state.video=="undefined")){
+			
+           this.setState({ nextEnabled: false });
 			alert('Please enter Video.');
             return false;
 		  }
 
 		  if(this.state.video_full_trigger == true && (this.state.videofull=="" || this.state.videofull=="undefined")){
+			
+            this.setState({ nextEnabled: false });
 			alert('Please enter Video Full.');
             return false;
 		  }
 
 		  if(this.state.video_part_trigger == true  && (this.state.videopart=="" || this.state.videopart=="undefined")){
+		
+		this.setState({ nextEnabled: false });
 			alert('Please enter Video Part.');
             return false;
 		  }
 
 
 		  if(this.state.audio_only_trigger == true &&  (this.state.audio=="" || this.state.audio=="undefined") ){
+		
+ this.setState({ nextEnabled: false });
 			alert('Please enter Audio.');
             return false;
 		  }
 
 		  if(this.state.audio_only_full_trigger ==true && (this.state.audiofull=="undefined" || this.state.audiofull=="")){
+		
+           this.setState({ nextEnabled: false });
 			alert('Please enter Audio Full.');
             return false;
 		  }
 
 		  if(this.state.audio_only_part_trigger ==true  && (this.state.audiopart=="undefined" || this.state.audiopart=="")){
+			
+
+           this.setState({ nextEnabled: false });
+
 			alert('Please enter Audio Part.');
             return false;
 		  }
 
 		  if(this.state.inperson_trigger==true &&  (this.state.vivo=="undefined" ||this.state.vivo=="")){
+		
+
+          this.setState({ nextEnabled: false });
 			alert('Please enter Vivo.');
             return false;
 		  }
 
 		  if(this.state.inperson_full_trigger  && (this.state.vivofull=="undefined" || this.state.vivofull=="")){
+			
+this.setState({ nextEnabled: false });
 			alert('Please enter Vivo Full.');
             return false;
 		  }
 
 		  if(this.state.inperson_part_trigger  && (this.state.vivopart=="undefined" || this.state.vivopart=="")){
+		
+         this.setState({ nextEnabled: false });
 			alert('Please enter Vivo Part.');
             return false;
 		  }
@@ -644,6 +698,8 @@ console.log("mytest");
 	//alert(this.state.workexperience);
 
 		  if(this.state.aboutme.length == 0){
+
+		  	this.setState({ nextEnabled: false });
 			alert('Please enter  Consultation Description (About).');
             return false;
 		  }
@@ -661,16 +717,23 @@ console.log("mytest");
         // }
 
          if(this.state.holisticexperience == "undefined" ||this.state.holisticexperience == "" || this.state.holisticexperience == "null" ){
+			
+              this.setState({ nextEnabled: false });
 			alert('Please enter your holistic experience .');
             return false;
 		  }
 
         if(this.state.education=="" ||  this.state.education=="null"){
+          
+          this.setState({ nextEnabled: false });
             alert('Please enter Education.');
             return false;
          }
 
          if(this.state.workexperience=="undefined" || this.state.workexperience=="" ||  this.state.workexperience=="null"){
+           
+           this.setState({ nextEnabled: false });
+
             alert('Please enter Work Experience.');
             return false;
          }  
@@ -753,6 +816,8 @@ console.log("mytest");
 			alert('Please enter 1000 Max work experience .');
             return false;
 		  }
+
+
 	 
          const overviewData = {setting_lanaguage_id:localStorage.getItem('SettingLanguage') ,message :this.state.message , messsagepart : this.state.messsagepart, aboutme : this.state.aboutme , holisticexperience : this.state.holisticexperience
              , education : this.state.education , specialist_id:localStorage.getItem('specialist_id')
@@ -775,6 +840,8 @@ console.log("mytest");
 			{ 
 				this.setState({id:res.data.PublicIntro_id});
 				alert('Update successfully'); 
+                 window.location.reload();
+				
 			}
 			else 
 			alert(res.data.Message); 
@@ -1129,10 +1196,10 @@ console.log("mytest");
 													: ""}
 
 													{this.state.audio_only_full_trigger && this.state.audio_only_full_trigger==true ? 
-													<div class="sub-heading" class="consult-text-desc" style={{color:'orange'}}> Audio FULL </div>
+													<div class="sub-heading" class="consult-text-desc" style={{color:'orange'}}  > Audio FULL </div>
 													: ""}
 												     {this.state.audio_only_full_trigger && this.state.audio_only_full_trigger==true ? 
-													<textarea  class="form-control c-h-5" placeholder="Max 500 characters" onChange={(e)=>this.setState({message:e.target.audiofull})} value={this.state.audiofull} ></textarea>
+													<textarea  class="form-control c-h-5" placeholder="Max 500 characters" onChange={(e)=>this.setState({audiofull:e.target.value})} value={this.state.audiofull} ></textarea>
 													: ""}
 
 													{this.state.inperson_trigger && this.state.inperson_trigger==true ? 
@@ -1249,7 +1316,7 @@ console.log("mytest");
 								 
 								<div class="col-md-6 col-6">
 									<center>
-					 				<a href="/publicdegree#degree" class=" mt-5 btn  btn-warning btn-sm submit-btn mb-4">Next {">>"}</a>
+					 				<a href={this.state.nextEnabled?"/publicdegree#degree":""} class=" mt-5 btn  btn-warning btn-sm submit-btn mb-4">Next {">>"}</a>
 									</center>
 								</div>
 							</div>

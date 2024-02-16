@@ -71,6 +71,36 @@ class Publicdegree extends React.Component {
         };   
      }   
 
+	
+
+removeImage(degreeId){
+		
+		alert(degreeId);
+		//return false;
+
+			//data.append('documentfile', selectorFiles);
+			//data.append('degree_id', degreeId);  
+			axios.get(process.env.REACT_APP_BASE_URL+`/specilistAPI/deletePublicDegreeImageById?degree_id=`+degreeId)
+			.then(res => {
+				//this.setState({countryData : res.data});
+			   console.log(res.data); 
+			   if(res.data.Status) 
+			   { 
+				   //this.setState({id:res.data.Publicdegreeid});
+				   alert('Delete Degree Image successfully'); 
+				   window.location.reload();
+			   }
+			   else 
+			   alert(res.data.Message);
+			   
+			   }).catch(function (error) {
+			   console.log(error);
+			 });   
+	
+	 }
+
+
+
 	 removeDegree(degreeId){
 		
 		if (window.confirm("Are you sure for delete this degree?")) {
@@ -365,9 +395,24 @@ class Publicdegree extends React.Component {
 			this.setState({ messageBox:false });
 		}
 
+
+fileChangedCloseHandlerID11 = event => {
+			
+				
+				this.setState({
+					valuesdocument: []
+				  })
+
+				this.setState({
+					deleteprofilepic: true
+				  })
+			} 
       
      componentDidMount() {   
  
+
+
+
  axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultation?specialist_id='+localStorage.getItem('specialist_id'))
 		 .then(res => {
 		   this.setState({Consultation : res.data});
@@ -951,12 +996,39 @@ class Publicdegree extends React.Component {
 														<span><i class="fa fa-upload"></i> 	Upload Degree</span>
 														<input type="file" class="upload"  onChange={(event)=>this.handleChangeFileFromDB( event.target.files[0],this.state.valuesDocIDs[i])}/>
 													</div>
+											
 													<small class="form-text text-muted">Upload Degree</small>
+
+ 
 													{this.state.valuesdocument[i] ?
 													<img src={process.env.REACT_APP_BASE_URL+"/public/uploads/docs/"+this.state.valuesdocument[i]} style={{"width" : "20%"}}  />
 													: null
 												    }
-												</div>
+
+
+ {this.state.valuesdocument[i]  && (
+          <button
+             onClick={(e)=>this.removeImage(this.state.valuesDocIDs[i])}
+            style={{
+              position: 'absolute',
+              top: '88px',
+              left: '5px',
+              backgroundColor: '#20c0f3',
+              border: 'none',
+              cursor: 'pointer',
+             borderRadius: '50%',
+             border: '1px solid',
+             zIndex: '10000000000',
+              color: 'white'
+            }}
+          >
+          
+            X
+          </button>
+        )}
+
+
+												    	</div>
 											</div>
 											
 									 </div> 
