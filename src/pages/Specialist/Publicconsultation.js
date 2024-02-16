@@ -78,6 +78,7 @@ class Publicextra extends React.Component {
 				surname : "",
 				reviewdata:[],
 					Consultation:[],
+					nextEnabled:false,
             consultColorArray:['','','','','legend-video','legend-video-part','legend-video-full','legend-video','legend-video-part','legend-video-full','legend-inperson','legend-inperson-part','legend-inperson-full']
         
 
@@ -179,6 +180,10 @@ class Publicextra extends React.Component {
 	}
   
  componentDidMount() {  
+
+
+
+
 
 axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultation?specialist_id='+localStorage.getItem('specialist_id'))
 		 .then(res => {
@@ -297,18 +302,44 @@ if(res.data[0]['dob']=="" ||  res.data[0]['dob']=="0000-00-00" || res.data[0]['d
 				if(element.provided_type==1){
 					this.setState({message_trigger:true});
 					this.setState({message_price:element.private_price});
+
+
+  if (this.state.message_price !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }	
+
 					this.setState({message_price_commissions:element.public_price});
 					this.state.messageCount.push(1);  
 				} 				
 				if(element.provided_type==2){
 					this.setState({message_part_trigger:true});
 					this.setState({message_part_price:element.private_price});
+	
+alert(this.state.message_part_price)
+ if (this.state.message_part_price !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
+
+      alert(this.state.nextEnabled);
+
 					this.setState({message_part_price_commissions:element.public_price});
 					this.state.messageCount.push(1);  
 				}
 				if(element.provided_type==3){
 					this.setState({message_full_trigger:true});
 					this.setState({message_full_price:element.private_price});
+				
+
+ if (this.state.message_full_price !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
+
 					this.setState({message_full_price_commissions:element.public_price});
 					this.state.messageCount.push(1);  
 				}
@@ -317,6 +348,16 @@ if(res.data[0]['dob']=="" ||  res.data[0]['dob']=="0000-00-00" || res.data[0]['d
 				if(element.provided_type==4){
 					this.setState({video_trigger:true});
 					this.setState({video_price:element.private_price});
+
+
+
+ if (this.state.video_price !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
+
+
 					this.setState({video_price_commissions:element.public_price});
 					 this.state.videoCount.push(1);  
 				}
@@ -324,6 +365,14 @@ if(res.data[0]['dob']=="" ||  res.data[0]['dob']=="0000-00-00" || res.data[0]['d
 				if(element.provided_type==5){
 					this.setState({video_part_trigger:true});
 					this.setState({video_part_price:element.private_price});
+				
+
+if(this.state.video_part_price !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
+
 					this.setState({video_part_price_commissions:element.public_price});
 					this.state.videoCount.push(1);  
 				}
@@ -331,6 +380,14 @@ if(res.data[0]['dob']=="" ||  res.data[0]['dob']=="0000-00-00" || res.data[0]['d
 				if(element.provided_type==6){
 					this.setState({video_full_trigger:true});
 					this.setState({video_full_price:element.private_price});
+		
+if(this.state.video_full_price !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
+
+
 					this.setState({video_full_price_commissions:element.public_price});
 					this.state.videoCount.push(1); 
 				}
@@ -358,6 +415,14 @@ if(res.data[0]['dob']=="" ||  res.data[0]['dob']=="0000-00-00" || res.data[0]['d
 				if(element.provided_type==10){  // inperson_full_price_commissionsinperson_part_price_commissions
 					this.setState({inperson_trigger:true});
 					this.setState({inperson_price:element.private_price});
+			
+
+if(this.state.inperson_price !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
+
 					this.setState({inperson_price_commissions:element.public_price});
 					this.state.inpersonCount.push(1);   
 				}
@@ -365,6 +430,15 @@ if(res.data[0]['dob']=="" ||  res.data[0]['dob']=="0000-00-00" || res.data[0]['d
 				if(element.provided_type==11){  // inperson_full_price_commissions
 					this.setState({inperson_part_trigger:true});
 					this.setState({inperson_part_price:element.private_price});
+				
+
+      if(this.state.inperson_part_price !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
+
+
 					this.setState({inperson_part_price_commissions:element.public_price});
 					this.state.inpersonCount.push(1);  
 				}
@@ -372,6 +446,12 @@ if(res.data[0]['dob']=="" ||  res.data[0]['dob']=="0000-00-00" || res.data[0]['d
 				if(element.provided_type==12){  // inperson_full_price_commissions
 					this.setState({inperson_full_trigger:true});
 					this.setState({inperson_full_price:element.private_price});
+				
+  if(this.state.inperson_full_price !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
 					this.setState({inperson_full_price_commissions:element.public_price});
 					this.state.inpersonCount.push(1);  
 				} 
@@ -379,8 +459,23 @@ if(res.data[0]['dob']=="" ||  res.data[0]['dob']=="0000-00-00" || res.data[0]['d
 			 }); 
 
 		 }); 
-		 
+	
+
+
+	  
+
+
+      
+
+
+
+
+
 		
+
+
+      
+
 	  }
 
 
@@ -1115,10 +1210,23 @@ countVideo(checkstatus,messagenumber){
 				</td>
 			
 				<td class="align-middle" colspan="3">
-					<input type="text" name="" placeholder="Select Price" class="form-control form-control1" value={this.state.message_price}   onChange={(e) => {
+					<input type="text" name="" placeholder="Select Price" class="form-control form-control1" value={this.state.message_price
+
+
+ 
+
+
+					}   onChange={(e) => {
             const inputValue1 = e.target.value;
             if (!isNaN(inputValue1)) {
               this.selectprice1(inputValue1);
+             
+              if (inputValue1 !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
+
             }
           }}
 />
@@ -1135,12 +1243,23 @@ countVideo(checkstatus,messagenumber){
 				</td>
 			
 				<td class="align-middle" colspan="3">
-					<input type="text" name="" placeholder="Select Price" class="form-control form-control1"  value={this.state.message_part_price}   
+					<input type="text" name="" placeholder="Select Price" class="form-control form-control1"  value={this.state.message_part_price
+
+
+
+					}   
 
 onChange={(e) => {
             const inputValue2 = e.target.value;
             if (!isNaN(inputValue2)) {
               this.selectprice2(inputValue2);
+
+     if (inputValue2 !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
+
             }
           }}
 
@@ -1161,12 +1280,24 @@ onChange={(e) => {
 				</td>
 			
 				<td class="align-middle" colspan="3">
-					<input type="text" name="" placeholder="Select Price" class="form-control form-control1" value={this.state.message_full_price} 
+					<input type="text" name="" placeholder="Select Price" class="form-control form-control1" value={this.state.message_full_price
+
+
+
+					} 
 
 onChange={(e) => {
             const inputValue3 = e.target.value;
             if (!isNaN(inputValue3)) {
               this.selectprice3(inputValue3);
+
+     if (inputValue3 !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
+
+
             }
           }}
 					    />
@@ -1188,12 +1319,25 @@ onChange={(e) => {
 				<span class="color4">Audio Only</span>
 				</td> 
 				<td class="align-middle" colspan="3">
-				<input type="text" name="" placeholder="Select Price" class="form-control"  value={this.state.video_price}  
+				<input type="text" name="" placeholder="Select Price" class="form-control"  value={this.state.video_price
+
+
+
+
+
+				}  
 
 onChange={(e) => {
             const inputValue4 = e.target.value;
             if (!isNaN(inputValue4)) {
               this.selectprice4(inputValue4);
+
+     if (inputValue4 !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
+
             }
           }}
 
@@ -1217,13 +1361,24 @@ onChange={(e) => {
 				<span class="color4" >Audio Only</span>
 				</td> 
 				<td class="align-middle" colspan="3">
-				<input type="text" name="" placeholder="Select Price" class="form-control" value={this.state.video_part_price}  
+				<input type="text" name="" placeholder="Select Price" class="form-control" value={this.state.video_part_price
+
+
+
+
+				}  
 
 
 onChange={(e) => {
             const inputValue5 = e.target.value;
             if (!isNaN(inputValue5)) {
               this.selectprice5(inputValue5);
+
+                   if (inputValue5 !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
             }
           }}
 				   />
@@ -1245,13 +1400,25 @@ onChange={(e) => {
 				<span  class="color4">Audio Only</span>
 				</td> 
 				<td class="align-middle" colspan="3">
-				<input type="text" name="" placeholder="Select Price" class="form-control"  value={this.state.video_full_price}  
+				<input type="text" name="" placeholder="Select Price" class="form-control"  value={this.state.video_full_price
+
+
+
+
+
+				}  
 
 
 onChange={(e) => {
             const inputValue6 = e.target.value;
             if (!isNaN(inputValue6)) {
               this.selectprice6(inputValue6);
+
+                   if (inputValue6 !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
             }
           }}
 
@@ -1273,12 +1440,24 @@ onChange={(e) => {
 				</td>
 
 				<td class="align-middle" colspan="3">
-				<input type="text" name="" placeholder="Select Price" class="form-control"   value={this.state.inperson_price}   
+				<input type="text" name="" placeholder="Select Price" class="form-control"   value={this.state.inperson_price
+
+
+
+
+
+				}   
 
 onChange={(e) => {
             const inputValue7 = e.target.value;
             if (!isNaN(inputValue7)) {
               this.selectprice7(inputValue7);
+
+                   if (inputValue7 !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
             }
           }}
 
@@ -1304,6 +1483,12 @@ onChange={(e) => {
             const inputValue8 = e.target.value;
             if (!isNaN(inputValue8)) {
               this.selectprice8(inputValue8);
+
+                   if (inputValue8 !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
             }
           }}
 				/>
@@ -1330,6 +1515,13 @@ onChange={(e) => {
             const inputValue9 = e.target.value;
             if (!isNaN(inputValue9)) {
               this.selectprice9(inputValue9);
+
+
+                   if (inputValue9 !== '') {
+        this.setState({ nextEnabled: true });
+      } else {
+        this.setState({ nextEnabled: false });
+      }
             }
           }}
 				 />
@@ -1360,7 +1552,7 @@ onChange={(e) => {
 								</div> 
 								<div class="col-md-6 col-6">
 									<center>
-										<a href="/publicoverview#overview" class=" mt-5 btn  btn-warning btn-sm submit-btn mb-4">Next {">>"} </a>
+										<a href={this.state.nextEnabled?"/publicoverview#overview":""} class=" mt-5 btn  btn-warning btn-sm submit-btn mb-4">Next {">>"} </a>
 									</center>
 								</div>
 							</div>  

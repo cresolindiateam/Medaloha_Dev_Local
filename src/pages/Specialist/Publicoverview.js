@@ -566,65 +566,70 @@ if(this.state.video_full_trigger==false)
 	  SavePublicIntroInformation =(e) => { 
         e.preventDefault();   
 
-		console.warn(this.state);
+		//alert("hello");
 		
-        if(this.state.messsage && this.state.message==""){
+		console.log(typeof this.state.message);
+
+console.log("mytest");
+
+        if((this.state.message_trigger==true && this.state.message == "undefined") || (this.state.message_trigger==true && this.state.message == ""))
+        {
             alert('Please enter Message.');
             return false;
         }
 
-		  if(this.state.messsagepart  && this.state.messsagepart==""){
+		  if( this.state.message_part_trigger==true &&  (this.state.messsagepart=="undefined" || this.state.messsagepart=="")){
 			alert('Please enter Message Part.');
             return false;
 		  }
 
-		  if(this.state.messagefull  && this.state.messagefull==""){
+		  if(this.state.message_full_trigger == true  && (this.state.messagefull=="" || this.state.messagefull=="undefined")){
 			alert('Please enter Message Full.');
             return false;
 		  }
 		  
-		  if(this.state.video &&  this.state.video==""){
+		  if(this.state.video_trigger == true &&  (this.state.video=="" || this.state.video=="undefined")){
 			alert('Please enter Video.');
             return false;
 		  }
 
-		  if(this.state.videofull  && this.state.videofull==""){
+		  if(this.state.video_full_trigger == true && (this.state.videofull=="" || this.state.videofull=="undefined")){
 			alert('Please enter Video Full.');
             return false;
 		  }
 
-		  if(this.state.videopart  && this.state.videopart==""){
+		  if(this.state.video_part_trigger == true  && (this.state.videopart=="" || this.state.videopart=="undefined")){
 			alert('Please enter Video Part.');
             return false;
 		  }
 
 
-		  if(this.state.audio &&  this.state.audio==""){
+		  if(this.state.audio_only_trigger == true &&  (this.state.audio=="" || this.state.audio=="undefined") ){
 			alert('Please enter Audio.');
             return false;
 		  }
 
-		  if(this.state.audiofull  && this.state.audiofull==""){
+		  if(this.state.audio_only_full_trigger ==true && (this.state.audiofull=="undefined" || this.state.audiofull=="")){
 			alert('Please enter Audio Full.');
             return false;
 		  }
 
-		  if(this.state.audiopart  && this.state.audiopart==""){
+		  if(this.state.audio_only_part_trigger ==true  && (this.state.audiopart=="undefined" || this.state.audiopart=="")){
 			alert('Please enter Audio Part.');
             return false;
 		  }
 
-		  if(this.state.vivo &&  this.state.vivo==""){
+		  if(this.state.inperson_trigger==true &&  (this.state.vivo=="undefined" ||this.state.vivo=="")){
 			alert('Please enter Vivo.');
             return false;
 		  }
 
-		  if(this.state.vivofull  && this.state.vivofull==""){
+		  if(this.state.inperson_full_trigger  && (this.state.vivofull=="undefined" || this.state.vivofull=="")){
 			alert('Please enter Vivo Full.');
             return false;
 		  }
 
-		  if(this.state.vivopart  && this.state.vivopart==""){
+		  if(this.state.inperson_part_trigger  && (this.state.vivopart=="undefined" || this.state.vivopart=="")){
 			alert('Please enter Vivo Part.');
             return false;
 		  }
@@ -632,21 +637,40 @@ if(this.state.video_full_trigger==false)
 
 
 
+ console.log(typeof this.state.workexperience);
+	console.log(this.state.workexperience);
 
+	console.log("raju dady");
+	//alert(this.state.workexperience);
 
-
-
-        if(this.state.holisticexperience==""){
-            alert('Please enter your Holistic Experience.');
+		  if(this.state.aboutme.length == 0){
+			alert('Please enter  Consultation Description (About).');
             return false;
-        }
+		  }
 
-        if(this.state.education==""){
+		  if(this.state.aboutme && this.state.aboutme.length>1000){
+			alert('Please enter 1000 Max Consultation Description (About).');
+            return false;
+		  }
+
+
+
+        // if(this.state.holisticexperience==""){
+        //     alert('Please enter your Holistic Experience.');
+        //     return false;
+        // }
+
+         if(this.state.holisticexperience == "undefined" ||this.state.holisticexperience == "" || this.state.holisticexperience == "null" ){
+			alert('Please enter your holistic experience .');
+            return false;
+		  }
+
+        if(this.state.education=="" ||  this.state.education=="null"){
             alert('Please enter Education.');
             return false;
          }
 
-         if(this.state.workexperience==""){
+         if(this.state.workexperience=="undefined" || this.state.workexperience=="" ||  this.state.workexperience=="null"){
             alert('Please enter Work Experience.');
             return false;
          }  
@@ -714,10 +738,7 @@ if(this.state.video_full_trigger==false)
             return false;
 		  }
 
-		  if(this.state.aboutme  && this.state.aboutme.length>1000){
-			alert('Please enter 1000 Max Consultation Description (About).');
-            return false;
-		  }
+
 
 		  if(this.state.holisticexperience && this.state.holisticexperience.length>1000){
 			alert('Please enter 1000 Max holistic experience .');
