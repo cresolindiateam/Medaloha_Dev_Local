@@ -667,6 +667,8 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
         axios.get(process.env.REACT_APP_BASE_URL+`/specilistAPI/GetSpecialistPublicIntroByID?specialist_id=`+localStorage.getItem('specialist_id')+'&language_code='+localStorage.getItem('i18nextLng')+'&seetingLanguage='+localStorage.getItem('SettingLanguage'))
 	  	 .then(res => {
 			
+			console.log("publicintrodata");
+			console.log(res.data);
 		    	//this.setState({countryData : res.data});
 		 
 				this.setState({fullname:res.data[0]['first_name'] + " "+ res.data[0]['last_name']});
@@ -846,7 +848,7 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 			{ 
 				this.setState({id:res.data.PublicIntro_id});
 				alert('Update successfully'); 
-				window.location.reload();
+				//window.location.reload();
 			}
 			else 
 			alert(res.data.Message);
@@ -1388,7 +1390,7 @@ axios.get(process.env.REACT_APP_BASE_URL+'/specilistAPI/GetSpecialistConsultatio
 																						 
 
 
-																						<lebel>Other pics concerning your activity (max 4)</lebel>
+																						<lebel>Other pics demo concerning your activity (max 4)</lebel>
 																						<div class="row">
 																							<div class="col-md-3">
 																								<div class="upload-img">
