@@ -1604,7 +1604,7 @@ data.append('universitydegree',this.state.universitydegree);
 	<div className="col-xl-12">
 	<div className="chat-window"> 
  {this.state.booking_history=='' &&
- <p style={{textAlign:'center',color:'red'}}>Data not found</p>
+ <p style={{textAlign:'center',color:'green'}}>No messages found</p>
 }
 
 {this.state.booking_history!='' &&
