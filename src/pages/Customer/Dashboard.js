@@ -78,7 +78,8 @@ class Dashboard extends React.Component {
 		   searchvalue:'',
 		   streetaddress:'',
 		   recommend_select:'like-btn',
-		   recommend_deselect:'dislike-btn'
+		   recommend_deselect:'dislike-btn',
+		   imagePreview: null
 
 		   
         };   
@@ -299,6 +300,16 @@ this.setState({
 
     fileChangedHandler = event => {
         this.setState({ selectedFile: event.target.files[0] })
+
+
+ // Optionally, you can also preview the selected image here
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      // Set the preview image URL in state
+      this.setState({ imagePreview: e.target.result });
+    };
+    reader.readAsDataURL(event.target.files[0]);
+
       } 
 
 
@@ -920,8 +931,17 @@ else if(diffInMinutesbefore <= 5 && diffInMinutesbefore >= 0 )
                                                                 <img src={this.state.user_image} alt="User Image" /> 
                                                             </div>
                                                             <div class="upload-img">
+                                                            {this.state.imagePreview && (
+        <img
+          src={this.state.imagePreview}
+          alt="Preview"
+          style={{ maxWidth: '20%', maxHeight: '20px' }}
+        />
+      )}
                                                                 <div class="change-photo-btn">
                                                                     <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                                                    
+                                                                        
                                                                     <input type="file" class="upload"  onChange={this.fileChangedHandler} name="avatar" />
                                                                 </div>
                                                                 <small class="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
