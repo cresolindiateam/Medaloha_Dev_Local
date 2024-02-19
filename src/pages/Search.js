@@ -20,6 +20,7 @@ function settingLanguage(lang){
 
 class Dashboard extends React.Component {   
     
+
     constructor(props) {
         super(props);
         this.state = {
@@ -303,7 +304,7 @@ chooseEvent= e => {
 
 
   gotopage(text,spec_id,count,price, legendid) { 
-	 alert(count);
+	 
 
 
 
@@ -361,8 +362,36 @@ if(text=='audio'){
     }
 
       if(text=='invivo'){
+
+alert("hello12");
   	 const { history } = this.props;
 	   if(count==2)
+ {
+
+alert("hello1");
+var ct_id = localStorage.getItem('customer_id')
+
+if(ct_id!=null)
+{
+const clientData = {user_id :ct_id, specialist_id : spec_id}
+		console.log(clientData); 
+		axios.post(process.env.REACT_APP_BASE_URL+`/customerAPI/EmailRegisterForNextSlot`, clientData)
+		.then(res => {  
+			// if(res.data['Status']){
+				alert(res);
+			// }
+
+		});
+}
+
+
+ }
+
+
+
+
+
+
 	   history.push("/specialistDetails/"+spec_id);
 	   if(count==1)
        history.push("/bookingvideoconsultation/"+spec_id);
@@ -397,7 +426,10 @@ if(text=='audio'){
  
  
     render(){ 
-        const { t } = this.props; 
+        const { t } = this.props;
+        const emptyDataChat = {
+      display: 'none'
+    }; 
  return (     
 	<div class="main-wrapper">
 		<CustomerHeader/>  
@@ -504,7 +536,7 @@ if(text=='audio'){
 						   <span class="text-muted">&nbsp;
 						   </span>
 						   <span class="text-muted reviews">
-							 <u>No Reviews</u>
+							 <span>No Reviews</span>
 						   </span>
 						   </span>
 						   </div>
@@ -558,10 +590,12 @@ if(text=='audio'){
 <div class="card flex-fill mt-0 mb-0">
 <ul class="list-group list-group-flush">
 {data.LengendId && (data.LengendId.includes(1)==true || data.LengendId.includes(2)==true || data.LengendId.includes(3)==true) ?
-   <li class="list-group-item d-flex">
+  
+
+   <li class={data.MessageData && data.MessageData['Count']==0 ?'list-group-item d-flex emptyDataChat':"list-group-item d-flex"} >
 	   <img src="assets/images/written.png" class="custom-width custom-height"/>
 	   <h6 class="written_text_color ml-2 text-left consult_text_box">Chat</h6>
-	 {data.MessageData && data.MessageData['Count']==0 ?  <button class="w-100 written_box_color text-white font-weight-bold font-size-10" 
+	 {data.MessageData && data.MessageData['Count']==0 ?  <button  class="w-100 written_box_color text-white font-weight-bold font-size-10" 
 	   onClick={e=>this.gotopage('chat',data.SpecialistPublicPrivateID,2,0,0)} >
 		Make your request now 
 	 </button> : <button class="w-100 written_box_color text-white font-weight-bold font-size-10" 
@@ -569,6 +603,8 @@ if(text=='audio'){
 		Make your request now 
 	 </button> }
 </li> : null
+
+
 }	
 {data.LengendId && (data.LengendId.includes(4)==true || data.LengendId.includes(5)==true || data.LengendId.includes(6)==true) ?
  
@@ -595,7 +631,7 @@ Next Availability: {data.OthersData['audioDate']}
 </button>}
 
 </li>:null }
-{data.LengendId && (data.LengendId.includes(10)==true || data.LengendId.includes(12)==true || data.LengendId.includes(12)==true) ?
+{data.LengendId && (data.LengendId.includes(10)==true || data.LengendId.includes(11)==true || data.LengendId.includes(12)==true) ?
 <li class="list-group-item d-flex">
 <img src="assets/images/live.png" class="cystom-width custom-height" />
 <h6 class="blue ml-2 text-left consult_text_box" >&nbsp;In-vivo</h6>

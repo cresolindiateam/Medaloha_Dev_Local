@@ -50,3 +50,5 @@
   position: relative !important;
   opacity: 0 !important;
 }
+
+ .emptyDataChat{display: none!important;}

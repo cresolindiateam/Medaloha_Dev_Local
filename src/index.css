@@ -66,3 +66,4 @@ code {
     
     cursor: not-allowed; /* Change cursor to indicate not allowed */
   }
+  .emptyDataChat{display: none;}
