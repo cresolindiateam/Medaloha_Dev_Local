@@ -78,6 +78,10 @@ class SpecialistDetails extends React.Component {
            checked2:false,
 		   checked21:false,
 		   checked22:false,
+		   checked23:false,
+		   checked24:false,
+		   checked25:false,
+		   checked26:false,
            checked3:false,
 		   checked31:false,
 		   checked33:false,
@@ -238,7 +242,7 @@ class SpecialistDetails extends React.Component {
 }
 
 	  handleChange(e,legendValue) {
-        //alert(e.target.value);
+        alert("chat ");
 		localStorage.setItem('value',e.target.value);
 		localStorage.setItem('legend',legendValue); 
 		this.setState({ checked11: false });
@@ -250,6 +254,34 @@ class SpecialistDetails extends React.Component {
 this.setState({disablegotobooking:false});
 
 
+this.setState({ checked2: false }); 
+
+this.setState({ checked21: false }); 
+
+this.setState({ checked22: false }); 
+
+
+this.setState({ checked23: false }); 
+
+this.setState({ checked24: false }); 
+
+this.setState({ checked25: false }); 
+this.setState({ checked26: false }); 
+
+this.setState({ checked3: false }); 
+
+this.setState({ checked31: false }); 
+
+this.setState({ checked33: false }); 
+
+  // checked2:false,
+		//    checked21:false,
+		//    checked22:false,
+  //          checked3:false,
+		//    checked31:false,
+		//    checked33:false,
+
+
      }
 	 handleChange11(e,legendValue) {
 		// alert(e.target.value);
@@ -258,7 +290,25 @@ this.setState({disablegotobooking:false});
 		 
 		 this.setState({ checked11: !this.state.checked11 });
 		 this.setState({ checked: false }); 
-		 this.setState({ checked12: false }); 
+		 this.setState({ checked12: false });
+
+
+this.setState({ checked2: false }); 
+		 this.setState({ checked21: false });
+		 this.setState({ checked22: false }); 
+		 this.setState({ checked23: false });
+		 this.setState({ checked24: false }); 
+		 this.setState({ checked25: false });
+		 this.setState({ checked26: false });
+
+
+this.setState({ checked3: false }); 
+		 this.setState({ checked31: false });
+		 this.setState({ checked33: false }); 
+
+
+
+
 		 var specialist_id = this.props.match.params.id;
 		 this.setState({confirmationPath:'/bookingmessageconsultation/'+specialist_id});
 
@@ -273,6 +323,22 @@ this.setState({disablegotobooking:false});
 		  this.setState({ checked12: !this.state.checked12 });
 		  this.setState({ checked11: false }); 
 		  this.setState({ checked: false }); 
+
+
+this.setState({ checked2: false }); 
+		 this.setState({ checked21: false });
+		 this.setState({ checked22: false }); 
+		 this.setState({ checked23: false });
+		 this.setState({ checked24: false }); 
+		 this.setState({ checked25: false });
+		 this.setState({ checked26: false });
+
+
+this.setState({ checked3: false }); 
+		 this.setState({ checked31: false });
+		 this.setState({ checked33: false }); 
+
+
 		  var specialist_id = this.props.match.params.id;
 		  this.setState({confirmationPath:'/bookingmessageconsultation/'+specialist_id});
 
@@ -324,7 +390,26 @@ console.log('str001');
         this.setState({ checked2: !this.state.checked2 });
         this.setState({ checked21: false });
 		this.setState({ checked22: false });
+		this.setState({ checked23: false });
 		this.setState({ checked24: false });
+
+
+
+		 this.setState({ checked25: false });
+		 this.setState({ checked26: false });
+
+
+
+  this.setState({ checked12: false });
+		  this.setState({ checked11: false }); 
+		  this.setState({ checked: false }); 
+
+       this.setState({ checked3: false }); 
+		 this.setState({ checked31: false });
+		 this.setState({ checked33: false }); 
+
+
+
 		var specialist_id = this.props.match.params.id;
         this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
 
@@ -332,14 +417,28 @@ console.log('str001');
      }
 
 	 handleChange21(e,legendValue) {
-		// alert(e.target.value);
+	 
 		 localStorage.setItem('value',e.target.value);
 		 localStorage.setItem('legend',legendValue);
 		  
 		 this.setState({ checked21: !this.state.checked21 });
 		 this.setState({ checked2: false });
 		 this.setState({ checked22: false });
-		 this.setState({ checked24: false });
+		 this.setState({ checked23: false });
+		  this.setState({ checked24: false });
+		 this.setState({ checked25: false });
+ this.setState({ checked26: false });
+
+
+  this.setState({ checked12: false });
+		  this.setState({ checked11: false }); 
+		  this.setState({ checked: false }); 
+
+       this.setState({ checked3: false }); 
+		 this.setState({ checked31: false });
+		 this.setState({ checked33: false }); 
+
+
 		 var specialist_id = this.props.match.params.id;
 		 this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
 
@@ -348,14 +447,59 @@ console.log('str001');
  
 
 	  handleChange22(e,legendValue) {
-		// alert(e.target.value);
 		 localStorage.setItem('value',e.target.value);
 		 localStorage.setItem('legend',legendValue);
 		  
 		 this.setState({ checked22: !this.state.checked22 });
 		 this.setState({ checked2: false });
 		 this.setState({ checked21: false }); 
+		 this.setState({ checked23: false });
 		 this.setState({ checked24: false });
+		 this.setState({ checked25: false });
+		 this.setState({ checked26: false });
+
+
+
+
+ this.setState({ checked12: false });
+		  this.setState({ checked11: false }); 
+		  this.setState({ checked: false }); 
+
+       this.setState({ checked3: false }); 
+		 this.setState({ checked31: false });
+		 this.setState({ checked33: false }); 
+
+		 var specialist_id = this.props.match.params.id;
+		 this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
+
+		 this.setState({disablegotobooking:false});
+	  }
+
+
+	    handleChange23(e,legendValue) {
+		 localStorage.setItem('value',e.target.value);
+		 localStorage.setItem('legend',legendValue);
+		  
+		 this.setState({ checked23: !this.state.checked23 });
+		 this.setState({ checked2: false });
+		 this.setState({ checked22: false }); 
+
+
+ this.setState({ checked24: false });
+		 this.setState({ checked25: false });
+		 this.setState({ checked26: false }); 
+
+
+
+ this.setState({ checked12: false });
+		  this.setState({ checked11: false }); 
+		  this.setState({ checked: false }); 
+
+       this.setState({ checked3: false }); 
+		 this.setState({ checked31: false });
+		 this.setState({ checked33: false }); 
+
+		
 		 var specialist_id = this.props.match.params.id;
 		 this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
 
@@ -363,20 +507,96 @@ console.log('str001');
 	  }
 
 	  handleChange24(e,legendValue) {
-		// alert(e.target.value);
 		 localStorage.setItem('value',e.target.value);
 		 localStorage.setItem('legend',legendValue);
 		  
 		 this.setState({ checked24: !this.state.checked24 });
-		 this.setState({ checked2: false });
-		 this.setState({ checked21: false });
-		 this.setState({ checked22: false });
+		 this.setState({ checked25: false });
+		 this.setState({ checked26: false });
 	
+	
+this.setState({ checked2: false });
+		 this.setState({ checked21: false });
+		 this.setState({ checked22: false }); 
+ this.setState({ checked23: false }); 
+
+
+ this.setState({ checked12: false });
+		  this.setState({ checked11: false }); 
+		  this.setState({ checked: false }); 
+
+       this.setState({ checked3: false }); 
+		 this.setState({ checked31: false });
+		 this.setState({ checked33: false }); 
+
+
 		 var specialist_id = this.props.match.params.id;
 		 this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
 
 		 this.setState({disablegotobooking:false});
 	  }
+ 
+
+
+   handleChange25(e,legendValue) {
+		 localStorage.setItem('value',e.target.value);
+		 localStorage.setItem('legend',legendValue);
+		  
+		 this.setState({ checked25: !this.state.checked25 });
+		
+		 this.setState({ checked24: false });
+		 this.setState({ checked26: false });
+	
+
+
+	this.setState({ checked2: false });
+		 this.setState({ checked21: false });
+		 this.setState({ checked22: false }); 
+this.setState({ checked23: false }); 
+
+
+ this.setState({ checked12: false });
+		  this.setState({ checked11: false }); 
+		  this.setState({ checked: false }); 
+
+       this.setState({ checked3: false }); 
+		 this.setState({ checked31: false });
+		 this.setState({ checked33: false }); 
+		 var specialist_id = this.props.match.params.id;
+		 this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
+
+		 this.setState({disablegotobooking:false});
+	  }
+
+	    handleChange26(e,legendValue) {
+		 localStorage.setItem('value',e.target.value);
+		 localStorage.setItem('legend',legendValue);
+		  
+		 this.setState({ checked26: !this.state.checked26 });
+		 this.setState({ checked25: false });
+		 this.setState({ checked24: false });
+		 
+	
+
+	this.setState({ checked2: false });
+		 this.setState({ checked21: false });
+		 this.setState({ checked22: false }); 
+	 this.setState({ checked23: false });
+
+
+ this.setState({ checked12: false });
+		  this.setState({ checked11: false }); 
+		  this.setState({ checked: false }); 
+
+       this.setState({ checked3: false }); 
+		 this.setState({ checked31: false });
+		 this.setState({ checked33: false }); 
+		 var specialist_id = this.props.match.params.id;
+		 this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
+
+		 this.setState({disablegotobooking:false});
+	  }
+ 
  
  
 
@@ -388,6 +608,25 @@ console.log('str001');
 			this.setState({ checked33: false });
 			this.setState({ checked31: false });
 			this.setState({ checked3: !this.state.checked3 });
+
+
+
+
+this.setState({ checked2: false });
+		 this.setState({ checked21: false });
+		 this.setState({ checked22: false }); 
+		 this.setState({ checked23: false });
+		 this.setState({ checked24: false });
+		 this.setState({ checked25: false }); 
+ this.setState({ checked26: false }); 
+
+
+ this.setState({ checked12: false });
+		  this.setState({ checked11: false }); 
+		  this.setState({ checked: false }); 
+
+       
+
 			var specialist_id = this.props.match.params.id;
 			this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
 
@@ -402,6 +641,20 @@ console.log('str001');
 			this.setState({ checked3: false});
 			this.setState({ checked33: false });
 			this.setState({ checked31: !this.state.checked31 });
+
+
+			this.setState({ checked2: false });
+		 this.setState({ checked21: false });
+		 this.setState({ checked22: false }); 
+		 this.setState({ checked23: false });
+		 this.setState({ checked24: false });
+		 this.setState({ checked25: false }); 
+ this.setState({ checked26: false }); 
+
+
+ this.setState({ checked12: false });
+		  this.setState({ checked11: false }); 
+		  this.setState({ checked: false }); 
 			var specialist_id = this.props.match.params.id;
 			this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
 
@@ -414,7 +667,23 @@ console.log('str001');
 			localStorage.setItem('legend',legendValue);
 			this.setState({ checked3: false});
 			this.setState({ checked31: false });
+
+
 			this.setState({ checked33: !this.state.checked33 });
+			
+
+this.setState({ checked2: false });
+		 this.setState({ checked21: false });
+		 this.setState({ checked22: false }); 
+		 this.setState({ checked23: false });
+		 this.setState({ checked24: false });
+		 this.setState({ checked25: false }); 
+ this.setState({ checked26: false }); 
+
+
+ this.setState({ checked12: false });
+		  this.setState({ checked11: false }); 
+		  this.setState({ checked: false }); 
 			var specialist_id = this.props.match.params.id;
 			this.setState({confirmationPath:'/bookingvideoconsultation/'+specialist_id});
 
@@ -1067,7 +1336,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 
 												 	<div class="form-group pl-0 form-check orange">
 															<label class="form-check-label">{this.state.videoTitlePrice4}</label>	
-															<input type="checkbox" name="messageConfirm"    value={this.state.videoTitlePrice4}  checked={this.state.checked24}  onChange={(e)=>this.handleChange24(e,this.state.videoLegend4)}/>
+															<input type="checkbox" name="messageConfirm"    value={this.state.videoTitlePrice4}  checked={this.state.checked23}  onChange={(e)=>this.handleChange23(e,this.state.videoLegend4)}/>
 													</div>
 													
 	                                             }
@@ -1113,7 +1382,7 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 													
 <div class="form-group pl-0 form-check orange">
 															<label class="form-check-label">{this.state.videoTitlePrice5}</label>	
-																<input type="checkbox" name="messageConfirm"    value={this.state.videoTitlePrice5}  checked={this.state.checked25}  onChange={(e)=>this.handleChange24(e,this.state.videoLegend5)}/>
+																<input type="checkbox" name="messageConfirm"    value={this.state.videoTitlePrice5}  checked={this.state.checked25}  onChange={(e)=>this.handleChange25(e,this.state.videoLegend5)}/>
 														</div>
 
 													
