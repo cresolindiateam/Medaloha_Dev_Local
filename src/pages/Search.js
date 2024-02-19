@@ -363,12 +363,12 @@ if(text=='audio'){
 
       if(text=='invivo'){
 
-alert("hello12");
+
   	 const { history } = this.props;
 	   if(count==2)
  {
 
-alert("hello1");
+
 var ct_id = localStorage.getItem('customer_id')
 
 if(ct_id!=null)
@@ -536,7 +536,7 @@ const clientData = {user_id :ct_id, specialist_id : spec_id}
 						   <span class="text-muted">&nbsp;
 						   </span>
 						   <span class="text-muted reviews">
-							 <span>No Reviews</span>
+							 {data.SpecilistRatingCount>0?"":<span>No Reviews</span>}
 						   </span>
 						   </span>
 						   </div>

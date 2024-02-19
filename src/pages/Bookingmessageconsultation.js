@@ -35,6 +35,8 @@ class Bookingmessageconsultation extends React.Component {
            experience : "",
            SpecialistCountry:"",
            SpecialistCity:"",
+           SpecilistRatingAvg:"",
+           SpecilistRatingCount:"",
            SpecialistActivityImg1:"",
            SpecialistActivityImg2:"",
            SpecialistActivityImg3:"",
@@ -58,7 +60,16 @@ class Bookingmessageconsultation extends React.Component {
            message_description:''
         };   
     }  
-
+printReviewStar = (review) => {
+  const row = [];
+  for (var i = 0; i < review; i++) {
+    row.push(<i class="fas fa-star filled"></i>);
+  }
+    for (var i = 0; i < (5-review); i++) {
+    row.push(<i class="fas fa-star "></i>);
+  }
+  return row;
+  };
 
     messageconfirm(e){
       e.preventDefault();   
@@ -107,7 +118,10 @@ class Bookingmessageconsultation extends React.Component {
                 this.setState({name : res.data['Result'][0].SpecialistName});
                 this.setState({title:res.data['Result'][0].SpecialistTitle}); 
                 this.setState({SpecialistCountry :res.data['Result'][0].SpecialistCountry});
-                this.setState({SpecialistCity :res.data['Result'][0].SpecialistCity}); 
+                this.setState({SpecialistCity :res.data['Result'][0].SpecialistCity});
+                this.setState({SpecilistRatingCount :res.data['Result'][0].SpecilistRatingCount});
+                this.setState({SpecilistRatingAvg :res.data['Result'][0].SpecilistRatingAvg});
+
              } 
 
          });   
@@ -177,12 +191,10 @@ class Bookingmessageconsultation extends React.Component {
 							<h4 class="doc-name"><a href="doctor-profile.html" class="text-dark">{this.state.title}</a></h4>
 							 
 							<div class="rating">
-								<i class="fas fa-star filled"></i>
-								<i class="fas fa-star filled"></i>
-								<i class="fas fa-star filled"></i>
-								<i class="fas fa-star filled"></i>
-								<i class="fas fa-star"></i>
-								<span class="text-muted d-inline-block average-rating">(17)</span>
+								{
+                  this.printReviewStar(this.state.SpecilistRatingAvg)
+               } 
+								<span class="text-muted d-inline-block average-rating">({this.state.SpecilistRatingCount})</span>
 							</div>
 							<div class="clinic-details">
 								<p class="doc-location"><i class="fas fa-map-marker-alt"></i> {this.state.SpecialistCountry} , {this.state.SpecialistCity}</p>
