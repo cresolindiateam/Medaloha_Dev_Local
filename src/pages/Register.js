@@ -105,7 +105,7 @@ class Register extends React.Component {
          }
 
          if(this.state.password!=this.state.cpassword){
-            alert("Password didn't matched enter correct password.");
+            alert("Both passwords should be same.");
             return false;
          } 
 
