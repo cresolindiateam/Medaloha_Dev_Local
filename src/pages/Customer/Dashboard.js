@@ -11,6 +11,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
 import ChatScreen from "../Components/ChatScreen";
+import html2pdf from 'html2pdf.js';
 // const { t, i18n } = useTranslation(); 
 require('dotenv').config();
 
@@ -79,14 +80,47 @@ class Dashboard extends React.Component {
 		   streetaddress:'',
 		   recommend_select:'like-btn',
 		   recommend_deselect:'dislike-btn',
-		   imagePreview: null
-
+		   imagePreview: null,
+		     
 		   
         };   
 		//this.createchannel = this.createchannel.bind(this);
-  
+  this.handleDownload = this.handleDownload.bind(this);
     }  
 
+
+   handleDownload(invoiceid) {
+ // URL of the content you want to convert to PDF
+var InvoiceID = invoiceid;
+		console.log('res.dddddd'); 
+		console.log(InvoiceID); 
+         axios.get(process.env.REACT_APP_BASE_URL+`/specilistAPI/GetBookingInvoice?invoice_id=`+InvoiceID)
+         .then(res => {
+            console.log('res.data222'); 
+			console.log(res.data); 
+             if(res.data){
+				 var stringinvoice = res.data[0].bookingID;
+ try {
+      
+      const content =  '<html><head><title>Invoice</title></head><body><div class="content" style="min-height: 30.234px;"><div class="container-fluid"><div class="row"><div class="col-lg-8 offset-lg-2"><div class="invoice-content"><div class="invoice-item"><div class="row"><div class="col-md-6"><div class="invoice-logo"><img src="/assets/img/logo.png" alt="logo"></div></div><div class="col-md-6"><p class="invoice-details"><strong>Order:</strong> #000'+stringinvoice+'<br><strong>Issued:</strong>'+res.data[0].booking_date+'</p></div></div></div><div class="invoice-item"><div class="row"><div class="col-md-6"><div class="invoice-info"><strong class="customer-text">Invoice From</strong><p class="invoice-details invoice-details-two">Dr. '+res.data[0].Sname+" "+res.data[0].Slastname+'<br>'+res.data[0].holistic_center+', '+res.data[0].holistic_location+',<br>'+res.data[0].s_city_name+', '+res.data[0].s_country_name+' <br></p></div></div><div class="col-md-6"><div class="invoice-info invoice-info2"><strong class="customer-text">Invoice To</strong><p class="invoice-details">'+res.data[0].UserName +" "+ res.data[0].UserLast+'<br>,'+res.data[0].UserAddress+'<br>'+res.data[0].u_city_name+','+res.data[0].Userzip+' ,  '+res.data[0].u_country_name+' <br></p></div></div></div></div><div class="invoice-item"><div class="row"><div class="col-md-12"><div class="invoice-info"><strong class="customer-text">Payment Method</strong><p class="invoice-details invoice-details-two">'+res.data[0].cardType+' Card <br>XXXXXXXXXXXX-'+res.data[0].Last4+' <br></p></div></div></div></div><div class="invoice-item invoice-table-wrap"><div class="row"><div class="col-md-12"><div class="table-responsive"><table class="invoice-table table table-bordered"><thead><tr><th>Description</th><th class="text-center">Quantity</th><th class="text-center">VAT</th><th class="text-right">Total</th></tr></thead><tbody><tr><td>'+res.data[0].Track+' Calling</td><td class="text-center">1</td><td class="text-center">$0</td><td class="text-right">$'+res.data[0].booking_price+'</td></tr></tbody></table></div></div><div class="col-md-6 col-xl-6 ml-auto"><div class="table-responsive"><table class="invoice-table-two table"><tbody><tr><th>Subtotal:</th><td><span>$'+res.data[0].booking_price+'</span></td></tr><tr><th>Discount:</th><td><span>-0%</span></td></tr><tr><th>Total Amount:</th><td> <span>$'+res.data[0].booking_price+'</span> </td></tr></tbody></table></div></div></div></div></div></div></div></div></div></body></html>';
+  // Convert the HTML content to PDF
+      html2pdf().from(content).toPdf().get('pdf').then(function(pdf) {
+        // Save the PDF
+        pdf.save('invoice.pdf');
+      });
+    } catch (error) {
+      console.error('Error fetching content:', error);
+    }
+
+			   
+             } 
+         }); 
+ 
+
+
+
+   
+  }
 
 	specialistdropdown(event) {
 		this.setState({
@@ -359,7 +393,7 @@ this.setState({
 
     componentDidMount() { 
 
- 
+
 
 
 if(this.props.location.search=='?pat_appointments'){
@@ -1305,7 +1339,7 @@ console.log(this.state.searchvalue);
 													      <textarea class="form-control notes-private" placeholder="Notes" onBlur={(e)=> this.updateNoteForPrivate(e.target.value,booking.bookingID) } >{booking.private_note}</textarea>
 							                           </td>
 							<td>
-								<p class="text-center pb-0">{booking.booking_price}/<a href={"invoice/"+booking.bookingID} class="text-primary" target="_blank">Invoice.pdf </a>
+								<p class="text-center pb-0">{booking.booking_price}/<a href={"invoice/"+booking.bookingID} onClick={(e)=>this.handleDownload(booking.bookingID)} class="text-primary" target="_blank">Invoice.pdf </a>
 								</p>
 							</td>
 						</tr>
