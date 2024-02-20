@@ -115,10 +115,6 @@ var InvoiceID = invoiceid;
 			   
              } 
          }); 
- 
-
-
-
    
   }
 
@@ -331,6 +327,100 @@ this.setState({
 	
 	  }
 	
+
+
+ gotopage(text,spec_id,count,price, legendid) { 
+	 
+
+
+
+	  localStorage.setItem('value',price); // price
+	  localStorage.setItem('legend',legendid);  // legend id  
+  if(text==null){ 
+  }
+  else
+  {
+  	if(text=='chat'){
+  	 const { history } = this.props; 
+	   if(count==2)
+
+
+        history.push("/specialistDetails/"+spec_id);
+		if(count==1)
+	    history.push("/bookingmessageconsultation/"+spec_id); 
+    }
+
+    if(text=='video'){
+  	 const { history } = this.props; 
+	   if(count==2)
+	   		//alert(legendid+"vijay");
+{
+
+var ct_id = localStorage.getItem('customer_id')
+
+if(ct_id!=null)
+{
+const clientData = {user_id :ct_id, specialist_id : spec_id}
+		console.log(clientData); 
+		axios.post(process.env.REACT_APP_BASE_URL+`/customerAPI/EmailRegisterForNextSlot`, clientData)
+		.then(res => {  
+			// if(res.data['Status']){
+				alert(res);
+			// }
+
+		});
+}
+
+	   history.push("/specialistDetails/"+spec_id);
+
+	}
+	   if(count==1)
+	   	//alert(legendid+"ajay");
+     history.push("/bookingvideoconsultation/"+spec_id);
+    }
+
+if(text=='audio'){
+  	 const { history } = this.props; 
+	   if(count==2)
+	   history.push("/specialistDetails/"+spec_id);
+	   if(count==1)
+     history.push("/bookingvideoconsultation/"+spec_id);
+    }
+
+      if(text=='invivo')
+      {
+
+
+  	 const { history } = this.props;
+	   if(count==2)
+ {
+
+
+var ct_id = localStorage.getItem('customer_id')
+
+if(ct_id!=null)
+{
+const clientData = {user_id :ct_id, specialist_id : spec_id}
+		console.log(clientData); 
+		axios.post(process.env.REACT_APP_BASE_URL+`/customerAPI/EmailRegisterForNextSlot`, clientData)
+		.then(res => {  
+			// if(res.data['Status']){
+				alert(res);
+			// }
+
+		});
+}
+
+
+ }
+   history.push("/specialistDetails/"+spec_id);
+	   if(count==1)
+       history.push("/bookingvideoconsultation/"+spec_id);
+    }
+
+  }
+  };
+
 
     fileChangedHandler = event => {
         this.setState({ selectedFile: event.target.files[0] })
@@ -1480,31 +1570,61 @@ console.log(this.state.searchvalue);
 </div>
 <div class="card flex-fill mt-0 mb-0">
 <ul class="list-group list-group-flush">
+{data.LengendId && (data.LengendId.includes(1)==true || data.LengendId.includes(2)==true || data.LengendId.includes(3)==true) ?
+  
+
+   <li class={data.MessageData && data.MessageData['Count']==0 ?'list-group-item d-flex emptyDataChat':"list-group-item d-flex"} >
+	   <img src="assets/images/written.png" class="custom-width custom-height"/>
+	   <h6 class="written_text_color ml-2 text-left consult_text_box">Chat</h6>
+	 {data.MessageData && data.MessageData['Count']==0 ?  <button  class="w-100 written_box_color text-white font-weight-bold font-size-10" 
+	   onClick={e=>this.gotopage('chat',data.SpecialistPublicPrivateID,2,0,0)} >
+		Make your request now 
+	 </button> : <button class="w-100 written_box_color text-white font-weight-bold font-size-10" 
+	   onClick={e=>this.gotopage('chat',data.SpecialistPublicPrivateID,data.MessageData['Count'],data.MessageData['Information'][0]['public_price'],1)} >
+		Make your request now 
+	 </button> }
+</li> : null
+
+
+}	
+{data.LengendId && (data.LengendId.includes(4)==true || data.LengendId.includes(5)==true || data.LengendId.includes(6)==true) ?
+ 
  <li class="list-group-item d-flex">
-	 <img src="assets/images/written.png" class="custom-width custom-height"/>
-	 <h6 class="written_text_color ml-2 text-left consult_text_box">Chat</h6>
-	 <button class="w-100 written_box_color text-white font-weight-bold font-size-10" 
-	 onclick="gotopage('message')" >
-	 Make your request now
-
- </button>
+   <img src="assets/images/video.png" class="custom-width custom-height" />
+   <h6 class="orange ml-2 text-left consult_text_box">Video </h6>
+  {data.OthersData && data.OthersData['videoCount']==0 ?  <button  onClick={e=>this.gotopage('video',data.SpecialistPublicPrivateID,2,0,0)} class="w-100 bg-orange font-size-10 font-weight-bold" >
+   No free slots: <i class="fa fa-bell"></i> Alert 
+  </button> : <button onClick={e=>this.gotopage('video',data.SpecialistPublicPrivateID,data.OthersData['videoCount'],data.OthersData['videoPrice'],4)} class="w-100 bg-orange font-size-10 font-weight-bold" >
+   Next Availability:   {data.OthersData['videoDate']}
+  </button>}
 </li>
+:null }
+
+{data.LengendId && ( data.LengendId.includes(7)==true || data.LengendId.includes(8)==true || data.LengendId.includes(9)==true) ?
 <li class="list-group-item d-flex">
- <img src="assets/images/video.png" class="custom-width custom-height" />
- <h6 class="orange ml-2 text-left consult_text_box">Video</h6>
- <button onclick="gotopage('video')" class="w-100 bg-orange font-size-10 font-weight-bold" >
- Next Availability: 17 Nov
-</button>
-</li>
+<img src="assets/images/audio.png" class="cystom-width custom-height" />
+<h6 class="orange ml-2 text-left consult_text_box" >&nbsp;Audio</h6>
 
+{data.OthersData && data.OthersData['audioCount']==0 ?<button class="w-100 bg-orange text-white font-weight-bold font-size-11" onClick={e=>this.gotopage('audio',data.SpecialistPublicPrivateID,2,0,0)}>
+   No free slots: <i class="fa fa-bell"></i> Alert 
+</button> : <button class="w-100 bg-orange text-white font-weight-bold font-size-11" onClick={e=>this.gotopage('audio',data.SpecialistPublicPrivateID,data.OthersData['audioCount'],data.OthersData['audioPrice'],7)}>
+Next Availability: {data.OthersData['audioDate']}
+</button>}
+
+</li>:null }
+{data.LengendId && (data.LengendId.includes(10)==true || data.LengendId.includes(11)==true || data.LengendId.includes(12)==true) ?
 <li class="list-group-item d-flex">
 <img src="assets/images/live.png" class="cystom-width custom-height" />
-<h6 class="blue ml-2 text-left consult_text_box" >&nbsp;In-Vivo</h6>
-<button class="w-100 bg-blue text-white font-weight-bold font-size-11">
- No free shots: <i class="fa fa-bell"></i> Alert
- 
-</button>
-</li>
+<h6 class="blue ml-2 text-left consult_text_box" >&nbsp;In-vivo</h6>
+{data.OthersData && data.OthersData['vivoCount']==0 ? <button class="w-100 bg-blue text-white font-weight-bold font-size-11" onClick={e=>this.gotopage('invivo',data.SpecialistPublicPrivateID,2,0,0)}>
+   No free slots: <i class="fa fa-bell"></i> Alert 
+</button> : <button class="w-100 bg-blue text-white font-weight-bold font-size-11" onClick={e=>this.gotopage('invivo',data.SpecialistPublicPrivateID,data.OthersData['vivoCount'],data.OthersData['vivoPrice'],10)}>
+Next Availability: {data.OthersData['vivoDate']}
+</button>}
+</li>:null }
+
+
+
 </ul>
 </div>
 </div>
