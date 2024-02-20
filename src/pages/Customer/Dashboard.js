@@ -1184,8 +1184,40 @@ else if(diffInMinutesbefore <= 5 && diffInMinutesbefore >= 0 )
 					<tbody>
 					 
 					{this.state.booking_history.filter( (booking)=> {   
-						// return booking.first_name.toLowerCase(); 
-						return (this.state.searchvalue===null || this.state.searchvalue===undefined  ||this.state.searchvalue==='')?booking: (booking.first_name.toLowerCase().includes(this.state.searchvalue.toLowerCase()) || booking.last_name.toLowerCase().includes(this.state.searchvalue.toLowerCase()) ||  (booking.first_name+' '+booking.last_name).toLowerCase().includes(this.state.searchvalue.toLowerCase()));
+						// return booking.first_name.toLowerCase();
+
+var  status='';
+if(booking.booking_status == 1)
+{
+	  status = 'booked';
+}  
+
+else if(booking.booking_status == 2)
+{
+	  status = 'done';
+} 
+else if(booking.booking_status == 3)
+{
+	  status = 'cancel';
+} 
+
+else if(booking.booking_status == 4 || booking.booking_status == 7)
+{
+	  status = 'rebook';
+} 
+
+else if(booking.booking_status == 5)
+{
+	  status = 'past';
+}  
+
+
+console.log("jai shree ram");
+console.log(status);
+console.log(this.state.searchvalue.toLowerCase());
+console.log((this.state.searchvalue && this.state.searchvalue.toLowerCase()) === status);                        
+
+						return (this.state.searchvalue===null || this.state.searchvalue===undefined  ||this.state.searchvalue==='')?booking: (booking.first_name.toLowerCase().includes(this.state.searchvalue.toLowerCase()) || booking.last_name.toLowerCase().includes(this.state.searchvalue.toLowerCase()) ||  (booking.first_name+' '+booking.last_name).toLowerCase().includes(this.state.searchvalue.toLowerCase()) || (booking.legend_name).toLowerCase().includes(this.state.searchvalue.toLowerCase()) || status.includes((this.state.searchvalue.toLowerCase())) || moment(booking.booking_date).format('D MMM YYYY').includes((this.state.searchvalue)));
 						}).map( (booking)=> (  		
 						<tr>
 							<td class="pr-0 pl-1">
