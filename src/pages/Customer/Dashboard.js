@@ -1215,9 +1215,16 @@ else if(booking.booking_status == 5)
 console.log("jai shree ram");
 console.log(status);
 console.log(this.state.searchvalue.toLowerCase());
-console.log((this.state.searchvalue && this.state.searchvalue.toLowerCase()) === status);                        
+console.log((this.state.searchvalue && this.state.searchvalue.toLowerCase()) === status);
 
-						return (this.state.searchvalue===null || this.state.searchvalue===undefined  ||this.state.searchvalue==='')?booking: (booking.first_name.toLowerCase().includes(this.state.searchvalue.toLowerCase()) || booking.last_name.toLowerCase().includes(this.state.searchvalue.toLowerCase()) ||  (booking.first_name+' '+booking.last_name).toLowerCase().includes(this.state.searchvalue.toLowerCase()) || (booking.legend_name).toLowerCase().includes(this.state.searchvalue.toLowerCase()) || status.includes((this.state.searchvalue.toLowerCase())) || moment(booking.booking_date).format('D MMM YYYY').includes((this.state.searchvalue)));
+console.log(booking.private_note);
+console.log("mycheck");
+console.log(booking.private_note === this.state.searchvalue);
+console.log("mycheck2");
+console.log(this.state.searchvalue);
+                       
+
+						return (this.state.searchvalue===null || this.state.searchvalue===undefined  ||this.state.searchvalue==='')?booking: (booking.first_name.toLowerCase().includes(this.state.searchvalue.toLowerCase()) || booking.last_name.toLowerCase().includes(this.state.searchvalue.toLowerCase()) ||  (booking.first_name+' '+booking.last_name).toLowerCase().includes(this.state.searchvalue.toLowerCase()) || (booking.legend_name).toLowerCase().includes(this.state.searchvalue.toLowerCase()) || status.includes((this.state.searchvalue.toLowerCase())) || moment(booking.booking_date).format('D MMM YYYY').includes((this.state.searchvalue)) || booking.bookingID === parseInt(this.state.searchvalue) || booking.booking_price === parseInt(this.state.searchvalue) );
 						}).map( (booking)=> (  		
 						<tr>
 							<td class="pr-0 pl-1">
