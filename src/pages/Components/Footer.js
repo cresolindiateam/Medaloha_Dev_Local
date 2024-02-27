@@ -12,6 +12,16 @@ function settingLanguage(lang){
 
 class Footer extends React.Component {  
 
+
+constructor(props) {
+        super(props);
+        this.state = {
+            testimonialListing : [],
+          
+        } 
+     
+    }
+
  updateUserStatus(userId)
  {
   
@@ -25,9 +35,26 @@ class Footer extends React.Component {
   }
 
 
+ 
 
 
  componentDidMount() { 
+
+
+axios.get(process.env.REACT_APP_BASE_URL+'/medalohaAPI/GetTestimonialListing',{})
+         .then(res => {
+          
+           console.log('res.data');
+           console.log(res.data);
+
+           
+
+           this.setState({testimonialListing:res.data.Data});
+
+console.log('testimonialListing');
+  console.log(this.state.testimonialListing);
+
+         });
 
 
          const interval = setInterval(() => {
@@ -120,39 +147,20 @@ class Footer extends React.Component {
                             <div class="col-lg-6 col-md-6 mt-4 hidden-xs ">
                                 <div id="carouselExampleSlidesOnly" class="carousel slide mb-1" data-ride="carousel">
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <p class="comment-content author-name">
-                                                "I was already planning private consultations by myself with health practitioners, by contacting and asking them for online sessions, but it took time and efforts…  MedAloha is exactly what I was waiting for."
-                                            </p>
-                                            <div class="meta-data mb-0 author-section">
-                                                <span class="comment-author font-italic author-name">Elisa</span>
-                                            </div>
-                                        </div>
-                                        <div class="carousel-item">
 
-                                            <p class="comment-content author-name" >
-                                                "Super intuitive and user-friendly.!"
-                                            </p>
-                                            <div class="meta-data mb-0 author-section" >
-                                                <span class="comment-author font-italic author-name" >Andreas</span>
-                                            </div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <p class="comment-content author-name">
-                                                "Discovering here new stuff about holistics and cool specialists from all over the world, will try more sessions soon."
-                                            </p>
-                                            <div class="meta-data mb-0 author-section" >
-                                                <span class="comment-author font-italic author-name" >Julie</span>
-                                            </div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <p class="comment-content author-name">
-                                                "As a practitioner, MedAloha is the best way –especially in these covid times- to comfortably and easily connect from home with people from everywhere and to share my passion for holistic health."
-                                            </p>
-                                            <div class="meta-data mb-0 author-section">
-                                                <span class="comment-author font-italic author-name">Eros</span>
-                                            </div>
-                                        </div>
+                                 {this.state.testimonialListing.map((data, index) => (
+    <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={index}>
+        <p class="comment-content author-name">"{data.TextComment}"</p>
+        <div class="meta-data mb-0 author-section">
+            <span class="comment-author font-italic author-name">{data.TextAuthor}</span>
+        </div>
+    </div>
+))}
+
+
+
+
+                                       
                                     </div>
                                 </div>
 
