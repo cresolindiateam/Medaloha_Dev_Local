@@ -111,7 +111,10 @@ class Applyspecialist extends React.Component {
             return false;
          }
 
-		 
+		  var Varnewsletter = 0;
+		 if(this.state.newsletter){
+             Varnewsletter = 1;
+         }
 
          if(this.state.password!=this.state.cpassword){
             alert("Password didn't matched enter correct password");
@@ -123,7 +126,7 @@ class Applyspecialist extends React.Component {
             return false;
          }
       
-          const SpecialistData = {name :this.state.name , surname : this.state.surname, email : this.state.email , country : this.state.country , city : this.state.city , password:this.state.password,stdcode:this.state.stdcode,mobilenumber:this.state.mobilenumber,newsletter:this.state.newsletter}
+          const SpecialistData = {name :this.state.name , surname : this.state.surname, email : this.state.email , country : this.state.country , city : this.state.city , password:this.state.password,stdcode:this.state.stdcode,mobilenumber:this.state.mobilenumber,newsletter:Varnewsletter}
           console.log(SpecialistData);
 
 	   axios.post(process.env.REACT_APP_BASE_URL+`/authenticationAPI/SpecialistRegistraion`,SpecialistData)
