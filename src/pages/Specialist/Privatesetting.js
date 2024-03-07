@@ -15,6 +15,7 @@ import SpecialistBookingHistory from '../Components/SpecialistBookingHistory';
 // const { t, i18n } = useTranslation(); 
 import moment from 'moment';
 import ChatScreen from "../Components/ChatScreen";
+import $ from 'jquery';  
 require('dotenv').config();
 
 function settingLanguage(lang){ 
@@ -344,9 +345,21 @@ this.setState({ deletefileadditionaldegree: true });
 		this.setState({searchvalue: event.target.value});
 	  }
       
-    componentDidMount() { 
+    componentDidMount() 
+    { 
 
-
+   const element = document.querySelector('.react-datepicker__navigation--years-upcoming');
+  if (element) {
+    const newElement = document.createElement('span');
+    newElement.className = 'react-datepicker__year-read-view--down-arrow';
+    newElement.style.transform = 'rotate(315deg)';
+    newElement.style.top = '15px';
+    newElement.style.borderColor = '#20c0f3';
+    newElement.style.left = '10px';
+    element.appendChild(newElement);
+  } else {
+    console.error('Target element not found');
+  }
 
 		axios.get(process.env.REACT_APP_BASE_URL+`/specilistAPI/GetSpecialistBooking?specialist_id=`+localStorage.getItem('specialist_id'))
 		.then(res => {

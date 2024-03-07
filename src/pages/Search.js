@@ -318,7 +318,7 @@ chooseEvent= e => {
   	 const { history } = this.props; 
 	   if(count==2)
 
-
+alert("Thank you for subscribing! You will receive email notifications whenever a specialist adds a new slot. Stay tuned for updates.");
         history.push("/specialistDetails/"+spec_id);
 		if(count==1)
 	    history.push("/bookingmessageconsultation/"+spec_id); 
@@ -344,7 +344,7 @@ const clientData = {user_id :ct_id, specialist_id : spec_id}
 
 		});
 }
-
+alert("Thank you for subscribing! You will receive email notifications whenever a specialist adds a new slot. Stay tuned for updates.");
 	   history.push("/specialistDetails/"+spec_id);
 
 	}
@@ -356,7 +356,10 @@ const clientData = {user_id :ct_id, specialist_id : spec_id}
 if(text=='audio'){
   	 const { history } = this.props; 
 	   if(count==2)
+	   {
+	   	alert("Thank you for subscribing! You will receive email notifications whenever a specialist adds a new slot. Stay tuned for updates.");
 	   history.push("/specialistDetails/"+spec_id);
+	}
 	   if(count==1)
      history.push("/bookingvideoconsultation/"+spec_id);
     }
@@ -391,7 +394,7 @@ const clientData = {user_id :ct_id, specialist_id : spec_id}
 
 
 
-
+alert("Thank you for subscribing! You will receive email notifications whenever a specialist adds a new slot. Stay tuned for updates.");
 	   history.push("/specialistDetails/"+spec_id);
 	   if(count==1)
        history.push("/bookingvideoconsultation/"+spec_id);

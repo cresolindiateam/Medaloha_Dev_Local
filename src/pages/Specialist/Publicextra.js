@@ -86,11 +86,11 @@ class Publicextra extends React.Component {
   };
 	 
 	 handleChangeTitle(i , event) { 
-	 	 alert(event.target.value)
+	 	 // alert(event.target.value)
 		let daysArray = [...this.state.daysArray];
 		daysArray[i] = event.target.value;
 		this.setState({ daysArray });
-		 alert(daysArray); 
+		 // alert(daysArray); 
 	 }
 
 

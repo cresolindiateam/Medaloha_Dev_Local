@@ -110,7 +110,7 @@ class Register extends React.Component {
          } 
 
          if(this.state.signupvalidation==false){
-            alert('Please choose singup.');
+            alert('Please choose signup.');
             return false;
          }
 
