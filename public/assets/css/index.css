@@ -3798,6 +3798,32 @@ vertical-align: bottom!important;
 	vertical-align: bottom!important;
 }
 
+.react-datepicker__navigation--years-upcoming::before {
+    border-style: solid;
+    border-width: 3px 3px 0 0;
+    content: "";
+    display: block;
+    height: 9px;
+    position: absolute;
+    top: 18px;
+    width: 9px;
+    left: 10px;
+    transform: rotate(-45deg);
+}
+
+.react-datepicker__navigation--years-previous::after {
+    border-style: solid;
+    border-width: 3px 3px 0 0;
+    content: "";
+    display: block;
+    height: 9px;
+    position: absolute;
+    top: 5px;
+    width: 9px;
+    left: 10px;
+    transform: rotate(135deg);
+}
+
 @media only screen and (max-width: 767.98px){
 
 

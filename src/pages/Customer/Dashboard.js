@@ -130,7 +130,7 @@ var InvoiceID = invoiceid;
 	  }
 	
 	   InputChanged1(val) {
-		   alert(val);
+		   // alert(val);
 		this.setState({
 		  recommend_status: val
 		});
@@ -146,7 +146,7 @@ this.setState({
 	  }
 	
 	   InputChanged2(val) {
-		   alert(val);
+		   // alert(val);
 		this.setState({
 		  recommend_status: val
 		});
@@ -1148,7 +1148,8 @@ else if(diffInMinutesbefore <= 5 && diffInMinutesbefore >= 0 )
 					<label>Date of Birth</label>
 					<div class="cal-icon">
 					   <DatePicker selected={this.state.dob} className="form-control dropdownwidth"  showMonthDropdown
-      showYearDropdown onChange={(date)=> this.setState({dob:date})}customerconfirmation />
+      showYearDropdown  showPreviousMonthsNavigation
+  showNextMonthsNavigation onChange={(date)=> this.setState({dob:date})}customerconfirmation />
 				    </div>
 				</div>
 			</div>

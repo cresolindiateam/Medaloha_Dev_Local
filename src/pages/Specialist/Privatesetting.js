@@ -990,7 +990,7 @@ data.append('universitydegree',this.state.universitydegree);
 																	<span><i className="fa fa-upload"></i> Identity Document *</span>
 																	<input type="file" className="upload" onChange={this.fileChangedHandlerID2} />
 																</div>
-																<small className="form-text text-muted text-center"><b> Back 1Side Image *</b></small>
+																<small className="form-text text-muted text-center"><b> Back Side Image *</b></small>
 															     
 
 {this.state.fileidback!=null ? <img onClick={this.handleFrontImageClick11} src={this.state.fileidback}  style={{"width" : "20%","cursor":"pointer"}} />:
