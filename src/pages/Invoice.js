@@ -115,7 +115,47 @@ class Invoice extends React.Component {
     render(){
         const { t } = this.props;
 		const promise = loadStripe("pk_test_dpbFidCDzQDGz85BRrqlGhJD");
+
+		let concatenatedholisticString = '';
+
+  if (this.state.HolisticCenter && this.state.HolisticLocation)
+   {
+    concatenatedholisticString = `${this.state.HolisticCenter}, ${this.state.HolisticLocation},`;
+  } else if (this.state.HolisticCenter) {
+    concatenatedholisticString = `${this.state.HolisticCenter},`;
+  } else if (this.state.HolisticLocation) {
+    concatenatedholisticString = `${this.state.HolisticLocation},`;
+  } else {
+    concatenatedholisticString = '';
+  }
+
+
+
+		let useraddressString = '';
+
+  if (this.state.UserAddress)
+   {
+    useraddressString = `${this.state.UserAddress},`;
+  }  else {
+    useraddressString = '';
+  }
 		 
+
+	let concatenateducityuzipString = '';
+
+  if (this.state.Ucityname!=null && this.state.Userzip!=null)
+   {
+    concatenateducityuzipString = `${this.state.Ucityname}, ${this.state.Userzip},`;
+  } else if (this.state.Ucityname!=null) {
+    concatenateducityuzipString = `${this.state.Ucityname},`;
+  } else if (this.state.Userzip!=null) {
+    concatenateducityuzipString = `${this.state.Userzip},`;
+  } else {
+    concatenateducityuzipString = '';
+  }
+
+
+
         return ( 
 	          <div class="main-wrapper">  
                 <CustomerHeader/> 
@@ -158,7 +198,7 @@ class Invoice extends React.Component {
 												<strong class="customer-text">Invoice From</strong>
 												<p class="invoice-details invoice-details-two">
 													Dr. {this.state.SpecialistName} <br/>
-												{this.state.HolisticCenter}, {this.state.HolisticLocation},<br/>
+												{concatenatedholisticString}<br/>
 													{this.state.Scityname!=null ? this.state.Scityname :''}, {this.state.Scountryname!=null ? this.state.Scountryname:''} <br/>
 												</p>
 											</div>
@@ -168,8 +208,8 @@ class Invoice extends React.Component {
 												<strong class="customer-text">Invoice To</strong>
 												<p class="invoice-details">
 													{this.state.UserName}<br/>
-													{this.state.UserAddress}, <br/>
-													{this.state.Ucityname!=null? this.state.Ucityname : ''}, {this.state.Userzip!=null ? this.state.Userzip : ''},  {this.state.Ucountryname!=null ? this.state.Ucountryname:''} <br/>
+													{useraddressString} <br/>
+													{concatenateducityuzipString}  {this.state.Ucountryname!=null ? this.state.Ucountryname:''} <br/>
 												</p>
 											</div>
 										</div>
