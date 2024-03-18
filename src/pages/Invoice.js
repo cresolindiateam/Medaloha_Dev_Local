@@ -146,12 +146,29 @@ class Invoice extends React.Component {
   if (this.state.Ucityname!=null && this.state.Userzip!=null)
    {
     concatenateducityuzipString = `${this.state.Ucityname}, ${this.state.Userzip},`;
-  } else if (this.state.Ucityname!=null) {
+  }
+
+
+   else if (this.state.Ucityname!=null) {
     concatenateducityuzipString = `${this.state.Ucityname},`;
   } else if (this.state.Userzip!=null) {
     concatenateducityuzipString = `${this.state.Userzip},`;
   } else {
     concatenateducityuzipString = '';
+  }
+
+
+  	let concatenatedscityscountryString = '';
+
+  if (this.state.Scityname!=null && this.state.Scountryname!=null)
+   {
+    concatenatedscityscountryString = `${this.state.Scityname}, ${this.state.Scountryname}`;
+  } else if (this.state.Scityname!=null) {
+    concatenatedscityscountryString = `${this.state.Scityname}`;
+  } else if (this.state.Scountryname!=null) {
+    concatenatedscityscountryString = `${this.state.Scountryname}`;
+  } else {
+    concatenatedscityscountryString = '';
   }
 
 
@@ -199,7 +216,7 @@ class Invoice extends React.Component {
 												<p class="invoice-details invoice-details-two">
 													Dr. {this.state.SpecialistName} <br/>
 												{concatenatedholisticString}<br/>
-													{this.state.Scityname!=null ? this.state.Scityname :''}, {this.state.Scountryname!=null ? this.state.Scountryname:''} <br/>
+													{concatenatedscityscountryString}<br/>
 												</p>
 											</div>
 										</div>
