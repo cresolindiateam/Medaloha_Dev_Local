@@ -1742,13 +1742,13 @@ class="text-center text-white t-o-consult-text">Types of consultations:</h4>
 							<h4 class="widget-title font-weight-bold">See presentation videos</h4>
 							<div class="experience-box">
 								<p>
-								{ this.state.specialistVedioUrl1 && this.state.specialistVedioUrl1.trim() !=='' ?
-									<a target="_blank" href={this.state.specialistVedioUrl1}>Video Title Here-1</a>:""
+								{ this.state.specialistVedioUrl1 && this.state.specialistVedioUrl1!='null' ?
+									<a target="_blank" href={this.state.specialistVedioUrl1!='null'?this.state.specialistVedioUrl1:""}>Video Title Here-1</a>:""
 								}
 								</p>
 								<p>
-								{this.state.specialistVedioUrl2 && this.state.specialistVedioUrl2.trim() !=='' ?
-									<a target="_blank" href={this.state.specialistVedioUrl2}>Video Title Here-2</a>:""
+								{this.state.specialistVedioUrl2 && this.state.specialistVedioUrl2!='null' ?
+									<a target="_blank" href={this.state.specialistVedioUrl2!='null'?this.state.specialistVedioUrl2:""}>Video Title Here-2</a>:""
 								}
 								</p>
 							</div>

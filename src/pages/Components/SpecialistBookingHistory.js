@@ -211,6 +211,9 @@ var validation = axios.get(process.env.REACT_APP_BASE_URL+`/specilistAPI/IsSpeci
 
 	  isvalideSessionDate(date, rebookdate){
 		console.log(date + rebookdate)
+
+console.log("isvalideSessionDate");
+
   var startDate = '';
 		if(rebookdate==null)
 		{

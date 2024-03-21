@@ -848,9 +848,11 @@ if(this.props.location.search=='?pat_appointments'){
 
 	  isvalideSessionDate(date, rebookdate){
 
+// alert("hello");
 
+console.log("isvalideSessionDate");
 
-	  
+	  console.log("testing join pnone buttn");
 		console.log(date + rebookdate);
 	   var startDate = '';
 	   if(rebookdate==null)

@@ -1262,10 +1262,10 @@ this.setState({ nextEnabled: false });
 													Presentation videos to upload (max 2)
  												</div>
  												<div class="col-md-4 mb-3">
- 													<input type="text" placeholder="Paste Link" class="form-control" name="" value={this.state.videourl1} onChange={(e)=>this.setState({videourl1:e.target.value})} />
+ 													<input type="text" placeholder="Paste Link" class="form-control" name="" value={this.state.videourl1!='null'?this.state.videourl1:""} onChange={(e)=>this.setState({videourl1:e.target.value})} />
  												</div>
  												<div class="col-md-4 mb-3">
- 													<input type="text" placeholder="Paste Link" class="form-control" name=""  value={this.state.videourl2} onChange={(e)=>this.setState({videourl2:e.target.value})}/>
+ 													<input type="text" placeholder="Paste Link" class="form-control" name=""  value={this.state.videourl2!='null'?this.state.videourl2:""} onChange={(e)=>this.setState({videourl2:e.target.value})}/>
  												</div>
 											</div>
 										</div>
